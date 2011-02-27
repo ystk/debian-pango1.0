@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+# Hey, I'm a snippet removing old cruft (Debian #430040); drop me after lenny!
+BOGUSDOCDIR=/usr/share/doc/libpango@APIVER@-doc/pango/pango
+if [ -L $BOGUSDOCDIR ]; then
+  rm -f $BOGUSDOCDIR
+fi
+
+#DEBHELPER#

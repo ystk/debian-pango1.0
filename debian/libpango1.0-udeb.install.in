@@ -1,0 +1,3 @@
+# from the udeb flavor
+debian/install/udeb/@LIBDIR@/*.so.* @LIBDIR@
+debian/install/udeb/@MODULES_PATH@/*.so @MODULES_PATH@

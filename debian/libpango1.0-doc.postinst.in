@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+DOCDIR=/usr/share/doc/libpango@APIVER@-@SONAME@
+if [ -d $DOCDIR ] && [ ! -L $DOCDIR ]; then
+  rm -rf $DOCDIR
+  ln -sf libpango@APIVER@-common $DOCDIR
+fi
+
+#DEBHELPER#

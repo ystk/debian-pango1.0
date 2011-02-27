@@ -1,0 +1,199 @@
+Source: pango1.0
+Section: libs
+Priority: optional
+Maintainer: Sebastien Bacher <seb128@debian.org>
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Josselin Mouette <joss@debian.org>, Sebastian Dröge <slomo@debian.org>
+Build-Depends: debhelper (>= 5.0.22),
+               libfreetype6-dev (>= 2.1.7),
+               libx11-dev (>= 2:1.3.3-2),
+               libxrender-dev (>= 1:0.9.0.2-2),
+               libxt-dev,
+               libglib2.0-dev (>= 2.17.3),
+               pkg-config,
+               defoma (>= 0.11.1),
+               libxft-dev (>= 2.1.14-2),
+               libfontconfig1-dev (>= 2.5.0),
+               autotools-dev,
+               po-debconf,
+               gnome-pkg-tools (>= 0.11),
+               libcairo2-dev (>= 1.8.10-3),
+               perl,
+               quilt,
+               dpkg-dev (>= 1.14.17),
+               libthai-dev (>= 0.1.9),
+               chrpath
+Build-Depends-Indep: libglib2.0-doc
+Standards-Version: 3.8.4
+
+Package: libpango1.0-0
+Architecture: any
+Depends: libpango1.0-common (>= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Conflicts: pango-libthai
+Provides: pango1.0-modver-1.6.0
+Description: Layout and rendering of internationalized text
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Core X windowing system fonts
+  - Client-side fonts on X using the Xft library
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the shared libraries.
+
+Package: libpango1.0-udeb
+XC-Package-Type: udeb
+Section: debian-installer
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Provides: pango1.0-modver-1.6.0
+Description: Layout and rendering of internationalized text - minimal runtime
+ This is a udeb, or a microdeb, for the debian-installer.
+ .
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the minimal runtime library needed by the Debian
+ installer.
+
+Package: libpango1.0-common
+Section: misc
+Architecture: all
+Depends: ${misc:Depends},
+         debconf | debconf-2.0,
+         defoma (>= 0.11.1),
+         fontconfig (>= 2.1.91)
+Recommends: x-ttcidfont-conf, libpango1.0-0
+Suggests: ttf-japanese-gothic,
+          ttf-japanese-mincho,
+          ttf-thryomanes,
+          ttf-baekmuk,
+          ttf-arphic-gbsn00lp,
+          ttf-arphic-bsmi00lp,
+          ttf-arphic-gkai00mp,
+          ttf-arphic-bkai00mp
+Replaces: libpango0,
+          libpango-common (<< 1.0.0)
+Conflicts: pango-libthai (<< 0.1.6-2)
+Description: Modules and configuration files for the Pango
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Core X windowing system fonts
+  - Client-side fonts on X using the Xft library
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the Pango modules and the configuration files
+ which Pango needs.
+
+Package: libpango1.0-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libpango1.0-0 (= ${binary:Version}),
+         libglib2.0-dev (>= 2.12.0),
+         libfreetype6-dev (>= 2.1.3),
+         libx11-dev,
+         libxrender-dev,
+         pkg-config,
+         libxft-dev,
+         libfontconfig1-dev (>= 2.1.91),
+         libcairo2-dev (>= 1.8.2-2)
+Suggests: libpango1.0-doc,
+          imagemagick
+Recommends: debhelper
+Replaces: libpango-dev,
+          libpango1.0-common (<< 1.14.5-1)
+Conflicts: libpango-dev,
+           libpango1.0-common (<< 1.14.5-1)
+Description: Development files for the Pango
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Core X windowing system fonts
+  - Client-side fonts on X using the Xft library
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the header files and some files needed for development
+ with Pango.
+
+Package: libpango1.0-0-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends},
+         libpango1.0-0 (= ${binary:Version})
+Conflicts: libpango1.0-dbg
+Replaces: libpango1.0-dbg
+Description: The Pango library and debugging symbols
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Core X windowing system fonts
+  - Client-side fonts on X using the Xft library
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the debugging symbols. Most people will not need this
+ package.
+
+Package: libpango1.0-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends},
+         lynx | www-browser
+Replaces: libpango0-dev,
+          libpango-doc
+Conflicts: libpango-doc
+Recommends: libglib2.0-doc
+Description: Documentation files for the Pango
+ Pango is a library for layout and rendering of text, with an emphasis
+ on internationalization. Pango can be used anywhere that text layout is
+ needed. however, most of the work on Pango-1.0 was done using the GTK+
+ widget toolkit as a test platform. Pango forms the core of text and
+ font handling for GTK+-2.0.
+ .
+ Pango is designed to be modular; the core Pango layout can be used with
+ four different font backends:
+  - Core X windowing system fonts
+  - Client-side fonts on X using the Xft library
+  - Direct rendering of scalable fonts using the FreeType library
+  - Native fonts on Microsoft backends
+ .
+ This package contains the HTML documentation for the Pango in
+ /usr/share/doc/libpango1.0-doc/ .
+
