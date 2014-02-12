@@ -26,6 +26,7 @@
 #include <string.h>
 
 #include <glib/gprintf.h>
+
 #include "pango-engine.h"
 #include "pango-utils.h"
 #include "pangofc-font.h"

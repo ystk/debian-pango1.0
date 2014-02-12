@@ -176,7 +176,8 @@ pango_trim_string (const char *str)
  * Splits a %G_SEARCHPATH_SEPARATOR-separated list of files, stripping
  * white space and substituting ~/ with $HOME/.
  *
- * Return value: a list of strings to be freed with g_strfreev()
+ * Return value: (transfer full) (array zero-terminated=1): a list of
+ * strings to be freed with g_strfreev()
  **/
 char **
 pango_split_file_list (const char *str)
@@ -235,7 +236,7 @@ pango_split_file_list (const char *str)
 /**
  * pango_read_line:
  * @stream: a stdio stream
- * @str: #GString buffer into which to write the result
+ * @str: (out): #GString buffer into which to write the result
  *
  * Reads an entire line from a file into a buffer. Lines may
  * be delimited with '\n', '\r', '\n\r', or '\r\n'. The delimiter
@@ -343,7 +344,7 @@ pango_read_line (FILE *stream, GString *str)
 
 /**
  * pango_skip_space:
- * @pos: in/out string position
+ * @pos: (inout): in/out string position
  *
  * Skips 0 or more characters of white space.
  *
@@ -365,8 +366,8 @@ pango_skip_space (const char **pos)
 
 /**
  * pango_scan_word:
- * @pos: in/out string position
- * @out: a #GString into which to write the result
+ * @pos: (inout): in/out string position
+ * @out: (out): a #GString into which to write the result
  *
  * Scans a word into a #GString buffer. A word consists
  * of [A-Za-z_] followed by zero or more [A-Za-z_0-9]
@@ -407,8 +408,8 @@ pango_scan_word (const char **pos, GString *out)
 
 /**
  * pango_scan_string:
- * @pos: in/out string position
- * @out: a #GString into which to write the result
+ * @pos: (inout): in/out string position
+ * @out: (out): a #GString into which to write the result
  *
  * Scans a string into a #GString buffer. The string may either
  * be a sequence of non-white-space characters, or a quoted
@@ -497,8 +498,8 @@ pango_scan_string (const char **pos, GString *out)
 
 /**
  * pango_scan_int:
- * @pos: in/out string position
- * @out: an int into which to write the result
+ * @pos: (inout): in/out string position
+ * @out: (out): an int into which to write the result
  *
  * Scans an integer.
  * Leading white space is skipped.
@@ -689,22 +690,26 @@ DllMain (HINSTANCE hinstDLL,
  * Return value: the Pango sysconf directory. The returned string should
  * not be freed.
  */
-G_CONST_RETURN char *
+const char *
 pango_get_sysconf_subdirectory (void)
 {
-#ifdef G_OS_WIN32
-  static gchar *result = NULL;
+  static const gchar *result = NULL;
 
   if (result == NULL)
     {
+#ifdef G_OS_WIN32
       gchar *root = g_win32_get_package_installation_directory_of_module (pango_dll);
       result = g_build_filename (root, "etc\\pango", NULL);
       g_free (root);
+#else
+      const char *sysconfdir = g_getenv ("PANGO_SYSCONFDIR");
+      if (sysconfdir != NULL)
+	result = g_build_filename (sysconfdir, "pango", NULL);
+      else
+	result = SYSCONFDIR "/pango";
+#endif
     }
   return result;
-#else
-  return SYSCONFDIR "/pango";
-#endif
 }
 
 /**
@@ -718,14 +723,14 @@ pango_get_sysconf_subdirectory (void)
  * Return value: the Pango lib directory. The returned string should
  * not be freed.
  */
-G_CONST_RETURN char *
+const char *
 pango_get_lib_subdirectory (void)
 {
-#ifdef G_OS_WIN32
-  static gchar *result = NULL;
+  static const gchar *result = NULL;
 
   if (result == NULL)
     {
+#ifdef G_OS_WIN32
       gchar *root = g_win32_get_package_installation_directory_of_module (pango_dll);
       /* If we are running against an uninstalled copy of the Pango DLL,
        * use the compile-time installation prefix.
@@ -735,11 +740,15 @@ pango_get_lib_subdirectory (void)
       else
 	result = g_build_filename (root, "lib\\pango", NULL);
       g_free (root);
+#else
+      const char *libdir = g_getenv ("PANGO_LIBDIR");
+      if (libdir != NULL)
+	result = g_build_filename (libdir, "pango", NULL);
+      else
+	result = LIBDIR "/pango";
+#endif
     }
   return result;
-#else
-  return LIBDIR "/pango";
-#endif
 }
 
 
@@ -765,10 +774,10 @@ parse_int (const char *word,
 /**
  * pango_parse_enum:
  * @type: enum type to parse, eg. %PANGO_TYPE_ELLIPSIZE_MODE.
- * @str: string to parse.  May be %NULL.
- * @value: integer to store the result in, or %NULL.
+ * @str: (allow-none): string to parse.  May be %NULL.
+ * @value: (out) (allow-none): integer to store the result in, or %NULL.
  * @warn: if %TRUE, issue a g_warning() on bad input.
- * @possible_values: place to store list of possible values on failure, or %NULL.
+ * @possible_values: (out) (allow-none): place to store list of possible values on failure, or %NULL.
  *
  * Parses an enum type and stores the result in @value.
  *
@@ -969,7 +978,7 @@ handle_alias_line (GString  *line_buffer,
 
 #ifdef HAVE_CAIRO_WIN32
 
-static const char *builtin_aliases[] = {
+static const char * const builtin_aliases[] = {
   "courier = \"courier new\"",
   "\"segoe ui\" = \"segoe ui,meiryo,malgun gothic,microsoft jhenghei,microsoft yahei,gisha,leelawadee,arial unicode ms,browallia new,mingliu,simhei,gulimche,ms gothic,sylfaen,kartika,latha,mangal,raavi\"",
   "tahoma = \"tahoma,arial unicode ms,lucida sans unicode,browallia new,mingliu,simhei,gulimche,ms gothic,sylfaen,kartika,latha,mangal,raavi\"",
@@ -1086,9 +1095,9 @@ pango_load_aliases (void)
 /**
  * pango_lookup_aliases:
  * @fontname: an ascii string
- * @families: will be set to an array of font family names.
+ * @families: (out) (array length=n_families): will be set to an array of font family names.
  *    this array is owned by pango and should not be freed.
- * @n_families: will be set to the length of the @families array.
+ * @n_families: (out): will be set to the length of the @families array.
  *
  * Look up all user defined aliases for the alias @fontname.
  * The resulting font family names will be stored in @families,
@@ -1214,8 +1223,8 @@ pango_is_zero_width (gunichar ch)
 
 /**
  * pango_quantize_line_geometry:
- * @thickness: pointer to the thickness of a line, in Pango units
- * @position: corresponding position
+ * @thickness: (inout): pointer to the thickness of a line, in Pango units
+ * @position: (inout): corresponding position
  *
  * Quantizes the thickness and position of a line, typically an
  * underline or strikethrough, to whole device pixels, that is integer
@@ -1286,8 +1295,8 @@ pango_units_to_double (int i)
 
 /**
  * pango_extents_to_pixels:
- * @inclusive: rectangle to round to pixels inclusively, or %NULL.
- * @nearest: rectangle to round to nearest pixels, or %NULL.
+ * @inclusive: (allow-none): rectangle to round to pixels inclusively, or %NULL.
+ * @nearest: (allow-none): rectangle to round to nearest pixels, or %NULL.
  *
  * Converts extents from Pango units to device units, dividing by the
  * %PANGO_SCALE factor and performing rounding.

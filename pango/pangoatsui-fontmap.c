@@ -70,7 +70,6 @@ struct _PangoATSUIFace
 static GType pango_atsui_family_get_type (void);
 static GType pango_atsui_face_get_type (void);
 
-static gpointer pango_atsui_family_parent_class;
 static gpointer pango_atsui_face_parent_class;
 
 static const char *
@@ -203,6 +202,8 @@ pango_atsui_family_is_monospace (PangoFontFamily *family)
   return atsuifamily->is_monospace;
 }
 
+G_DEFINE_TYPE (PangoATSUIFamily, pango_atsui_family, PANGO_TYPE_FONT_FAMILY);
+
 static void
 pango_atsui_family_finalize (GObject *object)
 {
@@ -223,12 +224,10 @@ pango_atsui_family_finalize (GObject *object)
 }
 
 static void
-pango_atsui_family_class_init (PangoFontFamilyClass *class)
+pango_atsui_family_class_init (PangoATSUIFamilyClass *class)
 {
   GObjectClass *object_class = (GObjectClass *)class;
   int i;
-
-  pango_atsui_family_parent_class = g_type_class_peek_parent (class);
 
   object_class->finalize = pango_atsui_family_finalize;
 
@@ -244,34 +243,6 @@ static void
 pango_atsui_family_init (PangoATSUIFamily *family)
 {
   family->n_faces = -1;
-}
-
-static GType
-pango_atsui_family_get_type (void)
-{
-  static GType object_type = 0;
-
-  if (G_UNLIKELY (!object_type))
-    {
-      const GTypeInfo object_info =
-      {
-	sizeof (PangoFontFamilyClass),
-	(GBaseInitFunc) NULL,
-	(GBaseFinalizeFunc) NULL,
-	(GClassInitFunc) pango_atsui_family_class_init,
-	NULL,           /* class_finalize */
-	NULL,           /* class_data */
-	sizeof (PangoATSUIFamily),
-	0,              /* n_preallocs */
-	(GInstanceInitFunc) pango_atsui_family_init,
-      };
-
-      object_type = g_type_register_static (PANGO_TYPE_FONT_FAMILY,
-					    I_("PangoATSUIFamily"),
-					    &object_info, 0);
-    }
-
-  return object_type;
 }
 
 static PangoFontDescription *

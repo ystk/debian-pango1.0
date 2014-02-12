@@ -5,14 +5,24 @@ dnl ==========================================================================
 dnl                               Versioning              
 dnl ==========================================================================
 
-dnl The triplet
-m4_define([pango_version_major], [1])
-m4_define([pango_version_minor], [28])
-m4_define([pango_version_micro], [3])
-dnl Module API version.  This should be stepped up when a change causes
-dnl older modules to not work with new pango.
-m4_define([pango_module_version], [1.6.0])
+dnl Making releases:
+dnl   PANGO_VERSION_MICRO += 1;
+dnl   PANGO_INTERFACE_AGE += 1;
+dnl   PANGO_BINARY_AGE += 1;
+dnl if any functions have been added, set PANGO_INTERFACE_AGE to 0.
+dnl if backwards compatibility has been broken,
+dnl set PANGO_BINARY_AGE _and_ PANGO_INTERFACE_AGE to 0.
 
+dnl
+dnl We do the version number components as m4 macros
+dnl so that we can base configure --help output off
+dnl of them.
+dnl
+
+dnl The triplet 
+m4_define([pango_version_major], [1])
+m4_define([pango_version_minor], [30])
+m4_define([pango_version_micro], [0])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -30,6 +40,9 @@ m4_if(m4_eval(pango_version_minor % 2), [1],
 dnl Number of releases since we've broken binary compatibility.
 m4_define([pango_binary_age],
           [m4_eval(100 * pango_version_minor + pango_version_micro)])
+dnl Module API version.  This should be stepped up when a change causes
+dnl older modules to not work with new pango.
+m4_define([pango_module_version], [1.6.0])
 
 
 AC_INIT(pango, pango_version(),
@@ -39,7 +52,7 @@ AC_CONFIG_SRCDIR([pango.pc.in])
 
 dnl -Wno-portability tells automake to stop complaining about the
 dnl usage of GNU Make specific features.
-AM_INIT_AUTOMAKE(1.9 gnits dist-bzip2 no-dist-gzip -Wno-portability)
+AM_INIT_AUTOMAKE(1.9 gnits dist-xz no-dist-gzip -Wno-portability)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 AM_CONFIG_HEADER([config.h])
 
@@ -111,7 +124,7 @@ dnl
 dnl Check for a working C++ compiler, but do not bail out, if none is found.
 dnl We use this for an automated test for C++ header correctness.
 dnl
-AC_CHECK_PROGS(CXX, [$CCC c++ g++ gcc CC cxx cc++ cl], gcc)
+AC_CHECK_TOOLS(CXX, [$CCC c++ g++ gcc CC cxx cc++ cl], gcc)
 AC_LANG_SAVE
 AC_LANG_CPLUSPLUS
 AC_TRY_COMPILE(,[class a { int b; } c;], ,CXX=)
@@ -324,6 +337,25 @@ fi
 AC_CHECK_HEADER(Carbon/Carbon.h, [have_atsui=true], [have_atsui=false])
 
 #
+# Checks for CoreText
+#
+
+AC_MSG_CHECKING([for CoreText availability])
+pango_save_libs=$LIBS
+LIBS="$LIBS -framework ApplicationServices"
+AC_TRY_LINK([#include <Carbon/Carbon.h>], [CTGetCoreTextVersion ();],
+[have_core_text=yes], [have_core_text=no])
+LIBS=$pango_save_libs
+
+if test "$have_core_text" = "yes"; then
+  AC_DEFINE(HAVE_CORE_TEXT, 1, [Whether CoreText is available on the system])
+fi
+
+AC_MSG_RESULT([$have_core_text])
+
+AM_CONDITIONAL(HAVE_CORE_TEXT, test "$have_core_text" = "yes")
+
+#
 # Checks for Cairo
 #
 have_cairo=false
@@ -365,7 +397,7 @@ if $have_cairo ; then
     have_cairo=true
   fi
 
-  if $have_atsui; then
+  if test $have_atsui -o $have_core_text; then
     PKG_CHECK_EXISTS(cairo-quartz-font >= $cairo_required, have_cairo_atsui=true, :)
   fi
   if $have_cairo_atsui; then
@@ -433,7 +465,7 @@ fi
 #
 # Checks for GLib
 #
-GLIB_REQUIRED_VERSION=2.17.3
+GLIB_REQUIRED_VERSION=2.31.0
 GLIB_MODULES="glib-2.0 >= $GLIB_REQUIRED_VERSION gobject-2.0 gmodule-no-export-2.0"
 
 PKG_CHECK_MODULES(GLIB, $GLIB_MODULES, :,
@@ -450,19 +482,12 @@ AC_SUBST(GLIB_MKENUMS)
 # necesary defines for thread-safety.
 GLIB_CFLAGS=`$PKG_CONFIG --cflags $GLIB_MODULES gthread-2.0`
 
-# See if it's safe to turn G_DISABLE_DEPRECATED on.
-GLIB_VERSION_MAJOR_MINOR=`$PKG_CONFIG --modversion glib-2.0 | sed "s/\.@<:@^.@:>@*\$//"`
-GLIB_REQUIRED_VERSION_MAJOR_MINOR=`echo $GLIB_REQUIRED_VERSION | sed "s/\.@<:@^.@:>@*\$//"`
-if test "x$GLIB_VERSION_MAJOR_MINOR" = "x$GLIB_REQUIRED_VERSION_MAJOR_MINOR"; then
-  GLIB_CFLAGS="-DG_DISABLE_DEPRECATED $GLIB_CFLAGS"
-fi
-
 #
 # Checks for LibThai
 #
 have_libthai=false
 LIBTHAI_REQUIRED_VERSION=0.1.9
-PKG_CHECK_MODULES(LIBTHAI, libthai >= $LIBTHAI_REQUIRED_VERSION, have_libthai=true, AC_MSG_RESULT([no]))
+PKG_CHECK_MODULES(LIBTHAI, libthai >= $LIBTHAI_REQUIRED_VERSION, have_libthai=true, :)
 
 #
 # Checks for GObject Introspection
@@ -474,7 +499,7 @@ GOBJECT_INTROSPECTION_CHECK([0.9.5])
 # Modules to build
 #
 arabic_modules="arabic-fc,arabic-lang"
-basic_modules="basic-fc,basic-win32,basic-x,basic-atsui"
+basic_modules="basic-fc,basic-win32,basic-x,basic-atsui,basic-coretext"
 hangul_modules="hangul-fc"
 hebrew_modules="hebrew-fc"
 indic_modules="indic-fc,indic-lang"
@@ -530,12 +555,14 @@ INCLUDED_X_MODULES=
 INCLUDED_FC_MODULES=
 INCLUDED_WIN32_MODULES=
 INCLUDED_ATSUI_MODULES=
+INCLUDED_CORE_TEXT_MODULES=
 INCLUDED_LANG_MODULES=
 
 AC_SUBST(INCLUDED_X_MODULES)
 AC_SUBST(INCLUDED_FC_MODULES)
 AC_SUBST(INCLUDED_WIN32_MODULES)
 AC_SUBST(INCLUDED_ATSUI_MODULES)
+AC_SUBST(INCLUDED_CORE_TEXT_MODULES)
 AC_SUBST(INCLUDED_LANG_MODULES)
 
 IFS="${IFS= 	}"; pango_save_ifs="$IFS"; IFS=", "
@@ -551,8 +578,9 @@ for module in $included_modules; do
     *-fc)	INCLUDED_FC_MODULES="$INCLUDED_FC_MODULES $included_path" ;;
     *-win32)	INCLUDED_WIN32_MODULES="$INCLUDED_WIN32_MODULES $included_path" ;;
     *-atsui)	INCLUDED_ATSUI_MODULES="$INCLUDED_ATSUI_MODULES $included_path" ;;
+    *-coretext) INCLUDED_CORE_TEXT_MODULES="$INCLUDED_CORE_TEXT_MODULES $included_path" ;;
     *-lang)	INCLUDED_LANG_MODULES="$INCLUDED_LANG_MODULES $included_path" ;;
-    *)		IFS="$pango_save_ifs" AC_MSG_ERROR([specified module $module not recognized]) ;;
+    *)		IFS="$pango_save_ifs"; AC_MSG_ERROR([specified module $module not recognized]) ;;
   esac
 done
 IFS="$pango_save_ifs"
@@ -563,6 +591,7 @@ AM_CONDITIONAL(INCLUDE_BASIC_FC,	echo $included_modules | egrep '(^|,)basic-fc($
 AM_CONDITIONAL(INCLUDE_BASIC_WIN32,	echo $included_modules | egrep '(^|,)basic-win32($|,)' 	> /dev/null)
 AM_CONDITIONAL(INCLUDE_BASIC_X,		echo $included_modules | egrep '(^|,)basic-x($|,)' 	> /dev/null)
 AM_CONDITIONAL(INCLUDE_BASIC_ATSUI,	echo $included_modules | egrep '(^|,)basic-atsui($|,)' 	> /dev/null)
+AM_CONDITIONAL(INCLUDE_BASIC_CORE_TEXT,	echo $included_modules | egrep '(^|,)basic-coretext($|,)'	> /dev/null)
 AM_CONDITIONAL(INCLUDE_HANGUL_FC,	echo $included_modules | egrep '(^|,)hangul-fc($|,)' 	> /dev/null)
 AM_CONDITIONAL(INCLUDE_HEBREW_FC,	echo $included_modules | egrep '(^|,)hebrew-fc($|,)' 	> /dev/null)
 AM_CONDITIONAL(INCLUDE_INDIC_FC,	echo $included_modules | egrep '(^|,)indic-fc($|,)' 	> /dev/null)
@@ -579,6 +608,7 @@ AM_CONDITIONAL(DYNAMIC_BASIC_FC,	echo $dynamic_modules | egrep '(^|,)basic-fc($|
 AM_CONDITIONAL(DYNAMIC_BASIC_WIN32,	echo $dynamic_modules | egrep '(^|,)basic-win32($|,)' 	> /dev/null)
 AM_CONDITIONAL(DYNAMIC_BASIC_X,		echo $dynamic_modules | egrep '(^|,)basic-x($|,)' 	> /dev/null)
 AM_CONDITIONAL(DYNAMIC_BASIC_ATSUI,	echo $dynamic_modules | egrep '(^|,)basic-atsui($|,)' 	> /dev/null)
+AM_CONDITIONAL(DYNAMIC_BASIC_CORE_TEXT,	echo $dynamic_modules | egrep '(^|,)basic-coretext($|,)' 	> /dev/null)
 AM_CONDITIONAL(DYNAMIC_HANGUL_FC,	echo $dynamic_modules | egrep '(^|,)hangul-fc($|,)'	> /dev/null)
 AM_CONDITIONAL(DYNAMIC_HEBREW_FC,	echo $dynamic_modules | egrep '(^|,)hebrew-fc($|,)' 	> /dev/null)
 AM_CONDITIONAL(DYNAMIC_INDIC_FC,	echo $dynamic_modules | egrep '(^|,)indic-fc($|,)' 	> /dev/null)
@@ -745,9 +775,9 @@ for module in $included_modules; do
   module_c=`echo $module | sed s/-/_/`
   cat >> pango/module-defs.h <<EOTEXT
 extern void         _pango_${module_c}_script_engine_list (PangoEngineInfo **engines, int *n_engines);
-extern PangoEngine *_pango_${module_c}_script_engine_init (GTypeModule *module);
+extern void         _pango_${module_c}_script_engine_init (GTypeModule *module);
 extern void         _pango_${module_c}_script_engine_exit (void);
-extern void         _pango_${module_c}_script_engine_create (const char *id);
+extern PangoEngine *_pango_${module_c}_script_engine_create (const char *id);
 
 EOTEXT
 done 
@@ -873,6 +903,35 @@ cat >> pango/module-defs-atsui.c <<EOTEXT
 EOTEXT
 ])
 
+AC_CONFIG_COMMANDS([pango/module-defs-coretext.c],
+[
+### CoreText modules
+cat > pango/module-defs-coretext.c <<EOTEXT
+/* Autogenerated by configure. Do not edit */
+
+#include "module-defs.h"
+
+PangoIncludedModule _pango_included_core_text_modules@<:@@:>@ = {
+EOTEXT
+
+IFS="${IFS= 	}"; pango_save_ifs="$IFS"; IFS=","
+for module in $included_modules; do
+  if echo $module | egrep -- "-coretext($|,)" > /dev/null; then
+    module_c=`echo $module | sed s/-/_/`
+    cat >> pango/module-defs-coretext.c <<EOTEXT
+ { _pango_${module_c}_script_engine_list, _pango_${module_c}_script_engine_init, _pango_${module_c}_script_engine_exit, _pango_${module_c}_script_engine_create },
+EOTEXT
+  fi
+done
+
+IFS="$pango_save_ifs"
+
+cat >> pango/module-defs-coretext.c <<EOTEXT
+ { NULL, NULL, NULL, NULL },
+};
+EOTEXT
+])
+
 AC_CONFIG_COMMANDS([pango/module-defs-lang.c],
 [
 ### lang modules
@@ -950,6 +1009,7 @@ pango/opentype/Makefile
 pango/pango.rc
 pango/pangoft2.rc
 pango/pangowin32.rc
+pango/pangocairo.rc
 pango/pangox.rc
 pango/pangoxft.rc
 pango-view/Makefile
@@ -968,6 +1028,10 @@ docs/Makefile
 docs/version.xml
 tools/Makefile
 tests/Makefile
+build/Makefile
+build/win32/Makefile
+build/win32/vs9/Makefile
+build/win32/vs10/Makefile
 pango.pc
 pangox.pc
 pangowin32.pc
@@ -981,6 +1045,7 @@ pangoft2-uninstalled.pc
 pangoxft-uninstalled.pc
 pangocairo-uninstalled.pc
 pango-zip.sh
+config.h.win32
 ])
 
 AC_CONFIG_FILES([tests/runtests.sh],

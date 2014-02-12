@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PangoFcFont</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="lowlevel.html" title="Low Level Functionality">
 <link rel="prev" href="PangoFcFontMap.html" title="PangoFcFontMap">
 <link rel="next" href="PangoFcDecoder.html" title="PangoFcDecoder">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -53,7 +53,7 @@ struct              <a class="link" href="PangoFcFont.html#PangoFcFontClass" tit
 <a class="link" href="pango-Glyph-Storage.html#PangoGlyph" title="PangoGlyph"><span class="returnvalue">PangoGlyph</span></a>          <a class="link" href="PangoFcFont.html#pango-fc-font-get-unknown-glyph" title="pango_fc_font_get_unknown_glyph ()">pango_fc_font_get_unknown_glyph</a>     (<em class="parameter"><code><a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a> *font</code></em>,
                                                          <em class="parameter"><code><span class="type">gunichar</span> wc</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="PangoFcFont.html#pango-fc-font-kern-glyphs" title="pango_fc_font_kern_glyphs ()">pango_fc_font_kern_glyphs</a>           (<em class="parameter"><code><a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -123,43 +123,37 @@ Class structure for <a class="link" href="PangoFcFont.html" title="PangoFcFont">
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.lock-face"></a>lock_face</code></em> ()</span></p></td>
 <td>Returns the FT_Face of the font and increases
- the reference count for the face by one.
-</td>
+the reference count for the face by one.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.unlock-face"></a>unlock_face</code></em> ()</span></p></td>
 <td>Decreases the reference count for the
- FT_Face of the font by one. When the count is zero,
- the <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a> subclass is allowed to free the
- FT_Face.
-</td>
+FT_Face of the font by one. When the count is zero,
+the <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a> subclass is allowed to free the
+FT_Face.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.has-char"></a>has_char</code></em> ()</span></p></td>
 <td>Return <code class="literal">TRUE</code> if the the font contains a glyph
-  corresponding to the specified character.
-</td>
+corresponding to the specified character.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.get-glyph"></a>get_glyph</code></em> ()</span></p></td>
 <td>Gets the glyph that corresponds to the given
-  Unicode character.
-</td>
+Unicode character.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.get-unknown-glyph"></a>get_unknown_glyph</code></em> ()</span></p></td>
 <td>Gets the glyph that should be used to
-  display an unknown-glyph indication for the specified
-  Unicode character.
-  May be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+display an unknown-glyph indication for the specified
+Unicode character.
+May be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoFcFontClass.shutdown"></a>shutdown</code></em> ()</span></p></td>
 <td>Performs any font-specific shutdown code that
-  needs to be done when pango_fc_font_map_shutdown is called.
-  May be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+needs to be done when pango_fc_font_map_shutdown is called.
+May be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -189,14 +183,11 @@ This face will be kept around until you call
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>font</code></em> :</span></p></td>
-<td>a <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a>.
-</td>
+<td>a <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the FreeType <span class="type">FT_Face</span> associated with <em class="parameter"><code>font</code></em>.
-
-</td>
+<td>the FreeType <span class="type">FT_Face</span> associated with <em class="parameter"><code>font</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -214,8 +205,7 @@ Releases a font previously obtained with
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>font</code></em> :</span></p></td>
-<td>a <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a>.
-</td>
+<td>a <a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a>.</td>
 </tr></tbody>
 </table></div>
 <p class="since">Since 1.4</p>
@@ -238,14 +228,12 @@ Determines whether <em class="parameter"><code>font</code></em> has a glyph for 
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>wc</code></em> :</span></p></td>
-<td>Unicode codepoint to look up
-</td>
+<td>Unicode codepoint to look up</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if <em class="parameter"><code>font</code></em> has the requested codepoint.
-
-</td>
+<td>
+<code class="literal">TRUE</code> if <em class="parameter"><code>font</code></em> has the requested codepoint.</td>
 </tr>
 </tbody>
 </table></div>
@@ -271,15 +259,12 @@ whether the font has the glyph, use <a class="link" href="PangoFcFont.html#pango
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>wc</code></em> :</span></p></td>
-<td>Unicode character to look up
-</td>
+<td>Unicode character to look up</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the glyph index, or 0, if the Unicode
-  character doesn't exist in the font.
-
-</td>
+<td>the glyph index, or 0, if the Unicode
+character doesn't exist in the font.</td>
 </tr>
 </tbody>
 </table></div>
@@ -311,14 +296,11 @@ Use <a class="link" href="pango-Glyph-Storage.html#PANGO-GET-UNKNOWN-GLYPH:CAPS"
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>wc</code></em> :</span></p></td>
-<td>the Unicode character for which a glyph is needed.
-</td>
+<td>the Unicode character for which a glyph is needed.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a glyph index into <em class="parameter"><code>font</code></em>.
-
-</td>
+<td>a glyph index into <em class="parameter"><code>font</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -328,7 +310,7 @@ Use <a class="link" href="pango-Glyph-Storage.html#PANGO-GET-UNKNOWN-GLYPH:CAPS"
 <div class="refsect2">
 <a name="pango-fc-font-kern-glyphs"></a><h3>pango_fc_font_kern_glyphs ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_fc_font_kern_glyphs           (<em class="parameter"><code><a class="link" href="PangoFcFont.html" title="PangoFcFont"><span class="type">PangoFcFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
 <p>
 Adjust each adjacent pair of glyphs in <em class="parameter"><code>glyphs</code></em> according to
 kerning information in <em class="parameter"><code>font</code></em>.
@@ -343,7 +325,7 @@ kerning information in <em class="parameter"><code>font</code></em>.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>glyphs</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a>
+<td>a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a>
 </td>
 </tr>
 </tbody>
@@ -385,6 +367,6 @@ Fontconfig-based backend involves deriving from both
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

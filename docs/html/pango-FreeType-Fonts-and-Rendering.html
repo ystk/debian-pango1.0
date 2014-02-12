@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FreeType Fonts and Rendering</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="rendering.html" title="Rendering with Pango">
 <link rel="prev" href="pango-Win32-Fonts-and-Rendering.html" title="Win32 Fonts and Rendering">
 <link rel="next" href="pango-Xft-Fonts-and-Rendering.html" title="Xft Fonts and Rendering">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -59,22 +59,22 @@
                                                          <em class="parameter"><code><span class="type">double</span> dpi_y</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-render" title="pango_ft2_render ()">pango_ft2_render</a>                    (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> y</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-render-transformed" title="pango_ft2_render_transformed ()">pango_ft2_render_transformed</a>        (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-render-layout-line" title="pango_ft2_render_layout_line ()">pango_ft2_render_layout_line</a>        (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-render-layout-line-subpixel" title="pango_ft2_render_layout_line_subpixel ()">pango_ft2_render_layout_line_subpixel</a>
                                                         (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-render-layout" title="pango_ft2_render_layout ()">pango_ft2_render_layout</a>             (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
@@ -91,7 +91,7 @@
                                                          <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyph" title="PangoGlyph"><span class="type">PangoGlyph</span></a> right</code></em>);
 <span class="returnvalue">FT_Face</span>             <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-font-get-face" title="pango_ft2_font_get_face ()">pango_ft2_font_get_face</a>             (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>);
 <a class="link" href="pango-Coverage-Maps.html#PangoCoverage" title="PangoCoverage"><span class="returnvalue">PangoCoverage</span></a> *     <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-font-get-coverage" title="pango_ft2_font_get_coverage ()">pango_ft2_font_get_coverage</a>         (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
 <a class="link" href="pango-Fonts.html#PangoFontMap"><span class="returnvalue">PangoFontMap</span></a> *      <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-font-map-for-display" title="pango_ft2_font_map_for_display ()">pango_ft2_font_map_for_display</a>      (<em class="parameter"><code><span class="type">void</span></code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#pango-ft2-shutdown-display" title="pango_ft2_shutdown_display ()">pango_ft2_shutdown_display</a>          (<em class="parameter"><code><span class="type">void</span></code></em>);
 </pre>
@@ -150,10 +150,8 @@ the default substitute function (see
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly created fontmap object. Unref
-with <code class="function">g_object_unref()</code> when you are finished with it.
-
-</td>
+<td>the newly created fontmap object. Unref
+with <code class="function">g_object_unref()</code> when you are finished with it.</td>
 </tr></tbody>
 </table></div>
 <p class="since">Since 1.2</p>
@@ -177,13 +175,11 @@ Sets the horizontal and vertical resolutions for the fontmap.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dpi_x</code></em> :</span></p></td>
-<td>dots per inch in the X direction
-</td>
+<td>dots per inch in the X direction</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dpi_y</code></em> :</span></p></td>
-<td>dots per inch in the Y direction
-</td>
+<td>dots per inch in the Y direction</td>
 </tr>
 </tbody>
 </table></div>
@@ -210,9 +206,7 @@ Create a <a class="link" href="pango-Text-Processing.html#PangoContext"><span cl
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly created context; free with <code class="function">g_object_unref()</code>.
-
-</td>
+<td>the newly created context; free with <code class="function">g_object_unref()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -231,13 +225,11 @@ Function type for doing final config tweaking on prepared FcPatterns.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pattern</code></em> :</span></p></td>
-<td>the <span class="type">FcPattern</span> to tweak.
-</td>
+<td>the <span class="type">FcPattern</span> to tweak.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
-<td>user data.
-</td>
+<td>user data.</td>
 </tr>
 </tbody>
 </table></div>
@@ -267,8 +259,7 @@ hinting and antialiasing options.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>func</code></em> :</span></p></td>
 <td>function to call to to do final config tweaking
-       on <span class="type">FcPattern</span> objects.
-</td>
+on <span class="type">FcPattern</span> objects.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
@@ -277,8 +268,7 @@ hinting and antialiasing options.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>notify</code></em> :</span></p></td>
-<td>function to call when <em class="parameter"><code>data</code></em> is no longer used.
-</td>
+<td>function to call when <em class="parameter"><code>data</code></em> is no longer used.</td>
 </tr>
 </tbody>
 </table></div>
@@ -325,18 +315,15 @@ for the default fontmap to <em class="parameter"><code>dpi_x</code></em> by <em 
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dpi_x</code></em> :</span></p></td>
-<td>the horizontal DPI of the target device
-</td>
+<td>the horizontal DPI of the target device</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dpi_y</code></em> :</span></p></td>
-<td>the vertical DPI of the target device
-</td>
+<td>the vertical DPI of the target device</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the new <a class="link" href="pango-Text-Processing.html#PangoContext"><span class="type">PangoContext</span></a>
-
+<td>the new <a class="link" href="pango-Text-Processing.html#PangoContext"><span class="type">PangoContext</span></a>
 </td>
 </tr>
 </tbody>
@@ -347,39 +334,34 @@ for the default fontmap to <em class="parameter"><code>dpi_x</code></em> by <em 
 <a name="pango-ft2-render"></a><h3>pango_ft2_render ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_ft2_render                    (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> y</code></em>);</pre>
 <p>
-Renders a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> onto a FreeType2 bitmap.
+Renders a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> onto a FreeType2 bitmap.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>the FreeType2 bitmap onto which to draw the string
-</td>
+<td>the FreeType2 bitmap onto which to draw the string</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>font</code></em> :</span></p></td>
-<td>the font in which to draw the string
-</td>
+<td>the font in which to draw the string</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>glyphs</code></em> :</span></p></td>
-<td>the glyph string to draw
-</td>
+<td>the glyph string to draw</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>the x position of the start of the string (in pixels)
-</td>
+<td>the x position of the start of the string (in pixels)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>the y position of the baseline (in pixels)
-</td>
+<td>the y position of the baseline (in pixels)</td>
 </tr>
 </tbody>
 </table></div>
@@ -388,13 +370,13 @@ Renders a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title
 <div class="refsect2">
 <a name="pango-ft2-render-transformed"></a><h3>pango_ft2_render_transformed ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_ft2_render_transformed        (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);</pre>
 <p>
-Renders a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> onto a FreeType2 bitmap, possibly
+Renders a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> onto a FreeType2 bitmap, possibly
 transforming the layed-out coordinates through a transformation
 matrix. Note that the transformation matrix for <em class="parameter"><code>font</code></em> is not
 changed, so to produce correct rendering results, the <em class="parameter"><code>font</code></em>
@@ -406,35 +388,29 @@ transformation matrix to that passed in to this function.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>the FreeType2 bitmap onto which to draw the string
-</td>
+<td>the FreeType2 bitmap onto which to draw the string</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>matrix</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a>, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> to use an identity transformation
-</td>
+<td>a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a>, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> to use an identity transformation</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>font</code></em> :</span></p></td>
-<td>the font in which to draw the string
-</td>
+<td>the font in which to draw the string</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>glyphs</code></em> :</span></p></td>
-<td>the glyph string to draw
-</td>
+<td>the glyph string to draw</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
 <td>the x position of the start of the string (in Pango
-          units in user space coordinates)
-</td>
+units in user space coordinates)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
 <td>the y position of the baseline (in Pango units
-          in user space coordinates)
-</td>
+in user space coordinates)</td>
 </tr>
 </tbody>
 </table></div>
@@ -444,34 +420,31 @@ transformation matrix to that passed in to this function.
 <div class="refsect2">
 <a name="pango-ft2-render-layout-line"></a><h3>pango_ft2_render_layout_line ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_ft2_render_layout_line        (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);</pre>
 <p>
-Render a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> onto a FreeType2 bitmap
+Render a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> onto a FreeType2 bitmap
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>a <span class="type">FT_Bitmap</span> to render the line onto
-</td>
+<td>a <span class="type">FT_Bitmap</span> to render the line onto</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a>
+<td>a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>the x position of start of string (in pixels)
-</td>
+<td>the x position of start of string (in pixels)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>the y position of baseline (in pixels)
-</td>
+<td>the y position of baseline (in pixels)</td>
 </tr>
 </tbody>
 </table></div>
@@ -481,11 +454,11 @@ Render a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title=
 <a name="pango-ft2-render-layout-line-subpixel"></a><h3>pango_ft2_render_layout_line_subpixel ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_ft2_render_layout_line_subpixel
                                                         (<em class="parameter"><code><span class="type">FT_Bitmap</span> *bitmap</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> x</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> y</code></em>);</pre>
 <p>
-Render a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> onto a FreeType2 bitmap, with he
+Render a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a> onto a FreeType2 bitmap, with he
 location specified in fixed-point Pango units rather than
 pixels. (Using this will avoid extra inaccuracies from
 rounding to integer pixels multiple times, even if the
@@ -496,23 +469,20 @@ final glyph positions are integers.)
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>a <span class="type">FT_Bitmap</span> to render the line onto
-</td>
+<td>a <span class="type">FT_Bitmap</span> to render the line onto</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine" title="struct PangoLayoutLine"><span class="type">PangoLayoutLine</span></a>
+<td>a <a class="link" href="pango-Layout-Objects.html#PangoLayoutLine"><span class="type">PangoLayoutLine</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>the x position of start of string (in Pango units)
-</td>
+<td>the x position of start of string (in Pango units)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>the y position of baseline (in Pango units)
-</td>
+<td>the y position of baseline (in Pango units)</td>
 </tr>
 </tbody>
 </table></div>
@@ -533,8 +503,7 @@ Render a <a class="link" href="pango-Layout-Objects.html#PangoLayout"><span clas
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>a <span class="type">FT_Bitmap</span> to render the layout onto
-</td>
+<td>a <span class="type">FT_Bitmap</span> to render the layout onto</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>layout</code></em> :</span></p></td>
@@ -543,13 +512,11 @@ Render a <a class="link" href="pango-Layout-Objects.html#PangoLayout"><span clas
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>the X position of the left of the layout (in pixels)
-</td>
+<td>the X position of the left of the layout (in pixels)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>the Y position of the top of the layout (in pixels)
-</td>
+<td>the Y position of the top of the layout (in pixels)</td>
 </tr>
 </tbody>
 </table></div>
@@ -573,8 +540,7 @@ final glyph positions are integers.)
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bitmap</code></em> :</span></p></td>
-<td>a <span class="type">FT_Bitmap</span> to render the layout onto
-</td>
+<td>a <span class="type">FT_Bitmap</span> to render the layout onto</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>layout</code></em> :</span></p></td>
@@ -583,13 +549,11 @@ final glyph positions are integers.)
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>the X position of the left of the layout (in Pango units)
-</td>
+<td>the X position of the left of the layout (in Pango units)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>the Y position of the top of the layout (in Pango units)
-</td>
+<td>the Y position of the top of the layout (in Pango units)</td>
 </tr>
 </tbody>
 </table></div>
@@ -622,7 +586,7 @@ use <a class="link" href="pango-Glyph-Storage.html#PANGO-GET-UNKNOWN-GLYPH:CAPS"
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a glyph index into <em class="parameter"><code>font</code></em>, or <a class="link" href="pango-Glyph-Storage.html#PANGO-GLYPH-EMPTY:CAPS" title="PANGO_GLYPH_EMPTY"><code class="literal">PANGO_GLYPH_EMPTY</code></a>
+<td>a glyph index into <em class="parameter"><code>font</code></em>, or <a class="link" href="pango-Glyph-Storage.html#PANGO-GLYPH-EMPTY:CAPS" title="PANGO_GLYPH_EMPTY"><code class="literal">PANGO_GLYPH_EMPTY</code></a>
 </td>
 </tr>
 </tbody>
@@ -664,9 +628,8 @@ Use <a class="link" href="PangoFcFont.html#pango-fc-font-kern-glyphs" title="pan
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The amount of kerning (in Pango units) to apply for
-the given combination of glyphs.
-</td>
+<td>The amount of kerning (in Pango units) to apply for
+the given combination of glyphs.</td>
 </tr>
 </tbody>
 </table></div>
@@ -698,9 +661,8 @@ face from <a class="link" href="PangoFcFont.html#pango-fc-font-lock-face" title=
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a pointer to a <span class="type">FT_Face</span> structure, with the size set correctly,
-              or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>font</code></em> is <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>a pointer to a <span class="type">FT_Face</span> structure, with the size set correctly,
+or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>font</code></em> is <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -709,7 +671,7 @@ face from <a class="link" href="PangoFcFont.html#pango-fc-font-lock-face" title=
 <div class="refsect2">
 <a name="pango-ft2-font-get-coverage"></a><h3>pango_ft2_font_get_coverage ()</h3>
 <pre class="programlisting"><a class="link" href="pango-Coverage-Maps.html#PangoCoverage" title="PangoCoverage"><span class="returnvalue">PangoCoverage</span></a> *     pango_ft2_font_get_coverage         (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFont"><span class="type">PangoFont</span></a> *font</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
 <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Warning</h3>
 <p><code class="literal">pango_ft2_font_get_coverage</code> is deprecated and should not be used in newly-written code.</p>
@@ -723,18 +685,15 @@ Gets the <a class="link" href="pango-Coverage-Maps.html#PangoCoverage" title="Pa
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>font</code></em> :</span></p></td>
-<td>a <span class="type">PangoFT2Font</span>.
-</td>
+<td>a <span class="type">PangoFT2Font</span>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>a language tag.
-</td>
+<td>a language tag.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>a <a class="link" href="pango-Coverage-Maps.html#PangoCoverage" title="PangoCoverage"><span class="type">PangoCoverage</span></a>.
-</td>
+<td>a <a class="link" href="pango-Coverage-Maps.html#PangoCoverage" title="PangoCoverage"><span class="type">PangoCoverage</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -758,8 +717,7 @@ instead.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#PangoFT2FontMap"><span class="type">PangoFT2FontMap</span></a>.
-</td>
+<td>a <a class="link" href="pango-FreeType-Fonts-and-Rendering.html#PangoFT2FontMap"><span class="type">PangoFT2FontMap</span></a>.</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -780,6 +738,6 @@ Use of the global PangoFT2 fontmap is deprecated.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

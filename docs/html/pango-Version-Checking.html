@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Version Checking</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="lowlevel.html" title="Low Level Functionality">
 <link rel="prev" href="pango-Miscellaneous-Utilities.html" title="Miscellaneous Utilities">
 <link rel="next" href="tools.html" title="Pango Tools">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -80,18 +80,15 @@ Two encoded version numbers can be compared as integers.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>major</code></em> :</span></p></td>
-<td>the major component of the version number
-</td>
+<td>the major component of the version number</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>minor</code></em> :</span></p></td>
-<td>the minor component of the version number
-</td>
+<td>the minor component of the version number</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>micro</code></em> :</span></p></td>
-<td>the micro component of the version number
-</td>
+<td>the micro component of the version number</td>
 </tr>
 </tbody>
 </table></div>
@@ -117,7 +114,7 @@ The major component of the version of Pango available at compile-time.
 <hr>
 <div class="refsect2">
 <a name="PANGO-VERSION-MINOR:CAPS"></a><h3>PANGO_VERSION_MINOR</h3>
-<pre class="programlisting">#define PANGO_VERSION_MINOR 28
+<pre class="programlisting">#define PANGO_VERSION_MINOR 30
 </pre>
 <p>
 The minor component of the version of Pango available at compile-time.
@@ -126,7 +123,7 @@ The minor component of the version of Pango available at compile-time.
 <hr>
 <div class="refsect2">
 <a name="PANGO-VERSION-MICRO:CAPS"></a><h3>PANGO_VERSION_MICRO</h3>
-<pre class="programlisting">#define PANGO_VERSION_MICRO 3
+<pre class="programlisting">#define PANGO_VERSION_MICRO 0
 </pre>
 <p>
 The micro component of the version of Pango available at compile-time.
@@ -135,7 +132,7 @@ The micro component of the version of Pango available at compile-time.
 <hr>
 <div class="refsect2">
 <a name="PANGO-VERSION-STRING:CAPS"></a><h3>PANGO_VERSION_STRING</h3>
-<pre class="programlisting">#define PANGO_VERSION_STRING "1.28.3"
+<pre class="programlisting">#define PANGO_VERSION_STRING "1.30.0"
 </pre>
 <p>
 A string literal containing the version of Pango available at compile-time.
@@ -154,18 +151,15 @@ the provided version number.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>major</code></em> :</span></p></td>
-<td>the major component of the version number
-</td>
+<td>the major component of the version number</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>minor</code></em> :</span></p></td>
-<td>the minor component of the version number
-</td>
+<td>the minor component of the version number</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>micro</code></em> :</span></p></td>
-<td>the micro component of the version number
-</td>
+<td>the micro component of the version number</td>
 </tr>
 </tbody>
 </table></div>
@@ -187,10 +181,8 @@ A version number can be encoded into an integer using
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The encoded version of Pango library
-  available at run time.
-
-</td>
+<td>The encoded version of Pango library
+available at run time.</td>
 </tr></tbody>
 </table></div>
 <p class="since">Since 1.16</p>
@@ -208,12 +200,10 @@ the version available at compile-time.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A string containing the version of Pango library
-  available at run time.
-  The returned string is owned by Pango and should not be modified
-  or freed.
-
-</td>
+<td>A string containing the version of Pango library
+available at run time.
+The returned string is owned by Pango and should not be modified
+or freed.</td>
 </tr></tbody>
 </table></div>
 <p class="since">Since 1.16</p>
@@ -248,27 +238,23 @@ For compile-time version checking use <a class="link" href="pango-Version-Checki
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>required_major</code></em> :</span></p></td>
-<td>the required major version.
-</td>
+<td>the required major version.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>required_minor</code></em> :</span></p></td>
-<td>the required minor version.
-</td>
+<td>the required minor version.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>required_micro</code></em> :</span></p></td>
-<td>the required major version.
-</td>
+<td>the required major version.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if the Pango library is compatible with the
-  given version, or a string describing the version mismatch.
-  The returned string is owned by Pango and should not be modified
-  or freed.
-
-</td>
+<td>
+<a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if the Pango library is compatible with the
+given version, or a string describing the version mismatch.
+The returned string is owned by Pango and should not be modified
+or freed.</td>
 </tr>
 </tbody>
 </table></div>
@@ -278,6 +264,6 @@ For compile-time version checking use <a class="link" href="pango-Version-Checki
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

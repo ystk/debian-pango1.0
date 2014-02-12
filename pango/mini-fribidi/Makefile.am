@@ -30,4 +30,32 @@ EXTRA_DIST = 			\
         fribidi_types.i
 
 
+dist-hook: libmini-fribidi.sourcefiles libmini-fribidi.vs10.sourcefiles libmini-fribidi.vs10.sourcefiles.filters
+
+libmini-fribidi.sourcefiles: Makefile
+	for F in $(libmini_fribidi_la_SOURCES); do \
+		case $$F in \
+		*.c) echo '			<File RelativePath="..\..\..\pango\mini-fribidi\'$$F'" />' \
+		     ;; \
+		esac; \
+	done >libmini-fribidi.sourcefiles
+
+libmini-fribidi.vs10.sourcefiles: Makefile
+	for F in $(libmini_fribidi_la_SOURCES); do \
+		case $$F in \
+		*.c) echo '			<ClCompile Include="..\..\..\pango\mini-fribidi\'$$F'" />' \
+		     ;; \
+		esac; \
+	done >libmini-fribidi.vs10.sourcefiles
+
+libmini-fribidi.vs10.sourcefiles.filters: Makefile
+	for F in $(libmini_fribidi_la_SOURCES); do \
+		case $$F in \
+		*.c) echo '			<ClCompile Include="..\..\..\pango\mini-fribidi\'$$F'"><Filter>Source Files</Filter></ClCompile>' \
+		     ;; \
+		esac; \
+	done >libmini-fribidi.vs10.sourcefiles.filters
+	
+DISTCLEANFILES = libmini-fribidi.sourcefiles libmini-fribidi.vs10.sourcefiles libmini-fribidi.vs10.sourcefiles.filters
+
 -include $(top_srcdir)/git.mk
