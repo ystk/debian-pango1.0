@@ -1,314 +1,128 @@
 #!/usr/bin/make -f
 
-DISABLE_UPDATE_UPLOADERS := 1
+DEB_BUILDDIR = debian/build
+DEB_MAKE_DESTDIRSKEL = $(CURDIR)/debian/install/@FLAVOR@
+DEB_MAKE_FLAVORS = shared static udeb
+DISABLE_UPDATE_UPLOADERS = 1
+
+include /usr/share/cdbs/1/rules/autoreconf.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/class/gnome.mk
 include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
--include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
+include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
 GNOME_MODULE := pango
 
-STAMP_DIR := debian/stampdir
-
-PATCH_DIR := debian/patches
-
-# rules in this debian/rules Makefile can be built concurrently as well as
-# upstream rules in Makefile; all $(MAKE) invocations will inherit this flag,
-# if you recurse into debian/rules ($(MAKE)
-# -f debian/rules in rules), you need to pass a flag to avoid adding "-jX" when
-# the childs encounters this line
-DEB_BUILD_OPTIONS_PARALLEL ?= $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-MAKEFLAGS += $(if $(DEB_BUILD_OPTIONS_PARALLEL),-j$(DEB_BUILD_OPTIONS_PARALLEL))
-
-# default CFLAGS; these can be expanded with $(call flavor_get, )
-CFLAGS += -Wall
-
-# default LDFLAGS; these can be expanded with $(call flavor_get, )
-# Ensure the build aborts when there are still references to undefined
-# symbols
+# Ensure the build aborts when there are still references to undefined symbols
 LDFLAGS += -Wl,-z,defs
 
 # Make the linker work a bit harder so dynamic loading can be done faster
 LDFLAGS += -Wl,-O1
 
-DEBVERSION := $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
-VERSION := $(shell echo $(DEBVERSION) | sed -e 's/-[^-]*$$//')
 APIVER := 1.0
 SONAME := 0
 MODVER := 1.6.0
-SHVERSION := 1.25.5
-
-DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
-DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+SHVERSION := 1.29.4
 
 # relative libdir
-ifneq (,$(findstring multiarch,$(DEB_BUILD_OPTIONS)))
-LIBDIR := usr/lib/$(DEB_HOST_GNU_TYPE)
-else
-LIBDIR := usr/lib
-endif
+LIBDIR := usr/lib/$(DEB_HOST_MULTIARCH)
+LIBDIR_UDEB := $(LIBDIR)
 
 # relative Pango Modules Path (separated by ":")
 MODULES_PATH := $(LIBDIR)/pango/$(MODVER)/modules
+MODULES_PATH_UDEB := $(LIBDIR_UDEB)/pango/$(MODVER)/modules
 
 # relative directory to store the generated Pango Module File
 MODULE_FILES_D := $(LIBDIR)/pango/$(MODVER)/module-files.d
 
 # Pango Module API version virtual Provide
-ifneq (,$(findstring multiarch,$(DEB_BUILD_OPTIONS)))
 PANGO_MODVER_DEP := pango$(APIVER)-multiarch-modver-$(MODVER)
-else
-PANGO_MODVER_DEP := pango$(APIVER)-modver-$(MODVER)
-endif
 
 # package names
 SHARED_PKG := libpango$(APIVER)-$(SONAME)
 UDEB_PKG := libpango$(APIVER)-udeb
-COMMON_PKG := libpango$(APIVER)-common
 DEV_PKG := libpango$(APIVER)-dev
 DEBUG_PKG := libpango$(APIVER)-$(SONAME)-dbg
 DOC_PKG := libpango$(APIVER)-doc
 
-# package groups, used in rule dependencies and in cleanup
-BINARY_INDEP_PKGS := $(DOC_PKG) $(COMMON_PKG)
-BINARY_ARCH_PKGS := $(SHARED_PKG) $(UDEB_PKG) $(DEV_PKG) $(DEBUG_PKG)
-ALL_PKGS := $(BINARY_INDEP_PKGS) $(BINARY_ARCH_PKGS)
+DEB_CONFIGURE_EXTRA_FLAGS = \
+		--with-html-dir=\$${prefix}/share/doc/$(DOC_PKG)
 
-# list of flavors we build; each gets a builddir, a configure pass (configure
-# args are defined below), a build pass, and an install pass (in two steps)
-FLAVORS := shared static udeb
+DEB_CONFIGURE_FLAGS_shared = \
+		--libdir=/$(LIBDIR)
 
-# current flavor we're building; this is only expanded in flavor specific
-# targets
-current_flavor = $*
-
-# macro to get a value for the current flavor we're building; for example
-# when building the shared flavor, $(call flavor_get,CFLAGS) will expand to
-# shared_CFLAGS if it's set or to CFLAGS otherwise; pay attention to not adding
-# superfluous spaces when for the arguments of $(call ); only some vars can
-# be expanded in this way though
-flavor_get = $(or $($(current_flavor)_$(1)),$($(1)))
-
-# build dir for the current flavor; this is only expanded in flavor specific
-# targets
-builddir = $(buildbasedir)/$(current_flavor)
-buildbasedir = $(CURDIR)/debian/build
-
-# install dir for the current flavor; this is only expanded in flavor specific
-# targets
-installdir = $(installbasedir)/$(current_flavor)
-installbasedir = $(CURDIR)/debian/install
-
-# configure flags; these can be expanded with $(call flavor_get, )
-configure_flags := \
-		--prefix=/usr \
+DEB_CONFIGURE_FLAGS_static = \
 		--libdir=/$(LIBDIR) \
-		--mandir=\$${prefix}/share/man \
-		--infodir=\$${prefix}/share/info \
-		--with-html-dir=\$${prefix}/share/doc/$(DOC_PKG) \
-		--sysconfdir=/etc \
-		--build=$(DEB_BUILD_GNU_TYPE)
+		--disable-shared \
+		--with-included-modules \
+		--enable-static
 
-ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
-	configure_flags += --host=$(DEB_HOST_GNU_TYPE)
-endif
+DEB_CONFIGURE_FLAGS_udeb = \
+		--libdir=/$(LIBDIR_UDEB) \
+		--disable-debug
 
-# default is to enable shared and disable static
-static_configure_flags := $(configure_flags) \
-			--disable-shared \
-			--with-included-modules \
-			--enable-static
-udeb_configure_flags := $(configure_flags) \
-			--disable-debug
-
-# optional optimized flavor for some arches
-OPTLIBDIR :=
-# sample code:
-#ifneq ($(filter $(DEB_HOST_ARCH), armel),)
-#FLAVORS += opt
-#OPTLIBDIR := $(LIBDIR)/vfp
-#opt_CFLAGS += $(CFLAGS) -mfpu=vfp -mfloat-abi=softfp
-#opt_configure_flags := $(or $(shared_configure_flags),$(configure_flags))
-#endif
-
-# list of flavors to run the test suite on
-CHECK_FLAVORS := $(filter opt shared, $(FLAVORS))
+DEB_MAKE_CHECK_TARGET = check
+DEB_DH_STRIP_ARGS_$(UDEB_PKG) =
+DEB_DH_MAKESHLIBS_ARGS_$(SHARED_PKG) += -X$(MODULES_PATH) \
+		-V '$(SHARED_PKG) (>= $(SHVERSION))' \
+		--add-udeb=$(UDEB_PKG) -- -c4
 
 # macro computing the list of 'debian/<pkg>.*" files which have a corresponding
 # ".in" file; pass the list of packages in $(1)
 dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
 
 debian/dh_pangomodules.1: debian/dh_pangomodules
-	cd debian && pod2man -c "Pango" -r "$(DEBVERSION)" dh_pangomodules dh_pangomodules.1
+	cd debian && pod2man -c "Pango" -r "$(DEB_VERSION)" dh_pangomodules dh_pangomodules.1
 
-patch: $(STAMP_DIR)/patch-stamp
-
-$(STAMP_DIR)/patch-stamp:
-	dh_testdir
-	# apply patches
-	QUILT_PATCHES=$(PATCH_DIR) quilt --quiltrc /dev/null push -a || test $$? = 2
-	# backup the original (potentially patched) files to restore them in
-	# the clean target
-	-test -r config.sub && cp config.sub config.sub.orig
-	-test -r config.guess && cp config.guess config.guess.orig
-	-test -r /usr/share/misc/config.sub && \
-		cp -f /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-		cp -f /usr/share/misc/config.guess config.guess
-	-mkdir -p $(STAMP_DIR)
-	touch $@
-
-$(STAMP_DIR)/configure-stamp-%: $(STAMP_DIR)/patch-stamp
-	dh_testdir
-	mkdir -p $(builddir)
-	cd $(builddir) && \
-		CFLAGS="$(call flavor_get,CFLAGS)" \
-		LDFLAGS="$(call flavor_get,LDFLAGS)" \
-			$(CURDIR)/configure $(call flavor_get,configure_flags)
-	touch $@
-
-configure: $(addprefix $(STAMP_DIR)/configure-stamp-, $(FLAVORS))
-
-$(STAMP_DIR)/build-stamp-%: $(STAMP_DIR)/configure-stamp-%
-	dh_testdir
-	LD_LIBRARY_PATH=$(builddir)/pango/.libs:$(LD_LIBRARY_PATH) \
-		$(MAKE) -C $(builddir)
-	touch $@
-
-build: $(addprefix $(STAMP_DIR)/build-stamp-, $(FLAVORS))
-
-$(STAMP_DIR)/check-stamp-%: $(STAMP_DIR)/build-stamp-%
-	dh_testdir
-	# setting LD_LIBRARY_PATH for "make check" might be needed in the
-	# future, but doesn't seem necessary right now
-	#LD_LIBRARY_PATH=$(builddir)/pango/.libs:$(LD_LIBRARY_PATH)
-	# testsuite failures are ignored
-	-$(MAKE) -C $(builddir) check
-	touch $@
-
-check: $(addprefix $(STAMP_DIR)/check-stamp-, $(CHECK_FLAVORS))
-
-$(STAMP_DIR)/install-stamp-%: $(STAMP_DIR)/build-stamp-%
-	mkdir -p $(installdir)
-	$(MAKE) -C $(builddir) install \
-		DESTDIR=$(installdir)
-	touch $@
-
-install: $(addprefix $(STAMP_DIR)/install-stamp-, $(FLAVORS))
-
-# gross kludge to force control generation with the %.in target
-clean::
-	touch debian/control.in
-
-# always update debian/foo (do not rely on the timestamp of debian/control
-# versus debian/control.in which might break with svn, svn-buildpackage, or
-# dpkg-source)
 debian/%: debian/%.in
 	dh_testdir
 	sed \
 		-e 's#@SONAME@#$(SONAME)#g' \
 		-e 's#@APIVER@#$(APIVER)#g' \
-		-e 's#@VERSION@#$(VERSION)#g' \
+		-e 's#@VERSION@#$(DEB_UPSTREAM_VERSION)#g' \
 		-e 's#@PANGO_MODVER_DEP@#$(PANGO_MODVER_DEP)#g' \
 		-e 's#@LIBDIR@#$(LIBDIR)#g' \
+		-e 's#@LIBDIR_UDEB@#$(LIBDIR_UDEB)#g' \
 		-e 's#@OPTLIBDIR@#$(OPTLIBDIR)#g' \
 		-e 's#@MODULES_PATH@#$(MODULES_PATH)#g' \
+		-e 's#@MODULES_PATH_UDEB@#$(MODULES_PATH_UDEB)#g' \
 		-e 's#@MODULE_FILES_D@#$(MODULE_FILES_D)#g' \
 		-e 's#@GNOME_TEAM@#$(UPLOADERS)#g' \
-		$@.in \
-		$(wildcard $(if $(filter opt,$(FLAVORS)),$@.opt)) \
-		>$@
+		$@.in >$@
 
 clean:: debian/control
-	dh_testdir
-	dh_testroot
-	# remove install and build dirs
-	rm -rf $(installbasedir)
-	rm -rf $(buildbasedir)
-	# restore files from backup (before unpatching)
-	-test -r config.sub.orig && mv -f config.sub.orig config.sub
-	-test -r config.guess.orig && mv -f config.guess.orig config.guess
-	# unapply patches, if any
-	QUILT_PATCHES=$(PATCH_DIR) quilt --quiltrc /dev/null pop -a -R || test $$? = 2
-	-rm -rf .pc
-	-rm -rf $(STAMP_DIR)
-	-rm -f $(call dh_subst_files,$(ALL_PKGS))
-	-rm -f debian/dh_pangomodules debian/dh_pangomodules.1
-	dh_clean
+	# gross kludge to force control generation with the %.in target
+	touch debian/control.in
+	# remove generated files
+	rm -f $(call dh_subst_files,$(DEB_ALL_PACKAGES))
+	rm -f debian/dh_pangomodules debian/dh_pangomodules.1
 
-maybe_check = $(if $(findstring nocheck,$(DEB_BUILD_OPTIONS)),,check)
+build-indep: $(call dh_subst_files,$(DEB_INDEP_PACKAGES))
+build-arch: $(call dh_subst_files,$(DEB_ARCH_PACKAGES)) debian/dh_pangomodules.1
 
-binary-indep: build $(maybe_check) install $(call dh_subst_files,$(BINARY_INDEP_PKGS))
-	dh_testdir
-	dh_testroot
-	dh_installdirs -i
-	dh_install -i
-	dh_installchangelogs -i ChangeLog ChangeLog.*
-	dh_installdocs -i NEWS README
-	dh_installman -i
-	dh_link -i
-	dh_compress -i -X.sgml -X.devhelp
-	dh_fixperms -i
-	dh_installdeb -i
-	dh_gencontrol -i
-	dh_md5sums -i
-	dh_builddeb -i
+common-build-arch::
+	# hack to fix missing enumeration GTypes in GIR
+	cd debian/build/shared/pango/ && rm pango-enum-types.* *.gir *.typelib && make
 
-binary-arch: build $(maybe_check) install $(call dh_subst_files,$(BINARY_ARCH_PKGS)) debian/dh_pangomodules debian/dh_pangomodules.1
-	dh_testdir
-	dh_testroot
-	dh_install -s
-	# remove the rpath in libs and modules since a spurious /usr/lib RPATH
-	# appears on 64-bits arches which confuses dh_shlibdeps; the RPATH
-	# isn't needed in the udeb anyway as libcairo's udeb ships libs in
-	# /usr/lib; see #432258
-	chrpath -d debian/$(UDEB_PKG)/$(LIBDIR)/*.so.* \
-		debian/$(UDEB_PKG)/$(MODULES_PATH)/*.so
-	# Remove the thai module to avoid extraneous dependencies
-	rm -f debian/$(UDEB_PKG)/$(MODULES_PATH)/pango-thai-lang.so
-	# empty the dependency_libs in the *.la files
-	sed -i "/dependency_libs/ s/'.*'/''/" \
-		debian/$(DEV_PKG)/$(LIBDIR)/*.la
-	dh_installchangelogs -s -N$(SHARED_PKG) -N$(DEV_PKG) ChangeLog ChangeLog.*
-	dh_installdocs -s -N$(SHARED_PKG) -N$(DEV_PKG) NEWS README
-	dh_installdefoma -s
-	# fix the permissions of the development package because it ships
-	# dh_pangomodules which we need to invoke in this build
-	dh_fixperms -p$(DEV_PKG)
+binary-install/$(DEV_PKG)::
+	# verify that the .gir is built correctly
+	grep -q 'glib:get-type="pango_wrap_mode_get_type"' debian/$(DEV_PKG)/usr/share/gir-1.0/Pango-1.0.gir
+
+binary-install/$(SHARED_PKG)::
+	# fix the permissions of dh_pangomodules
+	chmod +x debian/dh_pangomodules
 	# generate $(SHARED_PKG).modules for the shared lib
 	LD_LIBRARY_PATH=$(CURDIR)/debian/$(SHARED_PKG)/$(LIBDIR):$(LD_LIBRARY_PATH) \
-	PANGO_QUERYMODULES=$(buildbasedir)/shared/pango/pango-querymodules \
-		debian/$(DEV_PKG)/usr/bin/dh_pangomodules \
+	PANGO_QUERYMODULES=debian/build/shared/pango/pango-querymodules \
+		debian/dh_pangomodules \
 			-p$(SHARED_PKG) -k
-	# generate $(UDEB_PKG).modules for the udeb
-	LD_LIBRARY_PATH=$(CURDIR)/debian/$(UDEB_PKG)/$(LIBDIR):$(LD_LIBRARY_PATH) \
-	PANGO_QUERYMODULES=$(buildbasedir)/udeb/pango/pango-querymodules \
-		debian/$(DEV_PKG)/usr/bin/dh_pangomodules \
-			-p$(UDEB_PKG) -k
-	dh_installinfo -s
-	dh_installman -s
-	dh_link -s
-	dh_strip -s --dbg-package=$(DEBUG_PKG) -N$(UDEB_PKG)
-	dh_strip -p$(UDEB_PKG)
-	dh_compress -s -X.sgml -X.devhelp
-	dh_fixperms -s
-	dh_makeshlibs -p$(SHARED_PKG) \
-		-X$(MODULES_PATH) \
-		-V '$(SHARED_PKG) (>= $(SHVERSION))' \
-		--add-udeb=$(UDEB_PKG) -- -c4
-	dh_installdeb -s
-	# override shlibs for libraries from this source before computing
-	# dependencies of packages generated from this source; we already have
-	# inter-dependencies expressed manually in the control file, we do not
-	# need the shlibs to add duplicates
-	sed -nr -e 's/(([^ ]+: )?([^ ]+) ([^ ]+)) .*/\1/p' \
-		debian/*/DEBIAN/shlibs \
-		>debian/shlibs.local
-	dh_shlibdeps -s -N$(UDEB_PKG)
-	dh_shlibdeps -p$(UDEB_PKG)
-	-rm -f debian/shlibs.local
-	dh_gencontrol -s
-	dh_md5sums -s
-	dh_builddeb -s
 
-binary: binary-indep binary-arch
-.PHONY: patch configure build check install clean binary-indep binary-arch binary
+binary-install/$(UDEB_PKG)::
+	# Remove the thai module to avoid extraneous dependencies
+	rm -f debian/$(UDEB_PKG)/$(MODULES_PATH_UDEB)/pango-thai-lang.so
+	# generate $(UDEB_PKG).modules for the udeb
+	LD_LIBRARY_PATH=$(CURDIR)/debian/$(UDEB_PKG)/$(LIBDIR_UDEB):$(LD_LIBRARY_PATH) \
+	PANGO_QUERYMODULES=debian/build/udeb/pango/pango-querymodules \
+		debian/dh_pangomodules \
+			-p$(UDEB_PKG) -k

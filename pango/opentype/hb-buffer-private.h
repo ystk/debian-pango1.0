@@ -72,6 +72,7 @@ struct _hb_buffer_t {
   unsigned int allocated;
 
   hb_bool_t    have_output; /* weather we have an output buffer going on */
+  hb_bool_t    in_error; /* Allocation failed */
   unsigned int in_length;
   unsigned int out_length;
   unsigned int in_pos;
@@ -129,6 +130,7 @@ _hb_buffer_allocate_lig_id (hb_buffer_t *buffer);
 #define CURPOSITION()		(&buffer->positions[buffer->in_pos])
 #define OUT_GLYPH(pos)		(buffer->out_string[(pos)].codepoint)
 #define OUT_INFO(pos)		(&buffer->out_string[(pos)])
+#define BACKTRACK_LEN()		((buffer->have_output? buffer->out_length : buffer->in_pos))
 
 HB_END_DECLS
 

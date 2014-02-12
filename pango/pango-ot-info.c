@@ -25,46 +25,25 @@
 #include "pango-impl-utils.h"
 #include FT_TRUETYPE_TABLES_H
 
-static void pango_ot_info_class_init (GObjectClass *object_class);
+#if (!GLIB_CHECK_VERSION(2,29,15))
+#define G_UNICODE_SPACING_MARK G_UNICODE_COMBINING_MARK
+#endif
+
 static void pango_ot_info_finalize   (GObject *object);
 
 static void synthesize_class_def (PangoOTInfo *info);
 
-static GObjectClass *parent_class;
+G_DEFINE_TYPE (PangoOTInfo, pango_ot_info, G_TYPE_OBJECT);
 
-GType
-pango_ot_info_get_type (void)
+static void
+pango_ot_info_init (PangoOTInfo *self)
 {
-  static GType object_type = 0;
-
-  if (G_UNLIKELY (!object_type))
-    {
-      const GTypeInfo object_info =
-      {
-	sizeof (PangoOTInfoClass),
-	(GBaseInitFunc) NULL,
-	(GBaseFinalizeFunc) NULL,
-	(GClassInitFunc)pango_ot_info_class_init,
-	NULL,           /* class_finalize */
-	NULL,           /* class_data */
-	sizeof (PangoOTInfo),
-	0,              /* n_preallocs */
-	NULL,           /* init */
-	NULL,           /* value_table */
-      };
-
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-					    I_("PangoOTInfo"),
-					    &object_info, 0);
-    }
-
-  return object_type;
 }
 
 static void
-pango_ot_info_class_init (GObjectClass *object_class)
+pango_ot_info_class_init (PangoOTInfoClass *klass)
 {
-  parent_class = g_type_class_peek_parent (object_class);
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = pango_ot_info_finalize;
 }
@@ -77,7 +56,7 @@ pango_ot_info_finalize (GObject *object)
   if (info->hb_face)
     hb_face_destroy (info->hb_face);
 
-  parent_class->finalize (object);
+  G_OBJECT_CLASS (pango_ot_info_parent_class)->finalize (object);
 }
 
 static void
@@ -208,7 +187,7 @@ get_glyph_class (gunichar        charcode,
 
   switch ((int) g_unichar_type (charcode))
     {
-    case G_UNICODE_COMBINING_MARK:
+    case G_UNICODE_SPACING_MARK:
     case G_UNICODE_ENCLOSING_MARK:
     case G_UNICODE_NON_SPACING_MARK:
       *class = HB_OT_LAYOUT_GLYPH_CLASS_MARK;		/* Mark glyph (non-spacing combining glyph) */
@@ -255,7 +234,7 @@ synthesize_class_def (PangoOTInfo *info)
 
   old_charmap = info->face->charmap;
 
-  if (!old_charmap || !old_charmap->encoding != ft_encoding_unicode)
+  if (!old_charmap || old_charmap->encoding != ft_encoding_unicode)
     if (!set_unicode_charmap (info->face))
       return;
 
@@ -538,14 +517,12 @@ _pango_ot_info_substitute  (const PangoOTInfo    *info,
   for (i = 0; i < ruleset->rules->len; i++)
     {
       PangoOTRule *rule = &g_array_index (ruleset->rules, PangoOTRule, i);
-      hb_mask_t mask;
       unsigned int lookup_count, j;
       unsigned int lookup_indexes[1000];
 
       if (rule->table_type != PANGO_OT_TABLE_GSUB)
 	continue;
 
-      mask = rule->property_bit;
       lookup_count = G_N_ELEMENTS (lookup_indexes);
       hb_ot_layout_feature_get_lookup_indexes (info->hb_face,
 					       HB_OT_TAG_GSUB,
@@ -578,12 +555,10 @@ _pango_ot_info_position    (const PangoOTInfo    *info,
   hb_font_set_scale (hb_font,
 		     info->face->size->metrics.x_scale,
 		     info->face->size->metrics.y_scale);
-  /*
   is_hinted = buffer->font->is_hinted;
   hb_font_set_ppem (hb_font,
 		    is_hinted ? info->face->size->metrics.x_ppem : 0,
 		    is_hinted ? info->face->size->metrics.y_ppem : 0);
-		    */
 
   for (i = 0; i < ruleset->rules->len; i++)
     {

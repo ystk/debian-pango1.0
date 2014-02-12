@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>OpenType Font Handling</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="lowlevel.html" title="Low Level Functionality">
 <link rel="prev" href="PangoFcDecoder.html" title="PangoFcDecoder">
 <link rel="next" href="pango-Coverage-Maps.html" title="Coverage Maps">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -106,14 +106,14 @@ struct              <a class="link" href="pango-OpenType-Font-Handling.html#Pang
                                                          <em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTGlyph" title="struct PangoOTGlyph"><span class="type">PangoOTGlyph</span></a> **glyphs</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> *n_glyphs</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-buffer-output" title="pango_ot_buffer_output ()">pango_ot_buffer_output</a>              (<em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a> *buffer</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);
 const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="returnvalue">PangoOTRuleset</span></a> * <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-get-for-description" title="pango_ot_ruleset_get_for_description ()">pango_ot_ruleset_get_for_description</a>
                                                         (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a> *desc</code></em>);
 <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="returnvalue">PangoOTRuleset</span></a> *    <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-new" title="pango_ot_ruleset_new ()">pango_ot_ruleset_new</a>                (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> *info</code></em>);
 <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="returnvalue">PangoOTRuleset</span></a> *    <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-new-for" title="pango_ot_ruleset_new_for ()">pango_ot_ruleset_new_for</a>            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> *info</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
 <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="returnvalue">PangoOTRuleset</span></a> *    <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-new-from-description" title="pango_ot_ruleset_new_from_description ()">pango_ot_ruleset_new_from_description</a>
                                                         (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a> *desc</code></em>);
@@ -142,10 +142,10 @@ const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><s
                                                          <em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a> *desc2</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-description-free" title="pango_ot_ruleset_description_free ()">pango_ot_ruleset_description_free</a>   (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a> *desc</code></em>);
 <span class="returnvalue">guint</span>               <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-description-hash" title="pango_ot_ruleset_description_hash ()">pango_ot_ruleset_description_hash</a>   (<em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a> *desc</code></em>);
-<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-from-language" title="pango_ot_tag_from_language ()">pango_ot_tag_from_language</a>          (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
-<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-from-script" title="pango_ot_tag_from_script ()">pango_ot_tag_from_script</a>            (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>);
-<a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="returnvalue">PangoLanguage</span></a> *     <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-to-language" title="pango_ot_tag_to_language ()">pango_ot_tag_to_language</a>            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> language_tag</code></em>);
-<a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="returnvalue">PangoScript</span></a>         <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-to-script" title="pango_ot_tag_to_script ()">pango_ot_tag_to_script</a>              (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> script_tag</code></em>);
+<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-from-language" title="pango_ot_tag_from_language ()">pango_ot_tag_from_language</a>          (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
+<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-from-script" title="pango_ot_tag_from_script ()">pango_ot_tag_from_script</a>            (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>);
+<a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="returnvalue">PangoLanguage</span></a> *     <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-to-language" title="pango_ot_tag_to_language ()">pango_ot_tag_to_language</a>            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> language_tag</code></em>);
+<a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="returnvalue">PangoScript</span></a>         <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-tag-to-script" title="pango_ot_tag_to_script ()">pango_ot_tag_to_script</a>              (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> script_tag</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -226,34 +226,28 @@ It contains the following fields.
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">guint32</span> <em class="structfield"><code><a name="PangoOTGlyph.glyph"></a>glyph</code></em>;</span></p></td>
-<td>the glyph itself.
-</td>
+<td>the glyph itself.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTGlyph.properties"></a>properties</code></em>;</span></p></td>
 <td>the properties value, identifying which features should be
-	     applied on this glyph.  See <code class="function">pango_ruleset_add_feature()</code>.
-</td>
+applied on this glyph.  See <code class="function">pango_ruleset_add_feature()</code>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTGlyph.cluster"></a>cluster</code></em>;</span></p></td>
-<td>the cluster that this glyph belongs to.
-</td>
+<td>the cluster that this glyph belongs to.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">gushort</span> <em class="structfield"><code><a name="PangoOTGlyph.component"></a>component</code></em>;</span></p></td>
-<td>a component value, set by the OpenType layout engine.
-</td>
+<td>a component value, set by the OpenType layout engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">gushort</span> <em class="structfield"><code><a name="PangoOTGlyph.ligID"></a>ligID</code></em>;</span></p></td>
-<td>a ligature index value, set by the OpenType layout engine.
-</td>
+<td>a ligature index value, set by the OpenType layout engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTGlyph.internal"></a>internal</code></em>;</span></p></td>
-<td>for Pango internal use
-</td>
+<td>for Pango internal use</td>
 </tr>
 </tbody>
 </table></div>
@@ -270,7 +264,7 @@ that should be applied to a text feature such as a certain
 type of accent.) A <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>
 is created with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-new" title="pango_ot_ruleset_new ()"><code class="function">pango_ot_ruleset_new()</code></a>, features are added
 to it with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-add-feature" title="pango_ot_ruleset_add_feature ()"><code class="function">pango_ot_ruleset_add_feature()</code></a>, then it is
-applied to a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> with <code class="function">pango_ot_ruleset_shape()</code>.
+applied to a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> with <code class="function">pango_ot_ruleset_shape()</code>.
 </p>
 </div>
 <hr>
@@ -299,46 +293,38 @@ or create a new one using <a class="link" href="pango-OpenType-Font-Handling.htm
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> <em class="structfield"><code><a name="PangoOTRulesetDescription.script"></a>script</code></em>;</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>.
-</td>
+<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> <em class="structfield"><code><a name="PangoOTRulesetDescription.script"></a>script</code></em>;</span></p></td>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *<em class="structfield"><code><a name="PangoOTRulesetDescription.language"></a>language</code></em>;</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a>.
-</td>
+<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *<em class="structfield"><code><a name="PangoOTRulesetDescription.language"></a>language</code></em>;</span></p></td>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term">const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTFeatureMap" title="struct PangoOTFeatureMap"><span class="type">PangoOTFeatureMap</span></a> *<em class="structfield"><code><a name="PangoOTRulesetDescription.static-gsub-features"></a>static_gsub_features</code></em>;</span></p></td>
-<td>static map of GSUB features, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>static map of GSUB features, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTRulesetDescription.n-static-gsub-features"></a>n_static_gsub_features</code></em>;</span></p></td>
-<td>length of <em class="parameter"><code>static_gsub_features</code></em>, or 0.
-</td>
+<td>length of <em class="parameter"><code>static_gsub_features</code></em>, or 0.</td>
 </tr>
 <tr>
 <td><p><span class="term">const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTFeatureMap" title="struct PangoOTFeatureMap"><span class="type">PangoOTFeatureMap</span></a> *<em class="structfield"><code><a name="PangoOTRulesetDescription.static-gpos-features"></a>static_gpos_features</code></em>;</span></p></td>
-<td>static map of GPOS features, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>static map of GPOS features, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTRulesetDescription.n-static-gpos-features"></a>n_static_gpos_features</code></em>;</span></p></td>
-<td>length of <em class="parameter"><code>static_gpos_features</code></em>, or 0.
-</td>
+<td>length of <em class="parameter"><code>static_gpos_features</code></em>, or 0.</td>
 </tr>
 <tr>
 <td><p><span class="term">const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTFeatureMap" title="struct PangoOTFeatureMap"><span class="type">PangoOTFeatureMap</span></a> *<em class="structfield"><code><a name="PangoOTRulesetDescription.other-features"></a>other_features</code></em>;</span></p></td>
-<td>map of extra features to add to both GSUB and GPOS, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-                 Unlike the static maps, this pointer need not live beyond
-		 the life of function calls taking this struct.
-</td>
+<td>map of extra features to add to both GSUB and GPOS, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
+Unlike the static maps, this pointer need not live beyond
+the life of function calls taking this struct.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoOTRulesetDescription.n-other-features"></a>n_other_features</code></em>;</span></p></td>
-<td>length of <em class="parameter"><code>other_features</code></em>, or 0.
-</td>
+<td>length of <em class="parameter"><code>other_features</code></em>, or 0.</td>
 </tr>
 </tbody>
 </table></div>
@@ -347,8 +333,7 @@ or create a new one using <a class="link" href="pango-OpenType-Font-Handling.htm
 <hr>
 <div class="refsect2">
 <a name="PangoOTTableType"></a><h3>enum PangoOTTableType</h3>
-<pre class="programlisting">typedef enum
-{
+<pre class="programlisting">typedef enum {
   PANGO_OT_TABLE_GSUB,
   PANGO_OT_TABLE_GPOS
 } PangoOTTableType;
@@ -392,14 +377,12 @@ represented as a char array instead of a <a class="link" href="pango-OpenType-Fo
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">char</span> <em class="structfield"><code><a name="PangoOTFeatureMap.feature-name"></a>feature_name</code></em>[5];</span></p></td>
-<td>feature tag in represented as four-letter ASCII string.
-</td>
+<td>feature tag in represented as four-letter ASCII string.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">gulong</span> <em class="structfield"><code><a name="PangoOTFeatureMap.property-bit"></a>property_bit</code></em>;</span></p></td>
 <td>the property bit to use for this feature.  See
-	       <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-add-feature" title="pango_ot_ruleset_add_feature ()"><code class="function">pango_ot_ruleset_add_feature()</code></a> for details.
-</td>
+<a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-add-feature" title="pango_ot_ruleset_add_feature ()"><code class="function">pango_ot_ruleset_add_feature()</code></a> for details.</td>
 </tr>
 </tbody>
 </table></div>
@@ -420,23 +403,19 @@ FreeType.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>c1</code></em> :</span></p></td>
-<td>First character.
-</td>
+<td>First character.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>c2</code></em> :</span></p></td>
-<td>Second character.
-</td>
+<td>Second character.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>c3</code></em> :</span></p></td>
-<td>Third character.
-</td>
+<td>Third character.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>c4</code></em> :</span></p></td>
-<td>Fourth character.
-</td>
+<td>Fourth character.</td>
 </tr>
 </tbody>
 </table></div>
@@ -456,8 +435,7 @@ example, as a switch expression, as it dereferences pointers.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>s</code></em> :</span></p></td>
-<td>The string representation of the tag.
-</td>
+<td>The string representation of the tag.</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -556,15 +534,12 @@ Returns the <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>face</code></em> :</span></p></td>
-<td>a <span class="type">FT_Face</span>.
-</td>
+<td>a <span class="type">FT_Face</span>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> for <em class="parameter"><code>face</code></em>. This object will have
-the same lifetime as <em class="parameter"><code>face</code></em>.
-
-</td>
+<td>the <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> for <em class="parameter"><code>face</code></em>. This object will have
+the same lifetime as <em class="parameter"><code>face</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -594,28 +569,24 @@ fallback to the 'DFLT'/'dflt' script.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_tag</code></em> :</span></p></td>
-<td>the tag of the script to find.
-</td>
+<td>the tag of the script to find.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_index</code></em> :</span></p></td>
-<td>location to store the index of the script, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>location to store the index of the script, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the script was found.
-</td>
+<td>
+<code class="literal">TRUE</code> if the script was found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -644,39 +615,33 @@ automatically fall back to the default language system.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_index</code></em> :</span></p></td>
-<td>the index of the script whose languages are searched.
-</td>
+<td>the index of the script whose languages are searched.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_tag</code></em> :</span></p></td>
-<td>the tag of the language to find.
-</td>
+<td>the tag of the language to find.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_index</code></em> :</span></p></td>
-<td>location to store the index of the language, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>location to store the index of the language, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>required_feature_index</code></em> :</span></p></td>
 <td>location to store the required feature index of
-   the language, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+the language, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the language was found.
-</td>
+<td>
+<code class="literal">TRUE</code> if the language was found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -707,39 +672,33 @@ ignore the return value of this function in certain cases.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>feature_tag</code></em> :</span></p></td>
-<td>the tag of the feature to find.
-</td>
+<td>the tag of the feature to find.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_index</code></em> :</span></p></td>
-<td>the index of the script.
-</td>
+<td>the index of the script.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_index</code></em> :</span></p></td>
 <td>the index of the language whose features are searched,
-    or <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-DEFAULT-LANGUAGE:CAPS" title="PANGO_OT_DEFAULT_LANGUAGE"><code class="literal">PANGO_OT_DEFAULT_LANGUAGE</code></a> to use the default language of the script.
-</td>
+or <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-DEFAULT-LANGUAGE:CAPS" title="PANGO_OT_DEFAULT_LANGUAGE"><code class="literal">PANGO_OT_DEFAULT_LANGUAGE</code></a> to use the default language of the script.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>feature_index</code></em> :</span></p></td>
-<td>location to store the index of the feature, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>location to store the index of the feature, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the feature was found.
-</td>
+<td>
+<code class="literal">TRUE</code> if the feature was found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -757,19 +716,16 @@ Obtains the list of available scripts.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a newly-allocated zero-terminated array containing the tags of the
-  available scripts.  Should be freed using <code class="function">g_free()</code>.
-</td>
+<td>a newly-allocated zero-terminated array containing the tags of the
+available scripts.  Should be freed using <code class="function">g_free()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -789,29 +745,24 @@ Obtains the list of available languages for a given script.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_index</code></em> :</span></p></td>
-<td>the index of the script to list languages for.
-</td>
+<td>the index of the script to list languages for.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_tag</code></em> :</span></p></td>
-<td>unused parameter.
-</td>
+<td>unused parameter.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a newly-allocated zero-terminated array containing the tags of the
-  available languages.  Should be freed using <code class="function">g_free()</code>.
-</td>
+<td>a newly-allocated zero-terminated array containing the tags of the
+available languages.  Should be freed using <code class="function">g_free()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -832,36 +783,30 @@ Obtains the list of features for the given language of the given script.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to obtain information about.
-</td>
+<td>the table type to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>tag</code></em> :</span></p></td>
-<td>unused parameter.
-</td>
+<td>unused parameter.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_index</code></em> :</span></p></td>
-<td>the index of the script to obtain information about.
-</td>
+<td>the index of the script to obtain information about.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_index</code></em> :</span></p></td>
 <td>the index of the language to list features for, or
-    <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-DEFAULT-LANGUAGE:CAPS" title="PANGO_OT_DEFAULT_LANGUAGE"><code class="literal">PANGO_OT_DEFAULT_LANGUAGE</code></a>, to list features for the default
-    language of the script.
-</td>
+<a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-DEFAULT-LANGUAGE:CAPS" title="PANGO_OT_DEFAULT_LANGUAGE"><code class="literal">PANGO_OT_DEFAULT_LANGUAGE</code></a>, to list features for the default
+language of the script.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a newly-allocated zero-terminated array containing the tags of the
-available features.  Should be freed using <code class="function">g_free()</code>.
-</td>
+<td>a newly-allocated zero-terminated array containing the tags of the
+available features.  Should be freed using <code class="function">g_free()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -883,10 +828,8 @@ Creates a new <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuf
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>, which should
-              be freed with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-buffer-destroy" title="pango_ot_buffer_destroy ()"><code class="function">pango_ot_buffer_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>, which should
+be freed with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-buffer-destroy" title="pango_ot_buffer_destroy ()"><code class="function">pango_ot_buffer_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -952,13 +895,11 @@ features should be applied on this glyph.  See <code class="function">pango_rule
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>properties</code></em> :</span></p></td>
-<td>the glyph properties
-</td>
+<td>the glyph properties</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cluster</code></em> :</span></p></td>
-<td>the cluster that this glyph belongs to
-</td>
+<td>the cluster that this glyph belongs to</td>
 </tr>
 </tbody>
 </table></div>
@@ -984,8 +925,7 @@ is needed for proper horizontal positioning of right-to-left scripts.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rtl</code></em> :</span></p></td>
 <td>
-<code class="literal">TRUE</code> for right-to-left text
-</td>
+<code class="literal">TRUE</code> for right-to-left text</td>
 </tr>
 </tbody>
 </table></div>
@@ -1015,8 +955,7 @@ fonts.
 <td><p><span class="term"><em class="parameter"><code>zero_width_marks</code></em> :</span></p></td>
 <td>
 <code class="literal">TRUE</code> if characters with a mark class should
- be forced to zero width.
-</td>
+be forced to zero width.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1043,12 +982,12 @@ as buffer is not modified.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>glyphs</code></em> :</span></p></td>
-<td>location to store the array of glyphs, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>location to store the array of glyphs, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_glyphs</code></em> :</span></p></td>
-<td>location to store the number of glyphs, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>location to store the number of glyphs, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 </tbody>
@@ -1059,9 +998,9 @@ as buffer is not modified.
 <div class="refsect2">
 <a name="pango-ot-buffer-output"></a><h3>pango_ot_buffer_output ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_ot_buffer_output              (<em class="parameter"><code>const <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a> *buffer</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
 <p>
-Exports the glyphs in a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a> into a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a>.  This is
+Exports the glyphs in a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a> into a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a>.  This is
 typically used after the OpenType layout processing is over, to convert the
 resulting glyphs into a generic Pango glyph string.
 </p>
@@ -1075,7 +1014,7 @@ resulting glyphs into a generic Pango glyph string.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>glyphs</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString" title="struct PangoGlyphString"><span class="type">PangoGlyphString</span></a>
+<td>a <a class="link" href="pango-Glyph-Storage.html#PangoGlyphString"><span class="type">PangoGlyphString</span></a>
 </td>
 </tr>
 </tbody>
@@ -1103,20 +1042,16 @@ long as <em class="parameter"><code>info</code></em> is.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a> for <em class="parameter"><code>desc</code></em>. This object will have
-the same lifetime as <em class="parameter"><code>info</code></em>.
-
-</td>
+<td>the <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a> for <em class="parameter"><code>desc</code></em>. This object will have
+the same lifetime as <em class="parameter"><code>info</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1134,14 +1069,12 @@ Creates a new <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRul
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
-              should be freed with <code class="function">g_object_unref()</code>.
-</td>
+<td>the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
+should be freed with <code class="function">g_object_unref()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1150,8 +1083,8 @@ Creates a new <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRul
 <div class="refsect2">
 <a name="pango-ot-ruleset-new-for"></a><h3>pango_ot_ruleset_new_for ()</h3>
 <pre class="programlisting"><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="returnvalue">PangoOTRuleset</span></a> *    pango_ot_ruleset_new_for            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a> *info</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
 <p>
 Creates a new <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a> for the given OpenType info, script, and
 language.
@@ -1202,25 +1135,20 @@ finds and uses the 'DFLT' script and the default language-system.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>.
-</td>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a>.
-</td>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
-              should be freed with <code class="function">g_object_unref()</code>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
+should be freed with <code class="function">g_object_unref()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1250,20 +1178,16 @@ long as <em class="parameter"><code>info</code></em> is.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTInfo"><span class="type">PangoOTInfo</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
-              should be freed with <code class="function">g_object_unref()</code>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>, which
+should be freed with <code class="function">g_object_unref()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1284,25 +1208,21 @@ Adds a feature to the ruleset.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to add a feature to.
-</td>
+<td>the table type to add a feature to.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>feature_index</code></em> :</span></p></td>
-<td>the index of the feature to add.
-</td>
+<td>the index of the feature to add.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>property_bit</code></em> :</span></p></td>
 <td>the property bit to use for this feature. Used to identify
-               the glyphs that this feature should be applied to, or
-               <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-ALL-GLYPHS:CAPS" title="PANGO_OT_ALL_GLYPHS"><code class="literal">PANGO_OT_ALL_GLYPHS</code></a> if it should be applied to all glyphs.
-</td>
+the glyphs that this feature should be applied to, or
+<a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-ALL-GLYPHS:CAPS" title="PANGO_OT_ALL_GLYPHS"><code class="literal">PANGO_OT_ALL_GLYPHS</code></a> if it should be applied to all glyphs.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1329,32 +1249,27 @@ does nothing.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to add a feature to.
-</td>
+<td>the table type to add a feature to.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>feature_tag</code></em> :</span></p></td>
-<td>the tag of the feature to add.
-</td>
+<td>the tag of the feature to add.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>property_bit</code></em> :</span></p></td>
 <td>the property bit to use for this feature. Used to identify
-               the glyphs that this feature should be applied to, or
-               <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-ALL-GLYPHS:CAPS" title="PANGO_OT_ALL_GLYPHS"><code class="literal">PANGO_OT_ALL_GLYPHS</code></a> if it should be applied to all glyphs.
-</td>
+the glyphs that this feature should be applied to, or
+<a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-ALL-GLYPHS:CAPS" title="PANGO_OT_ALL_GLYPHS"><code class="literal">PANGO_OT_ALL_GLYPHS</code></a> if it should be applied to all glyphs.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the feature was found and added to ruleset,
-              <code class="literal">FALSE</code> otherwise.
-
-</td>
+<td>
+<code class="literal">TRUE</code> if the feature was found and added to ruleset,
+<code class="literal">FALSE</code> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1378,30 +1293,24 @@ and calls <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-rules
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table_type</code></em> :</span></p></td>
-<td>the table type to add features to.
-</td>
+<td>the table type to add features to.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>features</code></em> :</span></p></td>
-<td>array of feature name and property bits to add.
-</td>
+<td>array of feature name and property bits to add.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_features</code></em> :</span></p></td>
-<td>number of feature records in <em class="parameter"><code>features</code></em> array.
-</td>
+<td>number of feature records in <em class="parameter"><code>features</code></em> array.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The number of features in <em class="parameter"><code>features</code></em> that were found
-              and added to <em class="parameter"><code>ruleset</code></em>.
-
-</td>
+<td>The number of features in <em class="parameter"><code>features</code></em> that were found
+and added to <em class="parameter"><code>ruleset</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1421,24 +1330,19 @@ Gets the number of GSUB and GPOS features in the ruleset.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_gsub_features</code></em> :</span></p></td>
-<td>location to store number of GSUB features, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>location to store number of GSUB features, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_gpos_features</code></em> :</span></p></td>
-<td>location to store number of GPOS features, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>location to store number of GPOS features, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> Total number of features in the <em class="parameter"><code>ruleset</code></em>.
-
-</td>
+<td>Total number of features in the <em class="parameter"><code>ruleset</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1458,13 +1362,11 @@ in <em class="parameter"><code>ruleset</code></em>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>buffer</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1484,13 +1386,11 @@ in <em class="parameter"><code>ruleset</code></em>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ruleset</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRuleset"><span class="type">PangoOTRuleset</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>buffer</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>.
-</td>
+<td>a <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTBuffer" title="PangoOTBuffer"><span class="type">PangoOTBuffer</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1512,15 +1412,12 @@ ruleset descriptions.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>ruleset description to copy
-</td>
+<td>ruleset description to copy</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>, which
-              should be freed with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-description-free" title="pango_ot_ruleset_description_free ()"><code class="function">pango_ot_ruleset_description_free()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTRulesetDescription" title="struct PangoOTRulesetDescription"><span class="type">PangoOTRulesetDescription</span></a>, which
+should be freed with <a class="link" href="pango-OpenType-Font-Handling.html#pango-ot-ruleset-description-free" title="pango_ot_ruleset_description_free ()"><code class="function">pango_ot_ruleset_description_free()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1546,20 +1443,17 @@ being created, but still compare <code class="literal">FALSE</code>.)
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc1</code></em> :</span></p></td>
-<td>a ruleset description
-</td>
+<td>a ruleset description</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc2</code></em> :</span></p></td>
-<td>a ruleset description
-</td>
+<td>a ruleset description</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if two ruleset descriptions are identical,
-              <code class="literal">FALSE</code> otherwise.
-
-</td>
+<td>
+<code class="literal">TRUE</code> if two ruleset descriptions are identical,
+<code class="literal">FALSE</code> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1596,14 +1490,11 @@ to be used, for example, as an argument to <code class="function">g_hash_table_n
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>a ruleset description
-</td>
+<td>a ruleset description</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the hash value.
-
-</td>
+<td>the hash value.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1612,7 +1503,7 @@ to be used, for example, as an argument to <code class="function">g_hash_table_n
 <hr>
 <div class="refsect2">
 <a name="pango-ot-tag-from-language"></a><h3>pango_ot_tag_from_language ()</h3>
-<pre class="programlisting"><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          pango_ot_tag_from_language          (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          pango_ot_tag_from_language          (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
 <p>
 Finds the OpenType language-system tag best describing <em class="parameter"><code>language</code></em>.
 </p>
@@ -1621,16 +1512,15 @@ Finds the OpenType language-system tag best describing <em class="parameter"><co
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>A <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a>, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>A <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a>, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> best matching <em class="parameter"><code>language</code></em> or
+<td>
+<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> best matching <em class="parameter"><code>language</code></em> or
 <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-TAG-DEFAULT-LANGUAGE:CAPS" title="PANGO_OT_TAG_DEFAULT_LANGUAGE"><code class="literal">PANGO_OT_TAG_DEFAULT_LANGUAGE</code></a> if none found or if <em class="parameter"><code>language</code></em>
-is <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-
-</td>
+is <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1639,7 +1529,7 @@ is <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CA
 <hr>
 <div class="refsect2">
 <a name="pango-ot-tag-from-script"></a><h3>pango_ot_tag_from_script ()</h3>
-<pre class="programlisting"><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          pango_ot_tag_from_script            (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="returnvalue">PangoOTTag</span></a>          pango_ot_tag_from_script            (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>);</pre>
 <p>
 Finds the OpenType script tag corresponding to <em class="parameter"><code>script</code></em>.
 </p>
@@ -1650,7 +1540,7 @@ The <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-COMMON:C
 <a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-TAG-DEFAULT-SCRIPT:CAPS" title="PANGO_OT_TAG_DEFAULT_SCRIPT"><code class="literal">PANGO_OT_TAG_DEFAULT_SCRIPT</code></a>.
 </p>
 <p>
-Note that multiple <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> values may map to the same
+Note that multiple <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> values may map to the same
 OpenType script tag.  In particular, <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-HIRAGANA:CAPS"><code class="literal">PANGO_SCRIPT_HIRAGANA</code></a>
 and <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-KATAKANA:CAPS"><code class="literal">PANGO_SCRIPT_KATAKANA</code></a> both map to the OT tag 'kana'.
 </p>
@@ -1659,15 +1549,14 @@ and <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-KATAKANA
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
-<td>A <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>
+<td>A <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> corresponding to <em class="parameter"><code>script</code></em> or
-<a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-TAG-DEFAULT-SCRIPT:CAPS" title="PANGO_OT_TAG_DEFAULT_SCRIPT"><code class="literal">PANGO_OT_TAG_DEFAULT_SCRIPT</code></a> if none found.
-
-</td>
+<td>
+<a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> corresponding to <em class="parameter"><code>script</code></em> or
+<a class="link" href="pango-OpenType-Font-Handling.html#PANGO-OT-TAG-DEFAULT-SCRIPT:CAPS" title="PANGO_OT_TAG_DEFAULT_SCRIPT"><code class="literal">PANGO_OT_TAG_DEFAULT_SCRIPT</code></a> if none found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1676,24 +1565,22 @@ and <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-KATAKANA
 <hr>
 <div class="refsect2">
 <a name="pango-ot-tag-to-language"></a><h3>pango_ot_tag_to_language ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="returnvalue">PangoLanguage</span></a> *     pango_ot_tag_to_language            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> language_tag</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="returnvalue">PangoLanguage</span></a> *     pango_ot_tag_to_language            (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> language_tag</code></em>);</pre>
 <p>
-Finds a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> corresponding to <em class="parameter"><code>language_tag</code></em>.
+Finds a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> corresponding to <em class="parameter"><code>language_tag</code></em>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language_tag</code></em> :</span></p></td>
-<td>A <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> OpenType language-system tag
-</td>
+<td>A <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> OpenType language-system tag</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> best matching <em class="parameter"><code>language_tag</code></em> or
-<a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> corresponding to the string "xx" if none found.
-
-</td>
+<td>
+<a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> best matching <em class="parameter"><code>language_tag</code></em> or
+<a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> corresponding to the string "xx" if none found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1702,16 +1589,16 @@ Finds a <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" ti
 <hr>
 <div class="refsect2">
 <a name="pango-ot-tag-to-script"></a><h3>pango_ot_tag_to_script ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="returnvalue">PangoScript</span></a>         pango_ot_tag_to_script              (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> script_tag</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="returnvalue">PangoScript</span></a>         pango_ot_tag_to_script              (<em class="parameter"><code><a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> script_tag</code></em>);</pre>
 <p>
-Finds the <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> corresponding to <em class="parameter"><code>script_tag</code></em>.
+Finds the <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> corresponding to <em class="parameter"><code>script_tag</code></em>.
 </p>
 <p>
 The 'DFLT' script tag is mapped to <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-COMMON:CAPS"><code class="literal">PANGO_SCRIPT_COMMON</code></a>.
 </p>
 <p>
 Note that an OpenType script tag may correspond to multiple
-<a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> values.  In such cases, the <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> value
+<a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> values.  In such cases, the <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> value
 with the smallest value is returned.
 In particular, <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-HIRAGANA:CAPS"><code class="literal">PANGO_SCRIPT_HIRAGANA</code></a>
 and <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-KATAKANA:CAPS"><code class="literal">PANGO_SCRIPT_KATAKANA</code></a> both map to the OT tag 'kana'.
@@ -1723,15 +1610,13 @@ This function will return <a class="link" href="pango-Scripts-and-Languages.html
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script_tag</code></em> :</span></p></td>
-<td>A <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> OpenType script tag
-</td>
+<td>A <a class="link" href="pango-OpenType-Font-Handling.html#PangoOTTag" title="PangoOTTag"><span class="type">PangoOTTag</span></a> OpenType script tag</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> corresponding to <em class="parameter"><code>script_tag</code></em> or
-<a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-UNKNOWN:CAPS"><code class="literal">PANGO_SCRIPT_UNKNOWN</code></a> if none found.
-
-</td>
+<td>
+<a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> corresponding to <em class="parameter"><code>script_tag</code></em> or
+<a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-UNKNOWN:CAPS"><code class="literal">PANGO_SCRIPT_UNKNOWN</code></a> if none found.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1741,6 +1626,6 @@ This function will return <a class="link" href="pango-Scripts-and-Languages.html
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

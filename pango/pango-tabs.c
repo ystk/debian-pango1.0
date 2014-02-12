@@ -103,7 +103,7 @@ pango_tab_array_new (gint initial_size,
  * @positions_in_pixels: whether positions are in pixel units
  * @first_alignment: alignment of first tab stop
  * @first_position: position of first tab stop
- * @varargs: additional alignment/position pairs
+ * @...: additional alignment/position pairs
  *
  * This is a convenience function that creates a #PangoTabArray
  * and allows you to specify the alignment and position of each
@@ -156,17 +156,9 @@ pango_tab_array_new_with_positions (gint           size,
   return array;
 }
 
-GType
-pango_tab_array_get_type (void)
-{
-  static GType our_type = 0;
-
-  if (G_UNLIKELY (our_type == 0))
-    our_type = g_boxed_type_register_static (I_("PangoTabArray"),
-					     (GBoxedCopyFunc)pango_tab_array_copy,
-					     (GBoxedFreeFunc)pango_tab_array_free);
-  return our_type;
-}
+G_DEFINE_BOXED_TYPE (PangoTabArray, pango_tab_array,
+                     pango_tab_array_copy,
+                     pango_tab_array_free);
 
 /**
  * pango_tab_array_copy:
@@ -291,8 +283,8 @@ pango_tab_array_set_tab  (PangoTabArray *tab_array,
  * pango_tab_array_get_tab:
  * @tab_array: a #PangoTabArray
  * @tab_index: tab stop index
- * @alignment: location to store alignment, or %NULL
- * @location: location to store tab position, or %NULL
+ * @alignment: (out) (allow-none): location to store alignment, or %NULL
+ * @location: (out) (allow-none): location to store tab position, or %NULL
  *
  * Gets the alignment and position of a tab stop.
  *
@@ -317,8 +309,10 @@ pango_tab_array_get_tab  (PangoTabArray *tab_array,
 /**
  * pango_tab_array_get_tabs:
  * @tab_array: a #PangoTabArray
- * @alignments: location to store an array of tab stop alignments, or %NULL
- * @locations: location to store an array of tab positions, or %NULL
+ * @alignments: (out) (allow-none): location to store an array of tab stop
+ *                                  alignments, or %NULL
+ * @locations: (out) (allow-none): location to store an array of tab positions,
+ *                                 or %NULL
  *
  * If non-%NULL, @alignments and @locations are filled with allocated
  * arrays of length pango_tab_array_get_size(). You must free the

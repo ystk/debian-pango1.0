@@ -790,7 +790,6 @@ pango_fc_patterns_get_font_pattern (PangoFcPatterns *pats, int i)
  */
 
 static void              pango_fc_fontset_finalize     (GObject                 *object);
-static void              pango_fc_fontset_init         (PangoFcFontset      *fontset);
 static PangoLanguage *   pango_fc_fontset_get_language (PangoFontset            *fontset);
 static  PangoFont *      pango_fc_fontset_get_font     (PangoFontset            *fontset,
 							guint                    wc);
@@ -814,8 +813,7 @@ struct _PangoFcFontset
 };
 
 typedef PangoFontsetClass PangoFcFontsetClass;
-
-static PangoFontsetClass *fc_fontset_parent_class;	/* Parent class structure for PangoFcFontset */
+G_DEFINE_TYPE (PangoFcFontset, pango_fc_fontset, PANGO_TYPE_FONTSET);
 
 static PangoFcFontset *
 pango_fc_fontset_new (PangoFcFontsetKey *key,
@@ -892,9 +890,8 @@ pango_fc_fontset_class_init (PangoFcFontsetClass *class)
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   PangoFontsetClass *fontset_class = PANGO_FONTSET_CLASS (class);
 
-  fc_fontset_parent_class = g_type_class_peek_parent (class);
-
   object_class->finalize = pango_fc_fontset_finalize;
+
   fontset_class->get_font = pango_fc_fontset_get_font;
   fontset_class->get_language = pango_fc_fontset_get_language;
   fontset_class->foreach = pango_fc_fontset_foreach;
@@ -935,7 +932,7 @@ pango_fc_fontset_finalize (GObject *object)
   if (fontset->patterns)
     pango_fc_patterns_unref (fontset->patterns);
 
-  G_OBJECT_CLASS (fc_fontset_parent_class)->finalize (object);
+  G_OBJECT_CLASS (pango_fc_fontset_parent_class)->finalize (object);
 }
 
 static PangoLanguage *
@@ -959,7 +956,7 @@ pango_fc_fontset_get_font (PangoFontset  *fontset,
   unsigned int i;
 
   for (i = 0;
-       (font = pango_fc_fontset_get_font_at (fcfontset, i));
+       pango_fc_fontset_get_font_at (fcfontset, i);
        i++)
     {
       coverage = g_ptr_array_index (fcfontset->coverages, i);
@@ -1008,9 +1005,6 @@ pango_fc_fontset_foreach (PangoFontset           *fontset,
     }
 }
 
-static PANGO_DEFINE_TYPE (PangoFcFontset, pango_fc_fontset,
-			  pango_fc_fontset_class_init, pango_fc_fontset_init,
-			  PANGO_TYPE_FONTSET)
 
 /*
  * PangoFcFontMap
@@ -1125,7 +1119,7 @@ pango_fc_font_map_class_init (PangoFcFontMapClass *class)
  * characters to glyphs.  This will allow applications to have
  * application-specific encodings for various fonts.
  *
- * Since: 1.6.
+ * Since: 1.6
  **/
 void
 pango_fc_font_map_add_decoder_find_func (PangoFcFontMap        *fcfontmap,
@@ -1160,7 +1154,7 @@ pango_fc_font_map_add_decoder_find_func (PangoFcFontMap        *fcfontmap,
  * Returns: a newly created #PangoFcDecoder object or %NULL if
  *          no decoder is set for @pattern.
  *
- * Since: 1.26.
+ * Since: 1.26
  **/
 PangoFcDecoder *
 pango_fc_font_map_find_decoder  (PangoFcFontMap *fcfontmap,
@@ -1760,7 +1754,7 @@ pango_fc_font_map_load_fontset (PangoFontMap                 *fontmap,
 
 /**
  * pango_fc_font_map_cache_clear:
- * @fcfontmap: a #PangoFcFontmap
+ * @fcfontmap: a #PangoFcFontMap
  *
  * Clear all cached information and fontsets for this font map;
  * this should be called whenever there is a change in the
@@ -1833,7 +1827,6 @@ PangoFcCmapCache *
 _pango_fc_font_map_get_cmap_cache (PangoFcFontMap *fcfontmap,
 				   PangoFcFont    *fcfont)
 {
-  PangoFcFontMapPrivate *priv;
   PangoFcFontFaceData *data;
 
   if (G_UNLIKELY (fcfontmap == NULL))
@@ -1841,8 +1834,6 @@ _pango_fc_font_map_get_cmap_cache (PangoFcFontMap *fcfontmap,
 
   if (G_UNLIKELY (!fcfont->font_pattern))
     return NULL;
-
-  priv = fcfontmap->priv;
 
   data = pango_fc_font_map_get_font_face_data (fcfontmap, fcfont->font_pattern);
   if (G_UNLIKELY (!data))
@@ -1952,7 +1943,7 @@ _pango_fc_font_map_fc_to_coverage (FcCharSet *charset)
  * @fcfontmap: a #PangoFcFontMap
  *
  * Creates a new context for this fontmap. This function is intended
- * only for backend implementations deriving from #PangoFcFontmap;
+ * only for backend implementations deriving from #PangoFcFontMap;
  * it is possible that a backend will store additional information
  * needed for correct operation on the #PangoContext after calling
  * this function.
@@ -1984,14 +1975,14 @@ shutdown_font (gpointer        key,
 
 /**
  * pango_fc_font_map_shutdown:
- * @fcfontmap: a #PangoFcFontmap
+ * @fcfontmap: a #PangoFcFontMap
  *
  * Clears all cached information for the fontmap and marks
  * all fonts open for the fontmap as dead. (See the shutdown()
  * virtual function of #PangoFcFont.) This function might be used
  * by a backend when the underlying windowing system for the font
  * map exits. This function is only intended to be called
- * only for backend implementations deriving from #PangoFcFontmap.
+ * only for backend implementations deriving from #PangoFcFontMap.
  *
  * Since: 1.4
  **/
@@ -2180,7 +2171,8 @@ pango_fc_font_description_from_pattern (FcPattern *pattern, gboolean include_siz
  * PangoFcFace
  */
 
-static GObjectClass *pango_fc_face_parent_class = NULL;
+typedef PangoFontFaceClass PangoFcFaceClass;
+G_DEFINE_TYPE (PangoFcFace, pango_fc_face, PANGO_TYPE_FONT_FACE);
 
 static PangoFontDescription *
 make_alias_description (PangoFcFamily *fcfamily,
@@ -2359,17 +2351,19 @@ pango_fc_face_finalize (GObject *object)
 
   g_free (fcface->style);
 
-  pango_fc_face_parent_class->finalize (object);
+  G_OBJECT_CLASS (pango_fc_face_parent_class)->finalize (object);
 }
 
-typedef PangoFontFaceClass PangoFcFaceClass;
+static void
+pango_fc_face_init (PangoFcFace *self)
+{
+}
 
 static void
 pango_fc_face_class_init (PangoFcFaceClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  pango_fc_face_parent_class = g_type_class_peek_parent (class);
   object_class->finalize = pango_fc_face_finalize;
 
   class->describe = pango_fc_face_describe;
@@ -2378,15 +2372,13 @@ pango_fc_face_class_init (PangoFcFaceClass *class)
   class->is_synthesized = pango_fc_face_is_synthesized;
 }
 
-static PANGO_DEFINE_TYPE (PangoFcFace, pango_fc_face,
-			  pango_fc_face_class_init, NULL,
-			  PANGO_TYPE_FONT_FACE)
 
 /*
  * PangoFcFamily
  */
 
-static GObjectClass *pango_fc_family_parent_class = NULL;
+typedef PangoFontFamilyClass PangoFcFamilyClass;
+G_DEFINE_TYPE (PangoFcFamily, pango_fc_family, PANGO_TYPE_FONT_FAMILY);
 
 static PangoFcFace *
 create_face (PangoFcFamily *fcfamily,
@@ -2567,17 +2559,14 @@ pango_fc_family_finalize (GObject *object)
     }
   g_free (fcfamily->faces);
 
-  pango_fc_family_parent_class->finalize (object);
+  G_OBJECT_CLASS (pango_fc_family_parent_class)->finalize (object);
 }
-
-typedef PangoFontFamilyClass PangoFcFamilyClass;
 
 static void
 pango_fc_family_class_init (PangoFcFamilyClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  pango_fc_family_parent_class = g_type_class_peek_parent (class);
   object_class->finalize = pango_fc_family_finalize;
 
   class->list_faces = pango_fc_family_list_faces;
@@ -2590,7 +2579,3 @@ pango_fc_family_init (PangoFcFamily *fcfamily)
 {
   fcfamily->n_faces = -1;
 }
-
-static PANGO_DEFINE_TYPE (PangoFcFamily, pango_fc_family,
-			  pango_fc_family_class_init, pango_fc_family_init,
-			  PANGO_TYPE_FONT_FAMILY)

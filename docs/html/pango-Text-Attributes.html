@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Text Attributes</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="pango.html" title="Basic Pango Interfaces">
 <link rel="prev" href="pango-Fonts.html" title="Fonts">
 <link rel="next" href="pango-Tab-Stops.html" title="Tab Stops">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -24,6 +24,8 @@
 <a href="#pango-Text-Attributes.synopsis" class="shortcut">Top</a>
                    | 
                   <a href="#pango-Text-Attributes.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#pango-Text-Attributes.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
 <div class="refentry">
@@ -37,7 +39,7 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="pango-Text-Attributes.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">enum                <a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType">PangoAttrType</a>;
+<a name="PangoAttrType"></a><a name="PangoUnderline"></a><a name="PangoColor"></a><a name="PangoAttrList"></a><pre class="synopsis">enum                <a class="link" href="pango-Text-Attributes.html#PangoAttrType-enum" title="enum PangoAttrType">PangoAttrType</a>;
 #define             <a class="link" href="pango-Text-Attributes.html#PANGO-TYPE-ATTR-TYPE:CAPS" title="PANGO_TYPE_ATTR_TYPE">PANGO_TYPE_ATTR_TYPE</a>
 struct              <a class="link" href="pango-Text-Attributes.html#PangoAttrClass" title="struct PangoAttrClass">PangoAttrClass</a>;
 struct              <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute">PangoAttribute</a>;
@@ -54,12 +56,12 @@ struct              <a class="link" href="pango-Text-Attributes.html#PangoAttrSi
 <span class="returnvalue">gboolean</span>            <a class="link" href="pango-Text-Attributes.html#pango-parse-markup" title="pango_parse_markup ()">pango_parse_markup</a>                  (<em class="parameter"><code>const <span class="type">char</span> *markup_text</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> length</code></em>,
                                                          <em class="parameter"><code><span class="type">gunichar</span> accel_marker</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> **attr_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> **attr_list</code></em>,
                                                          <em class="parameter"><code><span class="type">char</span> **text</code></em>,
                                                          <em class="parameter"><code><span class="type">gunichar</span> *accel_char</code></em>,
                                                          <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="returnvalue">PangoAttrType</span></a>       <a class="link" href="pango-Text-Attributes.html#pango-attr-type-register" title="pango_attr_type_register ()">pango_attr_type_register</a>            (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="pango-Text-Attributes.html#pango-attr-type-get-name" title="pango_attr_type_get_name ()">pango_attr_type_get_name</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="returnvalue">PangoAttrType</span></a>       <a class="link" href="pango-Text-Attributes.html#pango-attr-type-register" title="pango_attr_type_register ()">pango_attr_type_register</a>            (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="pango-Text-Attributes.html#pango-attr-type-get-name" title="pango_attr_type_get_name ()">pango_attr_type_get_name</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attribute-init" title="pango_attribute_init ()">pango_attribute_init</a>                (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>,
                                                          <em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoAttrClass" title="struct PangoAttrClass"><span class="type">PangoAttrClass</span></a> *klass</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attribute-copy" title="pango_attribute_copy ()">pango_attribute_copy</a>                (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);
@@ -67,15 +69,15 @@ const <span class="returnvalue">char</span> *        <a class="link" href="pango
                                                          <em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr2</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()">pango_attribute_destroy</a>             (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);
 
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-language-new" title="pango_attr_language_new ()">pango_attr_language_new</a>             (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-language-new" title="pango_attr_language_new ()">pango_attr_language_new</a>             (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-family-new" title="pango_attr_family_new ()">pango_attr_family_new</a>               (<em class="parameter"><code>const <span class="type">char</span> *family</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-style-new" title="pango_attr_style_new ()">pango_attr_style_new</a>                (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStyle" title="enum PangoStyle"><span class="type">PangoStyle</span></a> style</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-variant-new" title="pango_attr_variant_new ()">pango_attr_variant_new</a>              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoVariant" title="enum PangoVariant"><span class="type">PangoVariant</span></a> variant</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-stretch-new" title="pango_attr_stretch_new ()">pango_attr_stretch_new</a>              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStretch" title="enum PangoStretch"><span class="type">PangoStretch</span></a> stretch</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-weight-new" title="pango_attr_weight_new ()">pango_attr_weight_new</a>               (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoWeight" title="enum PangoWeight"><span class="type">PangoWeight</span></a> weight</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-style-new" title="pango_attr_style_new ()">pango_attr_style_new</a>                (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStyle"><span class="type">PangoStyle</span></a> style</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-variant-new" title="pango_attr_variant_new ()">pango_attr_variant_new</a>              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoVariant"><span class="type">PangoVariant</span></a> variant</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-stretch-new" title="pango_attr_stretch_new ()">pango_attr_stretch_new</a>              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStretch"><span class="type">PangoStretch</span></a> stretch</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-weight-new" title="pango_attr_weight_new ()">pango_attr_weight_new</a>               (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoWeight"><span class="type">PangoWeight</span></a> weight</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-size-new" title="pango_attr_size_new ()">pango_attr_size_new</a>                 (<em class="parameter"><code><span class="type">int</span> size</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-size-new-absolute" title="pango_attr_size_new_absolute ()">pango_attr_size_new_absolute</a>        (<em class="parameter"><code><span class="type">int</span> size</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-font-desc-new" title="pango_attr_font_desc_new ()">pango_attr_font_desc_new</a>            (<em class="parameter"><code>const <a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-font-desc-new" title="pango_attr_font_desc_new ()">pango_attr_font_desc_new</a>            (<em class="parameter"><code>const <a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-foreground-new" title="pango_attr_foreground_new ()">pango_attr_foreground_new</a>           (<em class="parameter"><code><span class="type">guint16</span> red</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> green</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> blue</code></em>);
@@ -86,11 +88,11 @@ const <span class="returnvalue">char</span> *        <a class="link" href="pango
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-strikethrough-color-new" title="pango_attr_strikethrough_color_new ()">pango_attr_strikethrough_color_new</a>  (<em class="parameter"><code><span class="type">guint16</span> red</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> green</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> blue</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-underline-new" title="pango_attr_underline_new ()">pango_attr_underline_new</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoUnderline" title="enum PangoUnderline"><span class="type">PangoUnderline</span></a> underline</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-underline-new" title="pango_attr_underline_new ()">pango_attr_underline_new</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoUnderline"><span class="type">PangoUnderline</span></a> underline</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-underline-color-new" title="pango_attr_underline_color_new ()">pango_attr_underline_color_new</a>      (<em class="parameter"><code><span class="type">guint16</span> red</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> green</code></em>,
                                                          <em class="parameter"><code><span class="type">guint16</span> blue</code></em>);
-enum                <a class="link" href="pango-Text-Attributes.html#PangoUnderline" title="enum PangoUnderline">PangoUnderline</a>;
+enum                <a class="link" href="pango-Text-Attributes.html#PangoUnderline-enum" title="enum PangoUnderline">PangoUnderline</a>;
 #define             <a class="link" href="pango-Text-Attributes.html#PANGO-TYPE-UNDERLINE:CAPS" title="PANGO_TYPE_UNDERLINE">PANGO_TYPE_UNDERLINE</a>
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-shape-new" title="pango_attr_shape_new ()">pango_attr_shape_new</a>                (<em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoRectangle" title="struct PangoRectangle"><span class="type">PangoRectangle</span></a> *ink_rect</code></em>,
                                                          <em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoRectangle" title="struct PangoRectangle"><span class="type">PangoRectangle</span></a> *logical_rect</code></em>);
@@ -111,38 +113,38 @@ enum                <a class="link" href="pango-Text-Attributes.html#PangoUnderl
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-rise-new" title="pango_attr_rise_new ()">pango_attr_rise_new</a>                 (<em class="parameter"><code><span class="type">int</span> rise</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-letter-spacing-new" title="pango_attr_letter_spacing_new ()">pango_attr_letter_spacing_new</a>       (<em class="parameter"><code><span class="type">int</span> letter_spacing</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-fallback-new" title="pango_attr_fallback_new ()">pango_attr_fallback_new</a>             (<em class="parameter"><code><span class="type">gboolean</span> enable_fallback</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-gravity-new" title="pango_attr_gravity_new ()">pango_attr_gravity_new</a>              (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-gravity-hint-new" title="pango_attr_gravity_hint_new ()">pango_attr_gravity_hint_new</a>         (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
-struct              <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor">PangoColor</a>;
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-gravity-new" title="pango_attr_gravity_new ()">pango_attr_gravity_new</a>              (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-gravity-hint-new" title="pango_attr_gravity_hint_new ()">pango_attr_gravity_hint_new</a>         (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
+struct              <a class="link" href="pango-Text-Attributes.html#PangoColor-struct" title="struct PangoColor">PangoColor</a>;
 #define             <a class="link" href="pango-Text-Attributes.html#PANGO-TYPE-COLOR:CAPS" title="PANGO_TYPE_COLOR">PANGO_TYPE_COLOR</a>
-<span class="returnvalue">gboolean</span>            <a class="link" href="pango-Text-Attributes.html#pango-color-parse" title="pango_color_parse ()">pango_color_parse</a>                   (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>,
+<span class="returnvalue">gboolean</span>            <a class="link" href="pango-Text-Attributes.html#pango-color-parse" title="pango_color_parse ()">pango_color_parse</a>                   (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *spec</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="returnvalue">PangoColor</span></a> *        <a class="link" href="pango-Text-Attributes.html#pango-color-copy" title="pango_color_copy ()">pango_color_copy</a>                    (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *src</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-color-free" title="pango_color_free ()">pango_color_free</a>                    (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);
-<span class="returnvalue">gchar</span> *             <a class="link" href="pango-Text-Attributes.html#pango-color-to-string" title="pango_color_to_string ()">pango_color_to_string</a>               (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="returnvalue">PangoColor</span></a> *        <a class="link" href="pango-Text-Attributes.html#pango-color-copy" title="pango_color_copy ()">pango_color_copy</a>                    (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *src</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-color-free" title="pango_color_free ()">pango_color_free</a>                    (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);
+<span class="returnvalue">gchar</span> *             <a class="link" href="pango-Text-Attributes.html#pango-color-to-string" title="pango_color_to_string ()">pango_color_to_string</a>               (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);
 
-                    <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList">PangoAttrList</a>;
+                    <a class="link" href="pango-Text-Attributes.html#PangoAttrList-struct" title="PangoAttrList">PangoAttrList</a>;
 #define             <a class="link" href="pango-Text-Attributes.html#PANGO-TYPE-ATTR-LIST:CAPS" title="PANGO_TYPE_ATTR_LIST">PANGO_TYPE_ATTR_LIST</a>
-<a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-new" title="pango_attr_list_new ()">pango_attr_list_new</a>                 (<em class="parameter"><code><span class="type">void</span></code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-ref" title="pango_attr_list_ref ()">pango_attr_list_ref</a>                 (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()">pango_attr_list_unref</a>               (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-copy" title="pango_attr_list_copy ()">pango_attr_list_copy</a>                (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-insert" title="pango_attr_list_insert ()">pango_attr_list_insert</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-new" title="pango_attr_list_new ()">pango_attr_list_new</a>                 (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-ref" title="pango_attr_list_ref ()">pango_attr_list_ref</a>                 (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()">pango_attr_list_unref</a>               (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-copy" title="pango_attr_list_copy ()">pango_attr_list_copy</a>                (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-insert" title="pango_attr_list_insert ()">pango_attr_list_insert</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-insert-before" title="pango_attr_list_insert_before ()">pango_attr_list_insert_before</a>       (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-insert-before" title="pango_attr_list_insert_before ()">pango_attr_list_insert_before</a>       (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-change" title="pango_attr_list_change ()">pango_attr_list_change</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-change" title="pango_attr_list_change ()">pango_attr_list_change</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-splice" title="pango_attr_list_splice ()">pango_attr_list_splice</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *other</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-list-splice" title="pango_attr_list_splice ()">pango_attr_list_splice</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *other</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> pos</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> len</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-filter" title="pango_attr_list_filter ()">pango_attr_list_filter</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     <a class="link" href="pango-Text-Attributes.html#pango-attr-list-filter" title="pango_attr_list_filter ()">pango_attr_list_filter</a>              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrFilterFunc" title="PangoAttrFilterFunc ()"><span class="type">PangoAttrFilterFunc</span></a> func</code></em>,
                                                          <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);
 <span class="returnvalue">gboolean</span>            (<a class="link" href="pango-Text-Attributes.html#PangoAttrFilterFunc" title="PangoAttrFilterFunc ()">*PangoAttrFilterFunc</a>)              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attribute</code></em>,
                                                          <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);
-<a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="returnvalue">PangoAttrIterator</span></a> * <a class="link" href="pango-Text-Attributes.html#pango-attr-list-get-iterator" title="pango_attr_list_get_iterator ()">pango_attr_list_get_iterator</a>        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
+<a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="returnvalue">PangoAttrIterator</span></a> * <a class="link" href="pango-Text-Attributes.html#pango-attr-list-get-iterator" title="pango_attr_list_get_iterator ()">pango_attr_list_get_iterator</a>        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);
                     <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator">PangoAttrIterator</a>;
 <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="returnvalue">PangoAttrIterator</span></a> * <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-copy" title="pango_attr_iterator_copy ()">pango_attr_iterator_copy</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>);
 <span class="returnvalue">gboolean</span>            <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-next" title="pango_attr_iterator_next ()">pango_attr_iterator_next</a>            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>);
@@ -150,13 +152,32 @@ struct              <a class="link" href="pango-Text-Attributes.html#PangoColor"
                                                          <em class="parameter"><code><span class="type">gint</span> *start</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> *end</code></em>);
 <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-get" title="pango_attr_iterator_get ()">pango_attr_iterator_get</a>             (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-get-font" title="pango_attr_iterator_get_font ()">pango_attr_iterator_get_font</a>        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> **language</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> **language</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **extra_attrs</code></em>);
 <span class="returnvalue">GSList</span> *            <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-get-attrs" title="pango_attr_iterator_get_attrs ()">pango_attr_iterator_get_attrs</a>       (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-destroy" title="pango_attr_iterator_destroy ()">pango_attr_iterator_destroy</a>         (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="pango-Text-Attributes.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GEnum
+   +----PangoAttrType
+</pre>
+<pre class="synopsis">
+  GEnum
+   +----PangoUnderline
+</pre>
+<pre class="synopsis">
+  GBoxed
+   +----PangoColor
+</pre>
+<pre class="synopsis">
+  GBoxed
+   +----PangoAttrList
 </pre>
 </div>
 <div class="refsect1">
@@ -172,9 +193,8 @@ of attributes applied to a portion of text.
 <div class="refsect1">
 <a name="pango-Text-Attributes.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="PangoAttrType"></a><h3>enum PangoAttrType</h3>
-<pre class="programlisting">typedef enum
-{
+<a name="PangoAttrType-enum"></a><h3>enum PangoAttrType</h3>
+<pre class="programlisting">typedef enum {
   PANGO_ATTR_INVALID,           /* 0 is an invalid attribute type */
   PANGO_ATTR_LANGUAGE,		/* PangoAttrLanguage */
   PANGO_ATTR_FAMILY,		/* PangoAttrString */
@@ -201,7 +221,7 @@ of attributes applied to a portion of text.
 } PangoAttrType;
 </pre>
 <p>
-The <a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a>
+The <a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a>
 distinguishes between different types of attributes. Along with the
 predefined values, it is possible to allocate additional values
 for custom attributes using <a class="link" href="pango-Text-Attributes.html#pango-attr-type-register" title="pango_attr_type_register ()"><code class="function">pango_attr_type_register()</code></a>. The predefined
@@ -335,7 +355,7 @@ attribute is listed in parentheses after the description.
 <pre class="programlisting">#define PANGO_TYPE_ATTR_TYPE (pango_attr_type_get_type())
 </pre>
 <p>
-The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a>.
+The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a>.
 </p>
 </div>
 <hr>
@@ -358,24 +378,20 @@ provided for <a class="link" href="pango-Text-Attributes.html#PangoAttribute" ti
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a> <em class="structfield"><code><a name="PangoAttrClass.type"></a>type</code></em>;</span></p></td>
-<td>the type ID for this attribute
-</td>
+<td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a> <em class="structfield"><code><a name="PangoAttrClass.type"></a>type</code></em>;</span></p></td>
+<td>the type ID for this attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoAttrClass.copy"></a>copy</code></em> ()</span></p></td>
-<td>function to duplicate an attribute of this type (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-copy" title="pango_attribute_copy ()"><code class="function">pango_attribute_copy()</code></a>)
-</td>
+<td>function to duplicate an attribute of this type (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-copy" title="pango_attribute_copy ()"><code class="function">pango_attribute_copy()</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoAttrClass.destroy"></a>destroy</code></em> ()</span></p></td>
-<td>function to free an attribute of this type (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>)
-</td>
+<td>function to free an attribute of this type (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoAttrClass.equal"></a>equal</code></em> ()</span></p></td>
-<td>function to check two attributes of this type for equality (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-equal" title="pango_attribute_equal ()"><code class="function">pango_attribute_equal()</code></a>)
-</td>
+<td>function to check two attributes of this type for equality (see <a class="link" href="pango-Text-Attributes.html#pango-attribute-equal" title="pango_attribute_equal ()"><code class="function">pango_attribute_equal()</code></a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -402,19 +418,16 @@ By default an attribute will have an all-inclusive range of [0,<code class="lite
 <tbody>
 <tr>
 <td><p><span class="term">const <a class="link" href="pango-Text-Attributes.html#PangoAttrClass" title="struct PangoAttrClass"><span class="type">PangoAttrClass</span></a> *<em class="structfield"><code><a name="PangoAttribute.klass"></a>klass</code></em>;</span></p></td>
-<td>the class structure holding information about the type of the attribute
-</td>
+<td>the class structure holding information about the type of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoAttribute.start-index"></a>start_index</code></em>;</span></p></td>
-<td>the start index of the range (in bytes).
-</td>
+<td>the start index of the range (in bytes).</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoAttribute.end-index"></a>end_index</code></em>;</span></p></td>
 <td>end index of the range (in bytes). The character at this index
-	is not included in the range.
-</td>
+is not included in the range.</td>
 </tr>
 </tbody>
 </table></div>
@@ -456,13 +469,11 @@ a string value.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrString.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">char</span> *<em class="structfield"><code><a name="PangoAttrString.value"></a>value</code></em>;</span></p></td>
-<td>the string which is the value of the attribute
-</td>
+<td>the string which is the value of the attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -484,13 +495,11 @@ are languages.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrLanguage.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *<em class="structfield"><code><a name="PangoAttrLanguage.value"></a>value</code></em>;</span></p></td>
-<td>the <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> which is the value of the attribute
-</td>
+<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *<em class="structfield"><code><a name="PangoAttrLanguage.value"></a>value</code></em>;</span></p></td>
+<td>the <a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> which is the value of the attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -512,13 +521,11 @@ are colors.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrColor.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> <em class="structfield"><code><a name="PangoAttrColor.color"></a>color</code></em>;</span></p></td>
-<td>the <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> which is the value of the attribute
-</td>
+<td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> <em class="structfield"><code><a name="PangoAttrColor.color"></a>color</code></em>;</span></p></td>
+<td>the <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> which is the value of the attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -540,13 +547,11 @@ an integer or enumeration value.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrInt.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">int</span> <em class="structfield"><code><a name="PangoAttrInt.value"></a>value</code></em>;</span></p></td>
-<td>the value of the attribute
-</td>
+<td>the value of the attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -568,13 +573,11 @@ a float or double value.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrFloat.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">double</span> <em class="structfield"><code><a name="PangoAttrFloat.value"></a>value</code></em>;</span></p></td>
-<td>the value of the attribute
-</td>
+<td>the value of the attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -596,13 +599,11 @@ sets all aspects of the font description at once.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrFontDesc.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> *<em class="structfield"><code><a name="PangoAttrFontDesc.desc"></a>desc</code></em>;</span></p></td>
-<td>the font description which is the value of this attribute
-</td>
+<td><p><span class="term"><a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> *<em class="structfield"><code><a name="PangoAttrFontDesc.desc"></a>desc</code></em>;</span></p></td>
+<td>the font description which is the value of this attribute</td>
 </tr>
 </tbody>
 </table></div>
@@ -629,33 +630,27 @@ impose shape restrictions.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrShape.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Glyph-Storage.html#PangoRectangle" title="struct PangoRectangle"><span class="type">PangoRectangle</span></a> <em class="structfield"><code><a name="PangoAttrShape.ink-rect"></a>ink_rect</code></em>;</span></p></td>
-<td>the ink rectangle to restrict to
-</td>
+<td>the ink rectangle to restrict to</td>
 </tr>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Glyph-Storage.html#PangoRectangle" title="struct PangoRectangle"><span class="type">PangoRectangle</span></a> <em class="structfield"><code><a name="PangoAttrShape.logical-rect"></a>logical_rect</code></em>;</span></p></td>
-<td>the logical rectangle to restrict to
-</td>
+<td>the logical rectangle to restrict to</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">gpointer</span> <em class="structfield"><code><a name="PangoAttrShape.data"></a>data</code></em>;</span></p></td>
-<td>user data set (see <a class="link" href="pango-Text-Attributes.html#pango-attr-shape-new-with-data" title="pango_attr_shape_new_with_data ()"><code class="function">pango_attr_shape_new_with_data()</code></a>)
-</td>
+<td>user data set (see <a class="link" href="pango-Text-Attributes.html#pango-attr-shape-new-with-data" title="pango_attr_shape_new_with_data ()"><code class="function">pango_attr_shape_new_with_data()</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttrDataCopyFunc" title="PangoAttrDataCopyFunc ()"><span class="type">PangoAttrDataCopyFunc</span></a> <em class="structfield"><code><a name="PangoAttrShape.copy-func"></a>copy_func</code></em>;</span></p></td>
-<td>copy function for the user data
-</td>
+<td>copy function for the user data</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">GDestroyNotify</span> <em class="structfield"><code><a name="PangoAttrShape.destroy-func"></a>destroy_func</code></em>;</span></p></td>
-<td>destroy function for the user data
-</td>
+<td>destroy function for the user data</td>
 </tr>
 </tbody>
 </table></div>
@@ -678,22 +673,19 @@ set font size.
 <tbody>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> <em class="structfield"><code><a name="PangoAttrSize.attr"></a>attr</code></em>;</span></p></td>
-<td>the common portion of the attribute
-</td>
+<td>the common portion of the attribute</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">int</span> <em class="structfield"><code><a name="PangoAttrSize.size"></a>size</code></em>;</span></p></td>
 <td>size of font, in units of 1/<a class="link" href="pango-Glyph-Storage.html#PANGO-SCALE:CAPS" title="PANGO_SCALE"><code class="literal">PANGO_SCALE</code></a> of a point (for
-  <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-SIZE:CAPS"><code class="literal">PANGO_ATTR_SIZE</code></a>) or of a device uni (for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a>)
-</td>
+<a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-SIZE:CAPS"><code class="literal">PANGO_ATTR_SIZE</code></a>) or of a device uni (for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">guint</span> <em class="structfield"><code><a name="PangoAttrSize.absolute"></a>absolute</code></em> : 1;</span></p></td>
 <td>whether the font size is in device units or points.
-   This field is only present for compatibility with Pango-1.8.0
-   (<a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a> was added in 1.8.1); and always will
-   be <code class="literal">FALSE</code> for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-SIZE:CAPS"><code class="literal">PANGO_ATTR_SIZE</code></a> and <code class="literal">TRUE</code> for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a>.
-</td>
+This field is only present for compatibility with Pango-1.8.0
+(<a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a> was added in 1.8.1); and always will
+be <code class="literal">FALSE</code> for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-SIZE:CAPS"><code class="literal">PANGO_ATTR_SIZE</code></a> and <code class="literal">TRUE</code> for <a class="link" href="pango-Text-Attributes.html#PANGO-ATTR-ABSOLUTE-SIZE:CAPS"><code class="literal">PANGO_ATTR_ABSOLUTE_SIZE</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -704,13 +696,13 @@ set font size.
 <pre class="programlisting"><span class="returnvalue">gboolean</span>            pango_parse_markup                  (<em class="parameter"><code>const <span class="type">char</span> *markup_text</code></em>,
                                                          <em class="parameter"><code><span class="type">int</span> length</code></em>,
                                                          <em class="parameter"><code><span class="type">gunichar</span> accel_marker</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> **attr_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> **attr_list</code></em>,
                                                          <em class="parameter"><code><span class="type">char</span> **text</code></em>,
                                                          <em class="parameter"><code><span class="type">gunichar</span> *accel_char</code></em>,
                                                          <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
 <p>
 Parses marked-up text (see
-<a class="link" href="PangoMarkupFormat.html" title="Text Attribute Markup">markup format</a>) to create
+<a href="PangoMarkupFormat.html">markup format</a>) to create
 a plain-text string and an attribute list.
 </p>
 <p>
@@ -731,42 +723,40 @@ for <em class="parameter"><code>error</code></em>.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>markup_text</code></em> :</span></p></td>
-<td>markup to parse (see <a class="link" href="PangoMarkupFormat.html" title="Text Attribute Markup">markup format</a>)
-</td>
+<td>markup to parse (see <a href="PangoMarkupFormat.html">markup format</a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>length</code></em> :</span></p></td>
-<td>length of <em class="parameter"><code>markup_text</code></em>, or -1 if nul-terminated
-</td>
+<td>length of <em class="parameter"><code>markup_text</code></em>, or -1 if nul-terminated</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>accel_marker</code></em> :</span></p></td>
-<td>character that precedes an accelerator, or 0 for none
-</td>
+<td>character that precedes an accelerator, or 0 for none</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr_list</code></em> :</span></p></td>
-<td>address of return location for a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>address of return location for a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>address of return location for text with tags stripped, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>address of return location for text with tags stripped, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>accel_char</code></em> :</span></p></td>
-<td>address of return location for accelerator char, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>address of return location for accelerator char, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>address of return location for errors, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>address of return location for errors, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">FALSE</code> if <em class="parameter"><code>error</code></em> is set, otherwise <code class="literal">TRUE</code>
+<td>
+<code class="literal">FALSE</code> if <em class="parameter"><code>error</code></em> is set, otherwise <code class="literal">TRUE</code>
 </td>
 </tr>
 </tbody>
@@ -775,7 +765,7 @@ for <em class="parameter"><code>error</code></em>.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-type-register"></a><h3>pango_attr_type_register ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="returnvalue">PangoAttrType</span></a>       pango_attr_type_register            (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="returnvalue">PangoAttrType</span></a>       pango_attr_type_register            (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
 <p>
 Allocate a new attribute type ID.  The attribute type name can be accessed
 later by using <a class="link" href="pango-Text-Attributes.html#pango-attr-type-get-name" title="pango_attr_type_get_name ()"><code class="function">pango_attr_type_get_name()</code></a>.
@@ -785,13 +775,11 @@ later by using <a class="link" href="pango-Text-Attributes.html#pango-attr-type-
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>an identifier for the type
-</td>
+<td>an identifier for the type</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the new type ID.
-</td>
+<td>the new type ID.</td>
 </tr>
 </tbody>
 </table></div>
@@ -799,7 +787,7 @@ later by using <a class="link" href="pango-Text-Attributes.html#pango-attr-type-
 <hr>
 <div class="refsect2">
 <a name="pango-attr-type-get-name"></a><h3>pango_attr_type_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        pango_attr_type_get_name            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);</pre>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        pango_attr_type_get_name            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);</pre>
 <p>
 Fetches the attribute type name passed in when registering the type using
 <a class="link" href="pango-Text-Attributes.html#pango-attr-type-register" title="pango_attr_type_register ()"><code class="function">pango_attr_type_register()</code></a>.
@@ -813,15 +801,12 @@ that means) that should not be modified or freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
-<td>an attribute type ID to fetch the name for
-</td>
+<td>an attribute type ID to fetch the name for</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the type ID name (which may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>), or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>type</code></em> is
-a built-in Pango attribute type or invalid. 
-
-</td>
+<td>the type ID name (which may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>), or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>type</code></em> is
+a built-in Pango attribute type or invalid.</td>
 </tr>
 </tbody>
 </table></div>
@@ -873,9 +858,8 @@ Make a copy of an attribute.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -905,8 +889,8 @@ attributes apply to.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the two attributes have the same value.
-</td>
+<td>
+<code class="literal">TRUE</code> if the two attributes have the same value.</td>
 </tr>
 </tbody>
 </table></div>
@@ -922,15 +906,14 @@ Destroy a <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>.
-</td>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="pango-attr-language-new"></a><h3>pango_attr_language_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_language_new             (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_language_new             (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>);</pre>
 <p>
 Create a new language tag attribute.
 </p>
@@ -939,14 +922,12 @@ Create a new language tag attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>language tag
-</td>
+<td>language tag</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -963,14 +944,12 @@ Create a new font family attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>family</code></em> :</span></p></td>
-<td>the family or comma separated list of families
-</td>
+<td>the family or comma separated list of families</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -978,7 +957,7 @@ Create a new font family attribute.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-style-new"></a><h3>pango_attr_style_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_style_new                (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStyle" title="enum PangoStyle"><span class="type">PangoStyle</span></a> style</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_style_new                (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStyle"><span class="type">PangoStyle</span></a> style</code></em>);</pre>
 <p>
 Create a new font slant style attribute.
 </p>
@@ -987,14 +966,12 @@ Create a new font slant style attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>style</code></em> :</span></p></td>
-<td>the slant style
-</td>
+<td>the slant style</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1002,7 +979,7 @@ Create a new font slant style attribute.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-variant-new"></a><h3>pango_attr_variant_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_variant_new              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoVariant" title="enum PangoVariant"><span class="type">PangoVariant</span></a> variant</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_variant_new              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoVariant"><span class="type">PangoVariant</span></a> variant</code></em>);</pre>
 <p>
 Create a new font variant attribute (normal or small caps)
 </p>
@@ -1011,14 +988,12 @@ Create a new font variant attribute (normal or small caps)
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>variant</code></em> :</span></p></td>
-<td>the variant
-</td>
+<td>the variant</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1026,7 +1001,7 @@ Create a new font variant attribute (normal or small caps)
 <hr>
 <div class="refsect2">
 <a name="pango-attr-stretch-new"></a><h3>pango_attr_stretch_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_stretch_new              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStretch" title="enum PangoStretch"><span class="type">PangoStretch</span></a> stretch</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_stretch_new              (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoStretch"><span class="type">PangoStretch</span></a> stretch</code></em>);</pre>
 <p>
 Create a new font stretch attribute
 </p>
@@ -1035,14 +1010,12 @@ Create a new font stretch attribute
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>stretch</code></em> :</span></p></td>
-<td>the stretch
-</td>
+<td>the stretch</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1050,7 +1023,7 @@ Create a new font stretch attribute
 <hr>
 <div class="refsect2">
 <a name="pango-attr-weight-new"></a><h3>pango_attr_weight_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_weight_new               (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoWeight" title="enum PangoWeight"><span class="type">PangoWeight</span></a> weight</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_weight_new               (<em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoWeight"><span class="type">PangoWeight</span></a> weight</code></em>);</pre>
 <p>
 Create a new font weight attribute.
 </p>
@@ -1059,14 +1032,12 @@ Create a new font weight attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>weight</code></em> :</span></p></td>
-<td>the weight
-</td>
+<td>the weight</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1083,14 +1054,12 @@ Create a new font-size attribute in fractional points.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>size</code></em> :</span></p></td>
-<td>the font size, in <a class="link" href="pango-Glyph-Storage.html#PANGO-SCALE:CAPS" title="PANGO_SCALE"><code class="literal">PANGO_SCALE</code></a>ths of a point.
-</td>
+<td>the font size, in <a class="link" href="pango-Glyph-Storage.html#PANGO-SCALE:CAPS" title="PANGO_SCALE"><code class="literal">PANGO_SCALE</code></a>ths of a point.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1107,15 +1076,12 @@ Create a new font-size attribute in device units.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>size</code></em> :</span></p></td>
-<td>the font size, in <a class="link" href="pango-Glyph-Storage.html#PANGO-SCALE:CAPS" title="PANGO_SCALE"><code class="literal">PANGO_SCALE</code></a>ths of a device unit.
-</td>
+<td>the font size, in <a class="link" href="pango-Glyph-Storage.html#PANGO-SCALE:CAPS" title="PANGO_SCALE"><code class="literal">PANGO_SCALE</code></a>ths of a device unit.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1124,7 +1090,7 @@ Create a new font-size attribute in device units.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-font-desc-new"></a><h3>pango_attr_font_desc_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_font_desc_new            (<em class="parameter"><code>const <a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_font_desc_new            (<em class="parameter"><code>const <a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>);</pre>
 <p>
 Create a new font description attribute. This attribute
 allows setting family, style, weight, variant, stretch,
@@ -1135,14 +1101,12 @@ and size simultaneously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>the font description
-</td>
+<td>the font description</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>  the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1161,24 +1125,20 @@ Create a new foreground color attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>red</code></em> :</span></p></td>
-<td>the red value (ranging from 0 to 65535)
-</td>
+<td>the red value (ranging from 0 to 65535)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>green</code></em> :</span></p></td>
-<td>the green value
-</td>
+<td>the green value</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>blue</code></em> :</span></p></td>
-<td>the blue value
-</td>
+<td>the blue value</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1197,24 +1157,20 @@ Create a new background color attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>red</code></em> :</span></p></td>
-<td>the red value (ranging from 0 to 65535)
-</td>
+<td>the red value (ranging from 0 to 65535)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>green</code></em> :</span></p></td>
-<td>the green value
-</td>
+<td>the green value</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>blue</code></em> :</span></p></td>
-<td>the blue value
-</td>
+<td>the blue value</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1232,14 +1188,12 @@ Create a new strike-through attribute.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>strikethrough</code></em> :</span></p></td>
 <td>
-<code class="literal">TRUE</code> if the text should be struck-through.
-</td>
+<code class="literal">TRUE</code> if the text should be struck-through.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1260,25 +1214,20 @@ lines will use the foreground color.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>red</code></em> :</span></p></td>
-<td>the red value (ranging from 0 to 65535)
-</td>
+<td>the red value (ranging from 0 to 65535)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>green</code></em> :</span></p></td>
-<td>the green value
-</td>
+<td>the green value</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>blue</code></em> :</span></p></td>
-<td>the blue value
-</td>
+<td>the blue value</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1287,7 +1236,7 @@ lines will use the foreground color.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-underline-new"></a><h3>pango_attr_underline_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_underline_new            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoUnderline" title="enum PangoUnderline"><span class="type">PangoUnderline</span></a> underline</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_underline_new            (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoUnderline"><span class="type">PangoUnderline</span></a> underline</code></em>);</pre>
 <p>
 Create a new underline-style attribute.
 </p>
@@ -1296,14 +1245,12 @@ Create a new underline-style attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>underline</code></em> :</span></p></td>
-<td>the underline style.
-</td>
+<td>the underline style.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1324,25 +1271,20 @@ will use the foreground color.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>red</code></em> :</span></p></td>
-<td>the red value (ranging from 0 to 65535)
-</td>
+<td>the red value (ranging from 0 to 65535)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>green</code></em> :</span></p></td>
-<td>the green value
-</td>
+<td>the green value</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>blue</code></em> :</span></p></td>
-<td>the blue value
-</td>
+<td>the blue value</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1350,7 +1292,7 @@ will use the foreground color.
 </div>
 <hr>
 <div class="refsect2">
-<a name="PangoUnderline"></a><h3>enum PangoUnderline</h3>
+<a name="PangoUnderline-enum"></a><h3>enum PangoUnderline</h3>
 <pre class="programlisting">typedef enum {
   PANGO_UNDERLINE_NONE,
   PANGO_UNDERLINE_SINGLE,
@@ -1360,7 +1302,7 @@ will use the foreground color.
 } PangoUnderline;
 </pre>
 <p>
-the <a class="link" href="pango-Text-Attributes.html#PangoUnderline" title="enum PangoUnderline"><span class="type">PangoUnderline</span></a> enumeration is used to specify
+the <a class="link" href="pango-Text-Attributes.html#PangoUnderline"><span class="type">PangoUnderline</span></a> enumeration is used to specify
 whether text should be underlined, and if so, the type
 of underlining.
 </p>
@@ -1411,7 +1353,7 @@ of underlining.
 <pre class="programlisting">#define PANGO_TYPE_UNDERLINE (pango_underline_get_type())
 </pre>
 <p>
-The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoUnderline" title="enum PangoUnderline"><span class="type">PangoUnderline</span></a>.
+The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoUnderline"><span class="type">PangoUnderline</span></a>.
 </p>
 </div>
 <hr>
@@ -1430,19 +1372,16 @@ embedding a picture or a widget inside a <a class="link" href="pango-Layout-Obje
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ink_rect</code></em> :</span></p></td>
-<td>ink rectangle to assign to each character
-</td>
+<td>ink rectangle to assign to each character</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>logical_rect</code></em> :</span></p></td>
-<td>logical rectangle to assign to each character
-</td>
+<td>logical rectangle to assign to each character</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1465,38 +1404,33 @@ rendering the glyph.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>ink_rect</code></em> :</span></p></td>
-<td>ink rectangle to assign to each character
-</td>
+<td>ink rectangle to assign to each character</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>logical_rect</code></em> :</span></p></td>
-<td>logical rectangle to assign to each character
-</td>
+<td>logical rectangle to assign to each character</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
-<td>user data pointer
-</td>
+<td>user data pointer</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>copy_func</code></em> :</span></p></td>
-<td>function to copy <em class="parameter"><code>data</code></em> when the attribute
-               is copied. If <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>, <em class="parameter"><code>data</code></em> is simply copied
-               as a pointer.
+<td>function to copy <em class="parameter"><code>data</code></em> when the
+attribute is copied. If <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>, <em class="parameter"><code>data</code></em> is simply
+copied as a pointer. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>destroy_func</code></em> :</span></p></td>
-<td>function to free <em class="parameter"><code>data</code></em> when the attribute
-               is freed, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>function to free <em class="parameter"><code>data</code></em> when the
+attribute is freed, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1515,13 +1449,11 @@ user data.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
-<td>the user data
-</td>
+<td>the user data</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>a new copy of <em class="parameter"><code>data</code></em>.
-</td>
+<td>a new copy of <em class="parameter"><code>data</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1539,14 +1471,12 @@ affected text will have its size multiplied by <em class="parameter"><code>scale
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>scale_factor</code></em> :</span></p></td>
-<td>factor to scale the font
-</td>
+<td>factor to scale the font</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1627,14 +1557,12 @@ Create a new baseline displacement attribute.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rise</code></em> :</span></p></td>
 <td>the amount that the text should be displaced vertically,
-       in Pango units. Positive values displace the text upwards.
-</td>
+in Pango units. Positive values displace the text upwards.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1652,15 +1580,12 @@ Create a new letter-spacing attribute.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>letter_spacing</code></em> :</span></p></td>
 <td>amount of extra space to add between graphemes
-  of the text, in Pango units.
-</td>
+of the text, in Pango units.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1686,15 +1611,12 @@ text.
 <td><p><span class="term"><em class="parameter"><code>enable_fallback</code></em> :</span></p></td>
 <td>
 <code class="literal">TRUE</code> if we should fall back on other fonts
-                  for characters the active font is missing.
-</td>
+for characters the active font is missing.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1703,7 +1625,7 @@ text.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-gravity-new"></a><h3>pango_attr_gravity_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_gravity_new              (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_gravity_new              (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);</pre>
 <p>
 Create a new gravity attribute.
 </p>
@@ -1712,15 +1634,12 @@ Create a new gravity attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>gravity</code></em> :</span></p></td>
-<td>the gravity value; should not be <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>.
-</td>
+<td>the gravity value; should not be <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1729,7 +1648,7 @@ Create a new gravity attribute.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-gravity-hint-new"></a><h3>pango_attr_gravity_hint_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_gravity_hint_new         (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_gravity_hint_new         (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
 <p>
 Create a new gravity hint attribute.
 </p>
@@ -1738,15 +1657,12 @@ Create a new gravity hint attribute.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hint</code></em> :</span></p></td>
-<td>the gravity hint value.
-</td>
+<td>the gravity hint value.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
-              freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.
-
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a>, which should be
+freed with <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1754,7 +1670,7 @@ Create a new gravity hint attribute.
 </div>
 <hr>
 <div class="refsect2">
-<a name="PangoColor"></a><h3>struct PangoColor</h3>
+<a name="PangoColor-struct"></a><h3>struct PangoColor</h3>
 <pre class="programlisting">struct PangoColor {
   guint16 red;
   guint16 green;
@@ -1762,32 +1678,9 @@ Create a new gravity hint attribute.
 };
 </pre>
 <p>
-The <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> structure is used to
+The <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> structure is used to
 represent a color in an uncalibrated RGB color-space.
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><span class="type">guint16</span> <em class="structfield"><code><a name="PangoColor.red"></a>red</code></em>;</span></p></td>
-<td>The red component of the color. This is a value between 0 and 65535, 
-      with 65535 indicating full intensity.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="type">guint16</span> <em class="structfield"><code><a name="PangoColor.green"></a>green</code></em>;</span></p></td>
-<td>The green component of the color. This is a value between 0 and 65535, 
-      with 65535 indicating full intensity.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="type">guint16</span> <em class="structfield"><code><a name="PangoColor.blue"></a>blue</code></em>;</span></p></td>
-<td>The blue component of the color. This is a value between 0 and 65535, 
-      with 65535 indicating full intensity.
-</td>
-</tr>
-</tbody>
-</table></div>
 </div>
 <hr>
 <div class="refsect2">
@@ -1795,13 +1688,13 @@ represent a color in an uncalibrated RGB color-space.
 <pre class="programlisting">#define PANGO_TYPE_COLOR pango_color_get_type ()
 </pre>
 <p>
-The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a>.
+The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a>.
 </p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="pango-color-parse"></a><h3>pango_color_parse ()</h3>
-<pre class="programlisting"><span class="returnvalue">gboolean</span>            pango_color_parse                   (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>,
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            pango_color_parse                   (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *spec</code></em>);</pre>
 <p>
 Fill in the fields of a color from a string specification. The
@@ -1817,19 +1710,18 @@ forms is '#fff' '#ffffff' '#fffffffff' and '#ffffffffffff')
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>color</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> structure in which to store the result, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> structure in which to store the result, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>spec</code></em> :</span></p></td>
-<td>a string specifying the new color
-</td>
+<td>a string specifying the new color</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if parsing of the specifier succeeded,
-  otherwise false.
-</td>
+<td>
+<code class="literal">TRUE</code> if parsing of the specifier succeeded,
+otherwise false.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1837,7 +1729,7 @@ forms is '#fff' '#ffffff' '#fffffffff' and '#ffffffffffff')
 <hr>
 <div class="refsect2">
 <a name="pango-color-copy"></a><h3>pango_color_copy ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="returnvalue">PangoColor</span></a> *        pango_color_copy                    (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *src</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="returnvalue">PangoColor</span></a> *        pango_color_copy                    (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *src</code></em>);</pre>
 <p>
 Creates a copy of <em class="parameter"><code>src</code></em>, which should be freed with
 <a class="link" href="pango-Text-Attributes.html#pango-color-free" title="pango_color_free ()"><code class="function">pango_color_free()</code></a>. Primarily used by language bindings,
@@ -1849,15 +1741,14 @@ by assignment in C).
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>src</code></em> :</span></p></td>
-<td>color to copy, may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>color to copy, may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a>, which should
-              be freed with <a class="link" href="pango-Text-Attributes.html#pango-color-free" title="pango_color_free ()"><code class="function">pango_color_free()</code></a>, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
-              if <em class="parameter"><code>src</code></em> was <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a>, which should
+be freed with <a class="link" href="pango-Text-Attributes.html#pango-color-free" title="pango_color_free ()"><code class="function">pango_color_free()</code></a>, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+if <em class="parameter"><code>src</code></em> was <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1865,7 +1756,7 @@ by assignment in C).
 <hr>
 <div class="refsect2">
 <a name="pango-color-free"></a><h3>pango_color_free ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_color_free                    (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_color_free                    (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);</pre>
 <p>
 Frees a color allocated by <a class="link" href="pango-Text-Attributes.html#pango-color-copy" title="pango_color_copy ()"><code class="function">pango_color_copy()</code></a>.
 </p>
@@ -1873,7 +1764,7 @@ Frees a color allocated by <a class="link" href="pango-Text-Attributes.html#pang
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>color</code></em> :</span></p></td>
-<td>an allocated <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a>, may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>an allocated <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a>, may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr></tbody>
 </table></div>
@@ -1881,7 +1772,7 @@ Frees a color allocated by <a class="link" href="pango-Text-Attributes.html#pang
 <hr>
 <div class="refsect2">
 <a name="pango-color-to-string"></a><h3>pango_color_to_string ()</h3>
-<pre class="programlisting"><span class="returnvalue">gchar</span> *             pango_color_to_string               (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             pango_color_to_string               (<em class="parameter"><code>const <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a> *color</code></em>);</pre>
 <p>
 Returns a textual specification of <em class="parameter"><code>color</code></em> in the hexadecimal form
 <code class="literal">#rrrrggggbbbb</code>, where <code class="literal">r</code>,
@@ -1893,14 +1784,12 @@ the red, green, and blue components respectively.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>color</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoColor" title="struct PangoColor"><span class="type">PangoColor</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoColor"><span class="type">PangoColor</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a newly-allocated text string that must be freed with <code class="function">g_free()</code>.
-
-</td>
+<td>a newly-allocated text string that must be freed with <code class="function">g_free()</code>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1908,19 +1797,19 @@ the red, green, and blue components respectively.
 </div>
 <hr>
 <div class="refsect2">
-<a name="PangoAttrList"></a><h3>PangoAttrList</h3>
+<a name="PangoAttrList-struct"></a><h3>PangoAttrList</h3>
 <pre class="programlisting">typedef struct _PangoAttrList PangoAttrList;</pre>
 <p>
-The <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> structure represents a list of attributes
+The <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> structure represents a list of attributes
 that apply to a section of text. The attributes are, in general,
 allowed to overlap in an arbitrary fashion, however, if the
 attributes are manipulated only through <a class="link" href="pango-Text-Attributes.html#pango-attr-list-change" title="pango_attr_list_change ()"><code class="function">pango_attr_list_change()</code></a>,
 the overlap between properties will meet stricter criteria.
 </p>
 <p>
-Since the <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> structure is stored as a linear list,
+Since the <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> structure is stored as a linear list,
 it is not suitable for storing attributes for large amounts
-of text. In general, you should not use a single <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+of text. In general, you should not use a single <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 for more than one paragraph of text.
 </p>
 </div>
@@ -1930,13 +1819,13 @@ for more than one paragraph of text.
 <pre class="programlisting">#define PANGO_TYPE_ATTR_LIST pango_attr_list_get_type ()
 </pre>
 <p>
-The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>.
+The <span class="type">GObject</span> type for <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>.
 </p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-new"></a><h3>pango_attr_list_new ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_new                 (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_new                 (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
 Create a new empty attribute list with a reference count of one.
 </p>
@@ -1944,16 +1833,15 @@ Create a new empty attribute list with a reference count of one.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, which should
-              be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()"><code class="function">pango_attr_list_unref()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, which should
+be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()"><code class="function">pango_attr_list_unref()</code></a>.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-ref"></a><h3>pango_attr_list_ref ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_ref                 (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_ref                 (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
 <p>
 Increase the reference count of the given attribute list by one.
 </p>
@@ -1962,14 +1850,12 @@ Increase the reference count of the given attribute list by one.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The attribute list passed in
-
-</td>
+<td>The attribute list passed in</td>
 </tr>
 </tbody>
 </table></div>
@@ -1978,7 +1864,7 @@ Increase the reference count of the given attribute list by one.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-unref"></a><h3>pango_attr_list_unref ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_unref               (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_unref               (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
 <p>
 Decrease the reference count of the given attribute list by one.
 If the result is zero, free the attribute list and the attributes
@@ -1988,7 +1874,7 @@ it contains.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr></tbody>
 </table></div>
@@ -1996,7 +1882,7 @@ it contains.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-copy"></a><h3>pango_attr_list_copy ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_copy                (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_copy                (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
 <p>
 Copy <em class="parameter"><code>list</code></em> and return an identical new list.
 </p>
@@ -2005,16 +1891,15 @@ Copy <em class="parameter"><code>list</code></em> and return an identical new li
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, may be <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>, with a
-              reference count of one, which should
-              be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()"><code class="function">pango_attr_list_unref()</code></a>.
-              Returns <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>list</code></em> was <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>, with a
+reference count of one, which should
+be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-list-unref" title="pango_attr_list_unref ()"><code class="function">pango_attr_list_unref()</code></a>.
+Returns <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>list</code></em> was <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2022,10 +1907,10 @@ Copy <em class="parameter"><code>list</code></em> and return an identical new li
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-insert"></a><h3>pango_attr_list_insert ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_insert              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_insert              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);</pre>
 <p>
-Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
+Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
 be inserted after all other attributes with a matching
 <em class="parameter"><code>start_index</code></em>.
 </p>
@@ -2034,14 +1919,13 @@ be inserted after all other attributes with a matching
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
 <td>the attribute to insert. Ownership of this value is
-       assumed by the list.
-</td>
+assumed by the list.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2049,10 +1933,10 @@ be inserted after all other attributes with a matching
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-insert-before"></a><h3>pango_attr_list_insert_before ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_insert_before       (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_insert_before       (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);</pre>
 <p>
-Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
+Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
 be inserted before all other attributes with a matching
 <em class="parameter"><code>start_index</code></em>.
 </p>
@@ -2061,14 +1945,13 @@ be inserted before all other attributes with a matching
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
 <td>the attribute to insert. Ownership of this value is
-       assumed by the list.
-</td>
+assumed by the list.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2076,10 +1959,10 @@ be inserted before all other attributes with a matching
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-change"></a><h3>pango_attr_list_change ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_change              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_change              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="type">PangoAttribute</span></a> *attr</code></em>);</pre>
 <p>
-Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
+Insert the given attribute into the <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>. It will
 replace any attributes of the same type on that segment
 and be merged with any adjoining attributes that are identical.
 </p>
@@ -2095,14 +1978,13 @@ since it never removes or combines existing attributes.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
 <td>the attribute to insert. Ownership of this value is
-       assumed by the list.
-</td>
+assumed by the list.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2110,8 +1992,8 @@ since it never removes or combines existing attributes.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-splice"></a><h3>pango_attr_list_splice ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_splice              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *other</code></em>,
+<pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_list_splice              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *other</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> pos</code></em>,
                                                          <em class="parameter"><code><span class="type">gint</span> len</code></em>);</pre>
 <p>
@@ -2133,12 +2015,12 @@ a pre-edit string in the middle of an edit buffer.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>other</code></em> :</span></p></td>
-<td>another <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>another <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
@@ -2149,9 +2031,8 @@ a pre-edit string in the middle of an edit buffer.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>len</code></em> :</span></p></td>
 <td>the length of the spliced segment. (Note that this
-      must be specified since the attributes in <em class="parameter"><code>other</code></em>
-      may only be present at some subsection of this range)
-</td>
+must be specified since the attributes in <em class="parameter"><code>other</code></em>
+may only be present at some subsection of this range)</td>
 </tr>
 </tbody>
 </table></div>
@@ -2159,11 +2040,11 @@ a pre-edit string in the middle of an edit buffer.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-filter"></a><h3>pango_attr_list_filter ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_filter              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="returnvalue">PangoAttrList</span></a> *     pango_attr_list_filter              (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrFilterFunc" title="PangoAttrFilterFunc ()"><span class="type">PangoAttrFilterFunc</span></a> func</code></em>,
                                                          <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
 <p>
-Given a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> and callback function, removes any elements
+Given a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> and callback function, removes any elements
 of <em class="parameter"><code>list</code></em> for which <em class="parameter"><code>func</code></em> returns <code class="literal">TRUE</code> and inserts them into
 a new list.
 </p>
@@ -2172,25 +2053,24 @@ a new list.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>func</code></em> :</span></p></td>
-<td>callback function; returns <code class="literal">TRUE</code> if an attribute
-       should be filtered out.
+<td>callback function; returns <code class="literal">TRUE</code>
+if an attribute should be filtered out. <span class="annotation">[<acronym title="The callback is valid only during the call to the method."><span class="acronym">scope call</span></acronym>][<acronym title="This parameter is a 'user_data', for callbacks; many bindings can pass NULL here."><span class="acronym">closure</span></acronym> data]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
-<td>Data to be passed to <em class="parameter"><code>func</code></em>
+<td>Data to be passed to <em class="parameter"><code>func</code></em>. <span class="annotation">[<acronym title="This parameter is a 'user_data', for callbacks; many bindings can pass NULL here."><span class="acronym">closure</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the new <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if
- no attributes of the given types were found.
-
+<td>the new <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if
+no attributes of the given types were found. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -2222,8 +2102,7 @@ to filter out a subset of attributes for a list.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">TRUE</code> if the attribute should be filtered out
-</td>
+<code class="literal">TRUE</code> if the attribute should be filtered out</td>
 </tr>
 </tbody>
 </table></div>
@@ -2231,7 +2110,7 @@ to filter out a subset of attributes for a list.
 <hr>
 <div class="refsect2">
 <a name="pango-attr-list-get-iterator"></a><h3>pango_attr_list_get_iterator ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="returnvalue">PangoAttrIterator</span></a> * pango_attr_list_get_iterator        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="returnvalue">PangoAttrIterator</span></a> * pango_attr_list_get_iterator        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> *list</code></em>);</pre>
 <p>
 Create a iterator initialized to the beginning of the list.
 <em class="parameter"><code>list</code></em> must not be modified until this iterator is freed.
@@ -2241,14 +2120,13 @@ Create a iterator initialized to the beginning of the list.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>list</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>, which should
-              be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-destroy" title="pango_attr_iterator_destroy ()"><code class="function">pango_attr_iterator_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>, which should
+be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-destroy" title="pango_attr_iterator_destroy ()"><code class="function">pango_attr_iterator_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2259,7 +2137,7 @@ Create a iterator initialized to the beginning of the list.
 <pre class="programlisting">typedef struct _PangoAttrIterator PangoAttrIterator;</pre>
 <p>
 The <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> structure is used to represent an
-iterator through a <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a>. A new iterator is created
+iterator through a <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a>. A new iterator is created
 with <a class="link" href="pango-Text-Attributes.html#pango-attr-list-get-iterator" title="pango_attr_list_get_iterator ()"><code class="function">pango_attr_list_get_iterator()</code></a>. Once the iterator
 is created, it can be advanced through the style changes
 in the text using <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-next" title="pango_attr_iterator_next ()"><code class="function">pango_attr_iterator_next()</code></a>. At each
@@ -2279,14 +2157,12 @@ Copy a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>iterator</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>.
-</td>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>, which should
-              be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-destroy" title="pango_attr_iterator_destroy ()"><code class="function">pango_attr_iterator_destroy()</code></a>.
-</td>
+<td>the newly allocated <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>, which should
+be freed with <a class="link" href="pango-Text-Attributes.html#pango-attr-iterator-destroy" title="pango_attr_iterator_destroy ()"><code class="function">pango_attr_iterator_destroy()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2308,7 +2184,8 @@ Advance the iterator until the next change of style.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">FALSE</code> if the iterator is at the end of the list, otherwise <code class="literal">TRUE</code>
+<td>
+<code class="literal">FALSE</code> if the iterator is at the end of the list, otherwise <code class="literal">TRUE</code>
 </td>
 </tr>
 </tbody>
@@ -2337,13 +2214,11 @@ a signed integer are clamped to <code class="literal">G_MAXINT</code>.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>start</code></em> :</span></p></td>
-<td>location to store the start of the range
-</td>
+<td>location to store the start of the range</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>end</code></em> :</span></p></td>
-<td>location to store the end of the range
-</td>
+<td>location to store the end of the range</td>
 </tr>
 </tbody>
 </table></div>
@@ -2352,7 +2227,7 @@ a signed integer are clamped to <code class="literal">G_MAXINT</code>.
 <div class="refsect2">
 <a name="pango-attr-iterator-get"></a><h3>pango_attr_iterator_get ()</h3>
 <pre class="programlisting"><a class="link" href="pango-Text-Attributes.html#PangoAttribute" title="struct PangoAttribute"><span class="returnvalue">PangoAttribute</span></a> *    pango_attr_iterator_get             (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType" title="enum PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrType"><span class="type">PangoAttrType</span></a> type</code></em>);</pre>
 <p>
 Find the current attribute of a particular type at the iterator
 location. When multiple attributes of the same type overlap,
@@ -2369,15 +2244,13 @@ is used.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
-<td>the type of attribute to find.
-</td>
+<td>the type of attribute to find.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the current attribute of the given type, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
-              if no attribute of that type applies to the current
-              location.
-</td>
+<td>the current attribute of the given type, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+if no attribute of that type applies to the current
+location.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2386,8 +2259,8 @@ is used.
 <div class="refsect2">
 <a name="pango-attr-iterator-get-font"></a><h3>pango_attr_iterator_get_font ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_attr_iterator_get_font        (<em class="parameter"><code><a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a> *iterator</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> **language</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> *desc</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> **language</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **extra_attrs</code></em>);</pre>
 <p>
 Get the font and other attributes at the current iterator position.
@@ -2402,28 +2275,27 @@ Get the font and other attributes at the current iterator position.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>desc</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Fonts.html#PangoFontDescription" title="PangoFontDescription"><span class="type">PangoFontDescription</span></a> to fill in with the current values.
-       The family name in this structure will be set using
-       <a class="link" href="pango-Fonts.html#pango-font-description-set-family-static" title="pango_font_description_set_family_static ()"><code class="function">pango_font_description_set_family_static()</code></a> using values from
-       an attribute in the <a class="link" href="pango-Text-Attributes.html#PangoAttrList" title="PangoAttrList"><span class="type">PangoAttrList</span></a> associated with the iterator,
-       so if you plan to keep it around, you must call:
-       <code class="literal">pango_font_description_set_family (desc, pango_font_description_get_family (desc))</code>.
-</td>
+<td>a <a class="link" href="pango-Fonts.html#PangoFontDescription"><span class="type">PangoFontDescription</span></a> to fill in with the current values.
+The family name in this structure will be set using
+<a class="link" href="pango-Fonts.html#pango-font-description-set-family-static" title="pango_font_description_set_family_static ()"><code class="function">pango_font_description_set_family_static()</code></a> using values from
+an attribute in the <a class="link" href="pango-Text-Attributes.html#PangoAttrList"><span class="type">PangoAttrList</span></a> associated with the iterator,
+so if you plan to keep it around, you must call:
+<code class="literal">pango_font_description_set_family (desc, pango_font_description_get_family (desc))</code>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>if non-<a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>, location to store language tag for item, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
-           if none is found.
+<td>if non-<a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>, location to store language tag for item, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+if none is found. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>extra_attrs</code></em> :</span></p></td>
-<td> (transfer full): if non-<a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>,
-          location in which to store a list of non-font
-          attributes at the the current position; only the highest priority
-          value of each attribute will be added to this list. In order
-          to free this value, you must call <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a> on
-          each member. <span class="annotation">[element type Pango.Attribute]</span>
+<td>if non-<a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>,
+location in which to store a list of non-font
+attributes at the the current position; only the highest priority
+value of each attribute will be added to this list. In order
+to free this value, you must call <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a> on
+each member. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Pango.Attribute][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -2447,10 +2319,10 @@ iterator.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> (transfer full): a list of
-  all attributes for the current range.
-  To free this value, call <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a> on
-  each value and <code class="function">g_slist_free()</code> on the list. <span class="annotation">[<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> Pango.Attribute]</span>
+<td>a list of
+all attributes for the current range.
+To free this value, call <a class="link" href="pango-Text-Attributes.html#pango-attribute-destroy" title="pango_attribute_destroy ()"><code class="function">pango_attribute_destroy()</code></a> on
+each value and <code class="function">g_slist_free()</code> on the list. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Pango.Attribute][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -2468,8 +2340,7 @@ Destroy a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" ti
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>iterator</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>.
-</td>
+<td>a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" title="PangoAttrIterator"><span class="type">PangoAttrIterator</span></a>.</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -2477,6 +2348,6 @@ Destroy a <a class="link" href="pango-Text-Attributes.html#PangoAttrIterator" ti
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

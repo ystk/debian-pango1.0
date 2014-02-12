@@ -91,18 +91,9 @@ pango_glyph_string_set_size (PangoGlyphString *string, gint new_len)
   string->num_glyphs = new_len;
 }
 
-GType
-pango_glyph_string_get_type (void)
-{
-  static GType our_type = 0;
-
-  if (G_UNLIKELY (our_type == 0))
-    our_type = g_boxed_type_register_static (I_("PangoGlyphString"),
-					     (GBoxedCopyFunc)pango_glyph_string_copy,
-					     (GBoxedFreeFunc)pango_glyph_string_free);
-
-  return our_type;
-}
+G_DEFINE_BOXED_TYPE (PangoGlyphString, pango_glyph_string,
+                     pango_glyph_string_copy,
+                     pango_glyph_string_free);
 
 /**
  * pango_glyph_string_copy:
@@ -270,10 +261,10 @@ pango_glyph_string_extents_range (PangoGlyphString *glyphs,
  * pango_glyph_string_extents:
  * @glyphs:   a #PangoGlyphString
  * @font:     a #PangoFont
- * @ink_rect: rectangle used to store the extents of the glyph string as drawn
- *            or %NULL to indicate that the result is not needed.
- * @logical_rect: rectangle used to store the logical extents of the glyph string
- *            or %NULL to indicate that the result is not needed.
+ * @ink_rect: (out) (allow-none): rectangle used to store the extents of the glyph string
+ *            as drawn or %NULL to indicate that the result is not needed.
+ * @logical_rect: (out) (allow-none): rectangle used to store the logical extents of the
+ *            glyph string or %NULL to indicate that the result is not needed.
  *
  * Compute the logical and ink extents of a glyph string. See the documentation
  * for pango_font_get_glyph_extents() for details about the interpretation

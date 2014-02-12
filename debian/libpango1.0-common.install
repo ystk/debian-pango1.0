@@ -1,4 +1,0 @@
-# from Debian
-debian/defoma/pango.conf etc/defoma/config
-debian/pango.defoma usr/share/defoma/scripts
-debian/update-pangox-aliases usr/sbin

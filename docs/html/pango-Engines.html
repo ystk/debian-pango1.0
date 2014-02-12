@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Engines</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="lowlevel.html" title="Low Level Functionality">
 <link rel="prev" href="pango-Coverage-Maps.html" title="Coverage Maps">
 <link rel="next" href="PangoEngineLang.html" title="PangoEngineLang">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -101,28 +101,23 @@ engine. It contains the following fields:
 <tbody>
 <tr>
 <td><p><span class="term">const <span class="type">gchar</span> *<em class="structfield"><code><a name="PangoEngineInfo.id"></a>id</code></em>;</span></p></td>
-<td>a unique string ID for the engine.
-</td>
+<td>a unique string ID for the engine.</td>
 </tr>
 <tr>
 <td><p><span class="term">const <span class="type">gchar</span> *<em class="structfield"><code><a name="PangoEngineInfo.engine-type"></a>engine_type</code></em>;</span></p></td>
-<td>a string identifying the engine type.
-</td>
+<td>a string identifying the engine type.</td>
 </tr>
 <tr>
 <td><p><span class="term">const <span class="type">gchar</span> *<em class="structfield"><code><a name="PangoEngineInfo.render-type"></a>render_type</code></em>;</span></p></td>
-<td>a string identifying the render type.
-</td>
+<td>a string identifying the render type.</td>
 </tr>
 <tr>
 <td><p><span class="term"><a class="link" href="pango-Engines.html#PangoEngineScriptInfo" title="struct PangoEngineScriptInfo"><span class="type">PangoEngineScriptInfo</span></a> *<em class="structfield"><code><a name="PangoEngineInfo.scripts"></a>scripts</code></em>;</span></p></td>
-<td>array of scripts this engine supports.
-</td>
+<td>array of scripts this engine supports.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">gint</span> <em class="structfield"><code><a name="PangoEngineInfo.n-scripts"></a>n_scripts</code></em>;</span></p></td>
-<td>number of items in <em class="parameter"><code>scripts</code></em>.
-</td>
+<td>number of items in <em class="parameter"><code>scripts</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -144,23 +139,21 @@ script.
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> <em class="structfield"><code><a name="PangoEngineScriptInfo.script"></a>script</code></em>;</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>. The value <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-COMMON:CAPS"><code class="literal">PANGO_SCRIPT_COMMON</code></a> has
-        the special meaning here of "all scripts"
-</td>
+<td><p><span class="term"><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> <em class="structfield"><code><a name="PangoEngineScriptInfo.script"></a>script</code></em>;</span></p></td>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>. The value <a class="link" href="pango-Scripts-and-Languages.html#PANGO-SCRIPT-COMMON:CAPS"><code class="literal">PANGO_SCRIPT_COMMON</code></a> has
+the special meaning here of "all scripts"</td>
 </tr>
 <tr>
 <td><p><span class="term">const <span class="type">gchar</span> *<em class="structfield"><code><a name="PangoEngineScriptInfo.langs"></a>langs</code></em>;</span></p></td>
 <td>a semicolon separated list of languages that this
-        engine handles for this script. This may be empty,
-        in which case the engine is saying that it is a
-        fallback choice for all languages for this range,
-        but should not be used if another engine
-        indicates that it is specific for the language for
-        a given code point. An entry in this list of "*"
-        indicates that this engine is specific to all
-        languages for this range.
-</td>
+engine handles for this script. This may be empty,
+in which case the engine is saying that it is a
+fallback choice for all languages for this range,
+but should not be used if another engine
+indicates that it is specific for the language for
+a given code point. An entry in this list of "*"
+indicates that this engine is specific to all
+languages for this range.</td>
 </tr>
 </tbody>
 </table></div>
@@ -215,13 +208,11 @@ function.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engines</code></em> :</span></p></td>
-<td>location to store a pointer to an array of engines.
-</td>
+<td>location to store a pointer to an array of engines.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_engines</code></em> :</span></p></td>
-<td>location to store the number of elements in <em class="parameter"><code>engines</code></em>.
-</td>
+<td>location to store the number of elements in <em class="parameter"><code>engines</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -239,8 +230,7 @@ GObject types in the module.
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>module</code></em> :</span></p></td>
 <td>a <span class="type">GTypeModule</span> structure used to associate any
- GObject types created in this module with the module.
-</td>
+GObject types created in this module with the module.</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -266,17 +256,15 @@ of one of the engines implemented by the module.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
-<td>the ID of an engine as reported by script_engine_list.
-</td>
+<td>the ID of an engine as reported by script_engine_list.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a newly created <a class="link" href="pango-Engines.html#PangoEngine"><span class="type">PangoEngine</span></a> of the specified
- type, or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if an error occurred. (In normal operation,
- a module should not return <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. A <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> return is only
- acceptable in the case where system misconfiguration or
- bugs in the driver routine are encountered.)
-</td>
+<td>a newly created <a class="link" href="pango-Engines.html#PangoEngine"><span class="type">PangoEngine</span></a> of the specified
+type, or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if an error occurred. (In normal operation,
+a module should not return <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. A <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> return is only
+acceptable in the case where system misconfiguration or
+bugs in the driver routine are encountered.)</td>
 </tr>
 </tbody>
 </table></div>
@@ -285,6 +273,6 @@ of one of the engines implemented by the module.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
-Index: pango1.0-1.28.1/pango/modules.c
+Index: pango-1.30.0/pango/modules.c
 ===================================================================
---- pango1.0-1.28.1.orig/pango/modules.c	2010-06-15 18:09:21.255815917 +0200
-+++ pango1.0-1.28.1/pango/modules.c	2010-06-15 18:09:31.287811515 +0200
+--- pango-1.30.0.orig/pango/modules.c	2012-03-31 21:43:35.406085813 +0200
++++ pango-1.30.0/pango/modules.c	2012-03-31 21:46:56.234078708 +0200
 @@ -40,6 +40,9 @@
  #define PANGO_MODULE(module) (G_TYPE_CHECK_INSTANCE_CAST ((module), PANGO_TYPE_MODULE, PangoModule))
  #define PANGO_IS_MODULE(module)  (G_TYPE_CHECK_INSTANCE_TYPE ((module), PANGO_TYPE_MODULE))
@@ -12,7 +12,7 @@ Index: pango1.0-1.28.1/pango/modules.c
  typedef struct _PangoMapInfo PangoMapInfo;
  typedef struct _PangoEnginePair PangoEnginePair;
  typedef struct _PangoSubmap PangoSubmap;
-@@ -540,11 +543,36 @@
+@@ -545,13 +548,40 @@
  
    while (n-- > 0)
      {
@@ -32,7 +32,9 @@ Index: pango1.0-1.28.1/pango/modules.c
 +		  module_file = g_fopen (pathname, "r");
 +		  if (module_file)
 +		    {
-+		      process_module_file(module_file);
++		      const gchar *module_file_dir = g_path_get_dirname (files[n]);
++		      process_module_file(module_file, module_file_dir);
++		      g_free ((gpointer) module_file_dir);
 +		      fclose(module_file);
 +		    }
 +		  g_free (pathname);
@@ -42,12 +44,16 @@ Index: pango1.0-1.28.1/pango/modules.c
 +	}
 +      else
  	{
--	  process_module_file(module_file);
+-	  const gchar *module_file_dir = g_path_get_dirname (files[n]);
+-	  process_module_file(module_file, module_file_dir);
+-	  g_free ((gpointer) module_file_dir);
 -	  fclose(module_file);
 +	  module_file = g_fopen (files[n], "r");
 +	  if (module_file)
 +	    {
-+	      process_module_file(module_file);
++	      const gchar *module_file_dir = g_path_get_dirname (files[n]);
++	      process_module_file(module_file, module_file_dir);
++	      g_free ((gpointer) module_file_dir);
 +	      fclose(module_file);
 +	    }
  	}

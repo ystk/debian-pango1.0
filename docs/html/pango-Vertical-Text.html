@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Vertical Text</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="pango.html" title="Basic Pango Interfaces">
 <link rel="prev" href="pango-Bidirectional-Text.html" title="Bidirectional Text">
 <link rel="next" href="rendering.html" title="Rendering with Pango">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -24,6 +24,8 @@
 <a href="#pango-Vertical-Text.synopsis" class="shortcut">Top</a>
                    | 
                   <a href="#pango-Vertical-Text.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#pango-Vertical-Text.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
 <div class="refentry">
@@ -37,19 +39,30 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="pango-Vertical-Text.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">enum                <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity">PangoGravity</a>;
-enum                <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint">PangoGravityHint</a>;
+<a name="PangoGravity"></a><a name="PangoGravityHint"></a><pre class="synopsis">enum                <a class="link" href="pango-Vertical-Text.html#PangoGravity-enum" title="enum PangoGravity">PangoGravity</a>;
+enum                <a class="link" href="pango-Vertical-Text.html#PangoGravityHint-enum" title="enum PangoGravityHint">PangoGravityHint</a>;
 #define             <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-IS-VERTICAL:CAPS" title="PANGO_GRAVITY_IS_VERTICAL()">PANGO_GRAVITY_IS_VERTICAL</a>           (gravity)
-<a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-matrix" title="pango_gravity_get_for_matrix ()">pango_gravity_get_for_matrix</a>        (<em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>);
-<a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-script" title="pango_gravity_get_for_script ()">pango_gravity_get_for_script</a>        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
-<a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-script-and-width" title="pango_gravity_get_for_script_and_width ()">pango_gravity_get_for_script_and_width</a>
-                                                        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+<a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-matrix" title="pango_gravity_get_for_matrix ()">pango_gravity_get_for_matrix</a>        (<em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>);
+<a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-script" title="pango_gravity_get_for_script ()">pango_gravity_get_for_script</a>        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
+<a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-script-and-width" title="pango_gravity_get_for_script_and_width ()">pango_gravity_get_for_script_and_width</a>
+                                                        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
                                                          <em class="parameter"><code><span class="type">gboolean</span> wide</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
-<span class="returnvalue">double</span>              <a class="link" href="pango-Vertical-Text.html#pango-gravity-to-rotation" title="pango_gravity_to_rotation ()">pango_gravity_to_rotation</a>           (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);
+<span class="returnvalue">double</span>              <a class="link" href="pango-Vertical-Text.html#pango-gravity-to-rotation" title="pango_gravity_to_rotation ()">pango_gravity_to_rotation</a>           (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="pango-Vertical-Text.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GEnum
+   +----PangoGravity
+</pre>
+<pre class="synopsis">
+  GEnum
+   +----PangoGravityHint
 </pre>
 </div>
 <div class="refsect1">
@@ -91,7 +104,7 @@ on the current matrix set on context, and is derived using
 </p>
 <p>
 The next thing an application may want to set on the context is the
-<em class="firstterm">gravity hint</em>.  A <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> instructs how
+<em class="firstterm">gravity hint</em>.  A <a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> instructs how
 different scripts should react to the set base gravity.
 </p>
 <p>
@@ -109,7 +122,7 @@ and gravity hint using <a class="link" href="pango-Text-Attributes.html#pango-at
 <div class="refsect1">
 <a name="pango-Vertical-Text.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="PangoGravity"></a><h3>enum PangoGravity</h3>
+<a name="PangoGravity-enum"></a><h3>enum PangoGravity</h3>
 <pre class="programlisting">typedef enum {
   PANGO_GRAVITY_SOUTH,
   PANGO_GRAVITY_EAST,
@@ -119,17 +132,17 @@ and gravity hint using <a class="link" href="pango-Text-Attributes.html#pango-at
 } PangoGravity;
 </pre>
 <p>
-The <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> type represents the orientation of glyphs in a segment
+The <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> type represents the orientation of glyphs in a segment
 of text.  This is useful when rendering vertical text layouts.  In
 those situations, the layout is rotated using a non-identity PangoMatrix,
-and then glyph orientation is controlled using <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a>.
+and then glyph orientation is controlled using <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a>.
 Not every value in this enumeration makes sense for every usage of
-<a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a>; for example, <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a> only can be passed to
+<a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a>; for example, <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a> only can be passed to
 <a class="link" href="pango-Text-Processing.html#pango-context-set-base-gravity" title="pango_context_set_base_gravity ()"><code class="function">pango_context_set_base_gravity()</code></a> and can only be returned by
 <a class="link" href="pango-Text-Processing.html#pango-context-get-base-gravity" title="pango_context_get_base_gravity ()"><code class="function">pango_context_get_base_gravity()</code></a>.
 </p>
 <p>
-See also: <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a>
+See also: <a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -165,7 +178,7 @@ See also: <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title
 </div>
 <hr>
 <div class="refsect2">
-<a name="PangoGravityHint"></a><h3>enum PangoGravityHint</h3>
+<a name="PangoGravityHint-enum"></a><h3>enum PangoGravityHint</h3>
 <pre class="programlisting">typedef enum {
   PANGO_GRAVITY_HINT_NATURAL,
   PANGO_GRAVITY_HINT_STRONG,
@@ -173,12 +186,12 @@ See also: <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title
 } PangoGravityHint;
 </pre>
 <p>
-The <a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> defines how horizontal scripts should behave in a
+The <a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> defines how horizontal scripts should behave in a
 vertical context.  That is, English excerpt in a vertical paragraph for
 example.
 </p>
 <p>
-See <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a>.
+See <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -212,22 +225,20 @@ opposite gravities and both flow top-to-bottom for example.
 <a name="PANGO-GRAVITY-IS-VERTICAL:CAPS"></a><h3>PANGO_GRAVITY_IS_VERTICAL()</h3>
 <pre class="programlisting">#define             PANGO_GRAVITY_IS_VERTICAL(gravity)</pre>
 <p>
-Whether a <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> represents vertical writing directions.
+Whether a <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> represents vertical writing directions.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>gravity</code></em> :</span></p></td>
-<td>the <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> to check
-</td>
+<td>the <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> to check</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if <em class="parameter"><code>gravity</code></em> is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-EAST:CAPS"><code class="literal">PANGO_GRAVITY_EAST</code></a> or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-WEST:CAPS"><code class="literal">PANGO_GRAVITY_WEST</code></a>,
-         <code class="literal">FALSE</code> otherwise.
-
-</td>
+<td>
+<code class="literal">TRUE</code> if <em class="parameter"><code>gravity</code></em> is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-EAST:CAPS"><code class="literal">PANGO_GRAVITY_EAST</code></a> or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-WEST:CAPS"><code class="literal">PANGO_GRAVITY_WEST</code></a>,
+<code class="literal">FALSE</code> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -236,24 +247,23 @@ Whether a <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="en
 <hr>
 <div class="refsect2">
 <a name="pango-gravity-get-for-matrix"></a><h3>pango_gravity_get_for_matrix ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_matrix        (<em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_matrix        (<em class="parameter"><code>const <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a> *matrix</code></em>);</pre>
 <p>
 Finds the gravity that best matches the rotation component
-in a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a>.
+in a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>matrix</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct PangoMatrix"><span class="type">PangoMatrix</span></a>
+<td>a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="type">PangoMatrix</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the gravity of <em class="parameter"><code>matrix</code></em>, which will never be
-<a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>, or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-SOUTH:CAPS"><code class="literal">PANGO_GRAVITY_SOUTH</code></a> if <em class="parameter"><code>matrix</code></em> is <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
-
+<td>the gravity of <em class="parameter"><code>matrix</code></em>, which will never be
+<a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>, or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-SOUTH:CAPS"><code class="literal">PANGO_GRAVITY_SOUTH</code></a> if <em class="parameter"><code>matrix</code></em> is <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 </tbody>
@@ -263,12 +273,12 @@ in a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix" title="struct P
 <hr>
 <div class="refsect2">
 <a name="pango-gravity-get-for-script"></a><h3>pango_gravity_get_for_script ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_script        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_script        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
 <p>
 Based on the script, base gravity, and hint, returns actual gravity
-to use in laying out a single <a class="link" href="pango-Text-Processing.html#PangoItem" title="struct PangoItem"><span class="type">PangoItem</span></a>.
+to use in laying out a single <a class="link" href="pango-Text-Processing.html#PangoItem"><span class="type">PangoItem</span></a>.
 </p>
 <p>
 If <em class="parameter"><code>base_gravity</code></em> is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>, it is first replaced with the
@@ -281,25 +291,20 @@ pass <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><co
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
 <td>
-<a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> to query
-</td>
+<a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> to query</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>base_gravity</code></em> :</span></p></td>
-<td>base gravity of the paragraph
-</td>
+<td>base gravity of the paragraph</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hint</code></em> :</span></p></td>
-<td>orientation hint
-</td>
+<td>orientation hint</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> resolved gravity suitable to use for a run of text
-with <em class="parameter"><code>script</code></em>.
-
-</td>
+<td>resolved gravity suitable to use for a run of text
+with <em class="parameter"><code>script</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -308,15 +313,15 @@ with <em class="parameter"><code>script</code></em>.
 <hr>
 <div class="refsect2">
 <a name="pango-gravity-get-for-script-and-width"></a><h3>pango_gravity_get_for_script_and_width ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_script_and_width
-                                                        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+<pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="returnvalue">PangoGravity</span></a>        pango_gravity_get_for_script_and_width
+                                                        (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
                                                          <em class="parameter"><code><span class="type">gboolean</span> wide</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
 <p>
 Based on the script, East Asian width, base gravity, and hint,
 returns actual gravity to use in laying out a single character
-or <a class="link" href="pango-Text-Processing.html#PangoItem" title="struct PangoItem"><span class="type">PangoItem</span></a>.
+or <a class="link" href="pango-Text-Processing.html#PangoItem"><span class="type">PangoItem</span></a>.
 </p>
 <p>
 This function is similar to <a class="link" href="pango-Vertical-Text.html#pango-gravity-get-for-script" title="pango_gravity_get_for_script ()"><code class="function">pango_gravity_get_for_script()</code></a> except
@@ -336,8 +341,7 @@ preferred gravity of <em class="parameter"><code>script</code></em>.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
 <td>
-<a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> to query
-</td>
+<a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> to query</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>wide</code></em> :</span></p></td>
@@ -347,20 +351,16 @@ preferred gravity of <em class="parameter"><code>script</code></em>.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>base_gravity</code></em> :</span></p></td>
-<td>base gravity of the paragraph
-</td>
+<td>base gravity of the paragraph</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hint</code></em> :</span></p></td>
-<td>orientation hint
-</td>
+<td>orientation hint</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> resolved gravity suitable to use for a run of text
-with <em class="parameter"><code>script</code></em> and <em class="parameter"><code>wide</code></em>.
-
-</td>
+<td>resolved gravity suitable to use for a run of text
+with <em class="parameter"><code>script</code></em> and <em class="parameter"><code>wide</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -369,9 +369,9 @@ with <em class="parameter"><code>script</code></em> and <em class="parameter"><c
 <hr>
 <div class="refsect2">
 <a name="pango-gravity-to-rotation"></a><h3>pango_gravity_to_rotation ()</h3>
-<pre class="programlisting"><span class="returnvalue">double</span>              pango_gravity_to_rotation           (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">double</span>              pango_gravity_to_rotation           (<em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> gravity</code></em>);</pre>
 <p>
-Converts a <a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> value to its natural rotation in radians.
+Converts a <a class="link" href="pango-Vertical-Text.html#PangoGravity"><span class="type">PangoGravity</span></a> value to its natural rotation in radians.
 <em class="parameter"><code>gravity</code></em> should not be <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>.
 </p>
 <p>
@@ -384,14 +384,11 @@ you should multiply it by (180. / G_PI).
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>gravity</code></em> :</span></p></td>
-<td>gravity to query
-</td>
+<td>gravity to query</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the rotation value corresponding to <em class="parameter"><code>gravity</code></em>.
-
-</td>
+<td>the rotation value corresponding to <em class="parameter"><code>gravity</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -415,6 +412,6 @@ you should multiply it by (180. / G_PI).
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

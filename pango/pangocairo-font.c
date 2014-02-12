@@ -34,36 +34,14 @@
     G_STRUCT_MEMBER_P (font,			\
     PANGO_CAIRO_FONT_GET_IFACE(PANGO_CAIRO_FONT(font))->cf_priv_offset)))
 
-GType
-pango_cairo_font_get_type (void)
+typedef PangoCairoFontIface PangoCairoFontInterface;
+G_DEFINE_INTERFACE (PangoCairoFont, pango_cairo_font, PANGO_TYPE_FONT)
+
+static void
+pango_cairo_font_default_init (PangoCairoFontIface *iface)
 {
-  static GType cairo_font_type = 0;
-
-  if (! cairo_font_type)
-    {
-      const GTypeInfo cairo_font_info =
-      {
-	sizeof (PangoCairoFontIface), /* class_size */
-	NULL,           /* base_init */
-	NULL,		/* base_finalize */
-	NULL,
-	NULL,		/* class_finalize */
-	NULL,		/* class_data */
-	0,
-	0,
-	NULL,
-	NULL
-      };
-
-      cairo_font_type =
-	g_type_register_static (G_TYPE_INTERFACE, I_("PangoCairoFont"),
-				&cairo_font_info, 0);
-
-      g_type_interface_add_prerequisite (cairo_font_type, PANGO_TYPE_FONT);
-    }
-
-  return cairo_font_type;
 }
+
 
 static PangoCairoFontPrivateScaledFontData *
 _pango_cairo_font_private_scaled_font_data_create (void)
@@ -400,7 +378,7 @@ _pango_cairo_font_private_get_hex_box_info (PangoCairoFontPrivate *cf_priv)
   cairo_scaled_font_t *scaled_font, *scaled_mini_font;
   PangoMatrix pango_ctm;
   cairo_matrix_t cairo_ctm;
-  PangoGravity gravity;
+  /*PangoGravity gravity;*/
 
   if (!cf_priv)
     return NULL;
@@ -417,7 +395,7 @@ _pango_cairo_font_private_get_hex_box_info (PangoCairoFontPrivate *cf_priv)
   font_options = cairo_font_options_create ();
   desc = pango_font_describe_with_absolute_size ((PangoFont *)cf_priv->cfont);
   size = pango_font_description_get_size (desc) / (1.*PANGO_SCALE);
-  gravity = pango_font_description_get_gravity (desc);
+  /*gravity = pango_font_description_get_gravity (desc);*/
 
   cairo_scaled_font_get_ctm (scaled_font, &cairo_ctm);
   cairo_scaled_font_get_font_options (scaled_font, font_options);
@@ -432,6 +410,8 @@ _pango_cairo_font_private_get_hex_box_info (PangoCairoFontPrivate *cf_priv)
   pango_ctm.yy = cairo_ctm.yy;
   pango_ctm.x0 = cairo_ctm.x0;
   pango_ctm.y0 = cairo_ctm.y0;
+
+  size /= pango_matrix_get_font_scale_factor (&pango_ctm);
 
   if (is_hinted)
     {

@@ -1,7 +1,7 @@
-Index: pango1.0-1.28.1/pango/modules.c
+Index: pango-1.30.0/pango/modules.c
 ===================================================================
---- pango1.0-1.28.1.orig/pango/modules.c	2010-06-15 18:09:36.626808929 +0200
-+++ pango1.0-1.28.1/pango/modules.c	2010-06-15 18:09:38.606801290 +0200
+--- pango-1.30.0.orig/pango/modules.c	2012-03-31 21:42:49.782087424 +0200
++++ pango-1.30.0/pango/modules.c	2012-03-31 21:42:55.302087230 +0200
 @@ -24,6 +24,7 @@
  #include <string.h>
  #include <limits.h>
@@ -10,7 +10,7 @@ Index: pango1.0-1.28.1/pango/modules.c
  
  #include <gmodule.h>
  #include <glib/gstdio.h>
-@@ -529,6 +530,18 @@
+@@ -534,6 +535,18 @@
  					       MODULE_VERSION,
  					       "module-files.d",
  					       NULL);
@@ -29,7 +29,7 @@ Index: pango1.0-1.28.1/pango/modules.c
    char *list_str;
    char **files;
    int n;
-@@ -540,6 +553,17 @@
+@@ -545,6 +558,17 @@
  				 "pango.modules",
  				 NULL);
  
@@ -47,7 +47,7 @@ Index: pango1.0-1.28.1/pango/modules.c
    list_str = g_strjoin (G_SEARCHPATH_SEPARATOR_S,
  			file_str,
  			module_files_d_str,
-@@ -589,6 +613,9 @@
+@@ -598,6 +622,9 @@
    g_strfreev (files);
    g_free (list_str);
    g_free (module_files_d_str);

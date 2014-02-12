@@ -1,8 +1,8 @@
-Index: pango1.0-1.28.1/pango/modules.c
+Index: pango-1.30.0/pango/modules.c
 ===================================================================
---- pango1.0-1.28.1.orig/pango/modules.c	2010-06-15 18:09:31.287811515 +0200
-+++ pango1.0-1.28.1/pango/modules.c	2010-06-15 18:09:36.626808929 +0200
-@@ -525,6 +525,11 @@
+--- pango-1.30.0.orig/pango/modules.c	2012-03-31 21:42:48.366087473 +0200
++++ pango-1.30.0/pango/modules.c	2012-03-31 21:42:49.782087424 +0200
+@@ -530,6 +530,11 @@
    FILE *module_file;
  
    char *file_str =  pango_config_key_get ("Pango/ModuleFiles");
@@ -14,7 +14,7 @@ Index: pango1.0-1.28.1/pango/modules.c
    char **files;
    int n;
  
-@@ -535,7 +540,12 @@
+@@ -540,7 +545,12 @@
  				 "pango.modules",
  				 NULL);
  
@@ -28,7 +28,7 @@ Index: pango1.0-1.28.1/pango/modules.c
  
    n = 0;
    while (files[n])
-@@ -577,6 +587,8 @@
+@@ -586,6 +596,8 @@
      }
  
    g_strfreev (files);

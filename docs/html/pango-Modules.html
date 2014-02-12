@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Modules</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="Pango Reference Manual">
 <link rel="up" href="lowlevel.html" title="Low Level Functionality">
 <link rel="prev" href="PangoEngineShape.html" title="PangoEngineShape">
 <link rel="next" href="pango-Miscellaneous-Utilities.html" title="Miscellaneous Utilities">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -40,13 +40,13 @@
 <pre class="synopsis">struct              <a class="link" href="pango-Modules.html#PangoIncludedModule" title="struct PangoIncludedModule">PangoIncludedModule</a>;
                     <a class="link" href="pango-Modules.html#PangoMap" title="PangoMap">PangoMap</a>;
                     <a class="link" href="pango-Modules.html#PangoMapEntry" title="PangoMapEntry">PangoMapEntry</a>;
-<a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="returnvalue">PangoMap</span></a> *          <a class="link" href="pango-Modules.html#pango-find-map" title="pango_find_map ()">pango_find_map</a>                      (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>,
+<a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="returnvalue">PangoMap</span></a> *          <a class="link" href="pango-Modules.html#pango-find-map" title="pango_find_map ()">pango_find_map</a>                      (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>,
                                                          <em class="parameter"><code><span class="type">guint</span> engine_type_id</code></em>,
                                                          <em class="parameter"><code><span class="type">guint</span> render_type_id</code></em>);
 <a class="link" href="pango-Engines.html#PangoEngine"><span class="returnvalue">PangoEngine</span></a> *       <a class="link" href="pango-Modules.html#pango-map-get-engine" title="pango_map_get_engine ()">pango_map_get_engine</a>                (<em class="parameter"><code><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a> *map</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>);
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Modules.html#pango-map-get-engines" title="pango_map_get_engines ()">pango_map_get_engines</a>               (<em class="parameter"><code><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a> *map</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **exact_engines</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **fallback_engines</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="pango-Modules.html#pango-module-register" title="pango_module_register ()">pango_module_register</a>               (<em class="parameter"><code><a class="link" href="pango-Modules.html#PangoIncludedModule" title="struct PangoIncludedModule"><span class="type">PangoIncludedModule</span></a> *module</code></em>);
@@ -81,23 +81,19 @@ loaded module.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoIncludedModule.list"></a>list</code></em> ()</span></p></td>
-<td>a function that lists the engines defined in this module.
-</td>
+<td>a function that lists the engines defined in this module.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoIncludedModule.init"></a>init</code></em> ()</span></p></td>
-<td>a function to initialize the module.
-</td>
+<td>a function to initialize the module.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoIncludedModule.exit"></a>exit</code></em> ()</span></p></td>
-<td>a function to finalize the module.
-</td>
+<td>a function to finalize the module.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="structfield"><code><a name="PangoIncludedModule.create"></a>create</code></em> ()</span></p></td>
-<td>a function to create an engine, given the engine name.
-</td>
+<td>a function to create an engine, given the engine name.</td>
 </tr>
 </tbody>
 </table></div>
@@ -124,7 +120,7 @@ matches the language tag for this entry's map exactly or just approximately.
 <hr>
 <div class="refsect2">
 <a name="pango-find-map"></a><h3>pango_find_map ()</h3>
-<pre class="programlisting"><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="returnvalue">PangoMap</span></a> *          pango_find_map                      (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage" title="PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>,
+<pre class="programlisting"><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="returnvalue">PangoMap</span></a> *          pango_find_map                      (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoLanguage"><span class="type">PangoLanguage</span></a> *language</code></em>,
                                                          <em class="parameter"><code><span class="type">guint</span> engine_type_id</code></em>,
                                                          <em class="parameter"><code><span class="type">guint</span> render_type_id</code></em>);</pre>
 <p>
@@ -137,23 +133,19 @@ for each character.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>the language tag for which to find the map
-</td>
+<td>the language tag for which to find the map</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engine_type_id</code></em> :</span></p></td>
-<td>the engine type for the map to find
-</td>
+<td>the engine type for the map to find</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>render_type_id</code></em> :</span></p></td>
-<td>the render type for the map to find
-</td>
+<td>the render type for the map to find</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the suitable <a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a>.
-</td>
+<td>the suitable <a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -162,7 +154,7 @@ for each character.
 <div class="refsect2">
 <a name="pango-map-get-engine"></a><h3>pango_map_get_engine ()</h3>
 <pre class="programlisting"><a class="link" href="pango-Engines.html#PangoEngine"><span class="returnvalue">PangoEngine</span></a> *       pango_map_get_engine                (<em class="parameter"><code><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a> *map</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>);</pre>
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>);</pre>
 <p>
 Returns the best engine listed in the map for a given script
 </p>
@@ -176,17 +168,16 @@ Returns the best engine listed in the map for a given script
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the best engine, if one is listed for the script,
-   or <a href="/gnome/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. The lookup may cause the engine to be loaded;
-   once an engine is loaded, it won't be unloaded. If multiple
-   engines are exact for the script, the choice of which is
-   returned is arbitrary.
-</td>
+<td>the best engine, if one is listed for the script,
+or <a href="/home/mclasen/gnome/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. The lookup may cause the engine to be loaded;
+once an engine is loaded, it won't be unloaded. If multiple
+engines are exact for the script, the choice of which is
+returned is arbitrary.</td>
 </tr>
 </tbody>
 </table></div>
@@ -195,7 +186,7 @@ Returns the best engine listed in the map for a given script
 <div class="refsect2">
 <a name="pango-map-get-engines"></a><h3>pango_map_get_engines ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                pango_map_get_engines               (<em class="parameter"><code><a class="link" href="pango-Modules.html#PangoMap" title="PangoMap"><span class="type">PangoMap</span></a> *map</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **exact_engines</code></em>,
                                                          <em class="parameter"><code><span class="type">GSList</span> **fallback_engines</code></em>);</pre>
 <p>
@@ -214,20 +205,18 @@ they should not be unref'ed.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>script</code></em> :</span></p></td>
-<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a>
+<td>a <a class="link" href="pango-Scripts-and-Languages.html#PangoScript"><span class="type">PangoScript</span></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>exact_engines</code></em> :</span></p></td>
 <td>location to store list of engines that exactly
- handle this script.
-</td>
+handle this script.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>fallback_engines</code></em> :</span></p></td>
 <td>location to store list of engines that approximately
- handle this script.
-</td>
+handle this script.</td>
 </tr>
 </tbody>
 </table></div>
@@ -256,6 +245,6 @@ module.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.18.1</div>
 </body>
 </html>

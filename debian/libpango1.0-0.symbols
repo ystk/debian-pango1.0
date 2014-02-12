@@ -233,6 +233,7 @@ libpango-1.0.so.0 libpango1.0-0 #MINVER#
  pango_layout_get_attributes@Base 1.14.0
  pango_layout_get_auto_dir@Base 1.14.0
  pango_layout_get_baseline@Base 1.22.0
+ pango_layout_get_character_count@Base 1.29.4
  pango_layout_get_context@Base 1.14.0
  pango_layout_get_cursor_pos@Base 1.14.0
  pango_layout_get_ellipsize@Base 1.14.0
@@ -248,6 +249,7 @@ libpango-1.0.so.0 libpango1.0-0 #MINVER#
  pango_layout_get_lines@Base 1.14.0
  pango_layout_get_lines_readonly@Base 1.18.0
  pango_layout_get_log_attrs@Base 1.14.0
+ pango_layout_get_log_attrs_readonly@Base 1.29.4
  pango_layout_get_pixel_extents@Base 1.14.0
  pango_layout_get_pixel_size@Base 1.14.0
  pango_layout_get_single_paragraph_mode@Base 1.14.0
@@ -529,6 +531,7 @@ libpangox-1.0.so.0 libpango1.0-0 #MINVER#
  pango_x_font_cache_load@Base 1.14.0
  pango_x_font_cache_new@Base 1.14.0
  pango_x_font_cache_unload@Base 1.14.0
+ pango_x_font_get_type@Base 1.29.4
  pango_x_font_get_unknown_glyph@Base 1.14.0
  pango_x_font_map_for_display@Base 1.14.0
  pango_x_font_map_get_font_cache@Base 1.14.0

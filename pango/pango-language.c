@@ -29,6 +29,10 @@
 #include "pango-language.h"
 #include "pango-impl-utils.h"
 
+#ifdef HAVE_CORE_TEXT
+#include <CoreFoundation/CoreFoundation.h>
+#endif /* HAVE_CORE_TEXT */
+
 
 /* We embed a private struct right *before* a where a PangoLanguage *
  * points to.
@@ -129,17 +133,9 @@ pango_language_free (PangoLanguage *language G_GNUC_UNUSED)
   return; /* nothing */
 }
 
-GType
-pango_language_get_type (void)
-{
-  static GType our_type = 0;
-
-  if (G_UNLIKELY (our_type == 0))
-    our_type = g_boxed_type_register_static (I_("PangoLanguage"),
-					     (GBoxedCopyFunc)pango_language_copy,
-					     (GBoxedFreeFunc)pango_language_free);
-  return our_type;
-}
+G_DEFINE_BOXED_TYPE (PangoLanguage, pango_language,
+                     pango_language_copy,
+                     pango_language_free);
 
 /**
  * _pango_get_lc_ctype:
@@ -196,6 +192,23 @@ _pango_get_lc_ctype (void)
     return g_strdup (p);
 
   return g_win32_getlocale ();
+#elif HAVE_CORE_TEXT
+  CFArrayRef languages;
+  CFStringRef language;
+  gchar ret[16];
+
+  languages = CFLocaleCopyPreferredLanguages ();
+  language = CFArrayGetValueAtIndex (languages, 0);
+
+  if (!CFStringGetCString (language, ret, 16, kCFStringEncodingUTF8))
+    {
+      CFRelease (languages);
+      return g_strdup (setlocale (LC_CTYPE, NULL));
+    }
+
+  CFRelease (languages);
+
+  return g_strdup (ret);
 #else
   return g_strdup (setlocale (LC_CTYPE, NULL));
 #endif
@@ -253,7 +266,7 @@ pango_language_get_default (void)
 
 /**
  * pango_language_from_string:
- * @language: a string representing a language tag, or %NULL
+ * @language: (allow-none): a string representing a language tag, or %NULL
  *
  * Take a RFC-3066 format language tag as a string and convert it to a
  * #PangoLanguage pointer that can be efficiently copied (copy the
@@ -319,7 +332,7 @@ pango_language_from_string (const char *language)
  * Returns: a string representing the language tag.  This is owned by
  *          Pango and should not be freed.
  */
-G_CONST_RETURN char *
+const char *
 (pango_language_to_string) (PangoLanguage *language)
 {
   return pango_language_to_string (language);
@@ -531,7 +544,7 @@ static const LangInfo lang_texts[] = {
  * Return value: the sample string. This value is owned by Pango
  *   and should not be freed.
  **/
-G_CONST_RETURN char *
+const char *
 pango_language_get_sample_string (PangoLanguage *language)
 {
   const LangInfo *lang_info;
@@ -561,8 +574,9 @@ pango_language_get_sample_string (PangoLanguage *language)
 
 /**
  * pango_language_get_scripts:
- * @language: a #PangoLanguage, or %NULL
- * @num_scripts: location to return number of scripts, or %NULL
+ * @language: (allow-none): a #PangoLanguage, or %NULL
+ * @num_scripts: (out caller-allocates) (allow-none): location to return number of scripts,
+ *            or %NULL
  *
  * Determines the scripts used to to write @language.
  * If nothing is known about the language tag @language,
@@ -592,7 +606,7 @@ pango_language_get_sample_string (PangoLanguage *language)
  
  * Since: 1.22
  **/
-G_CONST_RETURN PangoScript *
+const PangoScript *
 pango_language_get_scripts (PangoLanguage *language,
 			    int           *num_scripts)
 {
