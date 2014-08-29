@@ -564,9 +564,10 @@ split_before_cluster_start (ApplyAttrsState *state)
  * This function takes ownership of @glyph_item; it will be reused
  * as one of the elements in the list.
  *
- * Return value: (transfer full): a list of glyph items resulting
- *   from splitting @glyph_item. Free the elements using
- *   pango_glyph_item_free(), the list using g_slist_free().
+ * Return value: (transfer full) (element-type Pango.GlyphItem): a
+ *   list of glyph items resulting from splitting @glyph_item. Free
+ *   the elements using pango_glyph_item_free(), the list using
+ *   g_slist_free().
  *
  * Since: 1.2
  **/
@@ -700,8 +701,8 @@ pango_glyph_item_apply_attrs (PangoGlyphItem   *glyph_item,
  * @text: text that @glyph_item corresponds to
  *   (glyph_item->item->offset is an offset from the
  *    start of @text)
- * @log_attrs: logical attributes for the item (the
- *   first logical attribute refers to the position
+ * @log_attrs: (array): logical attributes for the item
+ *   (the first logical attribute refers to the position
  *   before the first character in the item)
  * @letter_spacing: amount of letter spacing to add
  *   in Pango units. May be negative, though too large
@@ -773,9 +774,10 @@ pango_glyph_item_letter_space (PangoGlyphItem *glyph_item,
  * @text: text that @glyph_item corresponds to
  *   (glyph_item->item->offset is an offset from the
  *    start of @text)
- * @logical_widths: an array whose length is the number of characters in
- *                  glyph_item (equal to glyph_item->item->num_chars)
- *                  to be filled in with the resulting character widths.
+ * @logical_widths: (array): an array whose length is the number of
+ *                  characters in glyph_item (equal to
+ *                  glyph_item->item->num_chars) to be filled in with
+ *                  the resulting character widths.
  *
  * Given a #PangoGlyphItem and the corresponding
  * text, determine the screen width corresponding to each character. When
