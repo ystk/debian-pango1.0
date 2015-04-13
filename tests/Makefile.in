@@ -84,7 +84,8 @@ host_triplet = @host@
 @HAVE_WIN32_TRUE@am__append_3 = -DHAVE_WIN32
 @CROSS_COMPILING_FALSE@TESTS = $(check_PROGRAMS)
 check_PROGRAMS = testboundaries$(EXEEXT) testboundaries_ucd$(EXEEXT) \
-	testcolor$(EXEEXT) testscript$(EXEEXT) $(am__EXEEXT_1) \
+	testcolor$(EXEEXT) testscript$(EXEEXT) markup-parse$(EXEEXT) \
+	test-layout$(EXEEXT) test-font$(EXEEXT) $(am__EXEEXT_1) \
 	$(am__EXEEXT_2) $(am__EXEEXT_3)
 @HAVE_CAIRO_TRUE@am__append_4 = testiter test-pangocairo-threads
 @HAVE_FREETYPE_TRUE@am__append_5 = test-ot-tags
@@ -125,6 +126,17 @@ dump_boundaries_DEPENDENCIES = $(TEST_PANGO_LIBS) \
 gen_all_unicode_SOURCES = gen-all-unicode.c
 gen_all_unicode_OBJECTS = gen-all-unicode.$(OBJEXT)
 gen_all_unicode_DEPENDENCIES = $(am__DEPENDENCIES_1)
+markup_parse_SOURCES = markup-parse.c
+markup_parse_OBJECTS = markup-parse.$(OBJEXT)
+markup_parse_DEPENDENCIES = $(TEST_PANGOCAIRO_LIBS) \
+	$(am__DEPENDENCIES_1)
+test_font_SOURCES = test-font.c
+test_font_OBJECTS = test-font.$(OBJEXT)
+test_font_DEPENDENCIES = $(TEST_PANGOCAIRO_LIBS) $(am__DEPENDENCIES_1)
+test_layout_SOURCES = test-layout.c
+test_layout_OBJECTS = test-layout.$(OBJEXT)
+test_layout_DEPENDENCIES = $(TEST_PANGOCAIRO_LIBS) \
+	$(am__DEPENDENCIES_1)
 test_ot_tags_SOURCES = test-ot-tags.c
 test_ot_tags_OBJECTS = test-ot-tags.$(OBJEXT)
 test_ot_tags_DEPENDENCIES = $(TEST_PANGOFT2_LIBS) \
@@ -202,10 +214,12 @@ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = $(cxx_test_SOURCES) dump-boundaries.c gen-all-unicode.c \
-	test-ot-tags.c test-pangocairo-threads.c testboundaries.c \
+	markup-parse.c test-font.c test-layout.c test-ot-tags.c \
+	test-pangocairo-threads.c testboundaries.c \
 	testboundaries_ucd.c testcolor.c testiter.c testscript.c
 DIST_SOURCES = $(cxx_test_SOURCES) dump-boundaries.c gen-all-unicode.c \
-	test-ot-tags.c test-pangocairo-threads.c testboundaries.c \
+	markup-parse.c test-font.c test-layout.c test-ot-tags.c \
+	test-pangocairo-threads.c testboundaries.c \
 	testboundaries_ucd.c testcolor.c testiter.c testscript.c
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -239,7 +253,7 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-DATA = $(testdata_DATA) $(testmeta_DATA)
+DATA = $(nobase_testdata_DATA) $(testmeta_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -617,10 +631,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = \
-	boundaries.utf8		\
-	GraphemeBreakTest.txt
-
+EXTRA_DIST = boundaries.utf8 GraphemeBreakTest.txt $(all_markup_data) \
+	$(all_layout_data)
 CLEANFILES = pangorc
 DISTCLEANFILES = all-unicode.txt
 AM_CPPFLAGS = -DSRCDIR=\"$(srcdir)\" -I$(top_srcdir) \
@@ -645,14 +657,34 @@ testscript_LDADD = $(TEST_PANGO_LIBS) $(GLIB_LIBS)
 test_ot_tags_LDADD = $(TEST_PANGOFT2_LIBS) $(GLIB_LIBS)
 test_pangocairo_threads_LDADD = $(TEST_PANGOCAIRO_LIBS) $(CAIRO_LIBS) $(GLIB_LIBS)
 dump_boundaries_LDADD = $(TEST_PANGO_LIBS) $(GLIB_LIBS)
+markup_parse_LDADD = $(TEST_PANGOCAIRO_LIBS) $(GLIB_LIBS)
+test_layout_LDADD = $(TEST_PANGOCAIRO_LIBS) $(GLIB_LIBS)
+test_font_LDADD = $(TEST_PANGOCAIRO_LIBS) $(GLIB_LIBS)
 cxx_test_SOURCES = cxx-test.C
+markup_tests = \
+	valid-1 valid-2 valid-3 valid-4 \
+	fail-1 \
+	$(NULL)
+
+all_markup_data = \
+	$(addprefix markups/,$(markup_tests:=.markup) $(markup_tests:=.expected))
+
+layout_tests = \
+	valid-1 valid-2 \
+	$(NULL)
+
+all_layout_data = \
+	$(addprefix layouts/,$(layout_tests:=.markup) $(layout_tests:=.expected))
+
 @BUILDOPT_INSTALL_TESTS_TRUE@insttestdir = $(libexecdir)/installed-tests/$(PACKAGE)
 @BUILDOPT_INSTALL_TESTS_TRUE@insttest_PROGRAMS = $(check_PROGRAMS)
 @BUILDOPT_INSTALL_TESTS_TRUE@testdatadir = $(insttestdir)
-@BUILDOPT_INSTALL_TESTS_TRUE@testdata_DATA = \
+@BUILDOPT_INSTALL_TESTS_TRUE@nobase_testdata_DATA = \
 @BUILDOPT_INSTALL_TESTS_TRUE@	all-unicode.txt 	\
 @BUILDOPT_INSTALL_TESTS_TRUE@	boundaries.utf8 	\
-@BUILDOPT_INSTALL_TESTS_TRUE@	GraphemeBreakTest.txt
+@BUILDOPT_INSTALL_TESTS_TRUE@	GraphemeBreakTest.txt 	\
+@BUILDOPT_INSTALL_TESTS_TRUE@	$(all_markup_data)	\
+@BUILDOPT_INSTALL_TESTS_TRUE@	$(all_layout_data)
 
 @BUILDOPT_INSTALL_TESTS_TRUE@testmetadir = $(datadir)/installed-tests/$(PACKAGE)
 @BUILDOPT_INSTALL_TESTS_TRUE@testmeta_DATA = $(check_PROGRAMS:=.test)
@@ -786,6 +818,18 @@ gen-all-unicode$(EXEEXT): $(gen_all_unicode_OBJECTS) $(gen_all_unicode_DEPENDENC
 	@rm -f gen-all-unicode$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(gen_all_unicode_OBJECTS) $(gen_all_unicode_LDADD) $(LIBS)
 
+markup-parse$(EXEEXT): $(markup_parse_OBJECTS) $(markup_parse_DEPENDENCIES) $(EXTRA_markup_parse_DEPENDENCIES) 
+	@rm -f markup-parse$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(markup_parse_OBJECTS) $(markup_parse_LDADD) $(LIBS)
+
+test-font$(EXEEXT): $(test_font_OBJECTS) $(test_font_DEPENDENCIES) $(EXTRA_test_font_DEPENDENCIES) 
+	@rm -f test-font$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_font_OBJECTS) $(test_font_LDADD) $(LIBS)
+
+test-layout$(EXEEXT): $(test_layout_OBJECTS) $(test_layout_DEPENDENCIES) $(EXTRA_test_layout_DEPENDENCIES) 
+	@rm -f test-layout$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_layout_OBJECTS) $(test_layout_LDADD) $(LIBS)
+
 test-ot-tags$(EXEEXT): $(test_ot_tags_OBJECTS) $(test_ot_tags_DEPENDENCIES) $(EXTRA_test_ot_tags_DEPENDENCIES) 
 	@rm -f test-ot-tags$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_ot_tags_OBJECTS) $(test_ot_tags_LDADD) $(LIBS)
@@ -823,6 +867,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cxx-test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dump-boundaries.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gen-all-unicode.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/markup-parse.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-font.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-layout.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-ot-tags.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-pangocairo-threads.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testboundaries.Po@am__quote@
@@ -878,26 +925,29 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-testdataDATA: $(testdata_DATA)
+install-nobase_testdataDATA: $(nobase_testdata_DATA)
 	@$(NORMAL_INSTALL)
-	@list='$(testdata_DATA)'; test -n "$(testdatadir)" || list=; \
+	@list='$(nobase_testdata_DATA)'; test -n "$(testdatadir)" || list=; \
 	if test -n "$$list"; then \
 	  echo " $(MKDIR_P) '$(DESTDIR)$(testdatadir)'"; \
 	  $(MKDIR_P) "$(DESTDIR)$(testdatadir)" || exit 1; \
 	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(testdatadir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(testdatadir)" || exit $$?; \
+	$(am__nobase_list) | while read dir files; do \
+	  xfiles=; for file in $$files; do \
+	    if test -f "$$file"; then xfiles="$$xfiles $$file"; \
+	    else xfiles="$$xfiles $(srcdir)/$$file"; fi; done; \
+	  test -z "$$xfiles" || { \
+	    test "x$$dir" = x. || { \
+	      echo " $(MKDIR_P) '$(DESTDIR)$(testdatadir)/$$dir'"; \
+	      $(MKDIR_P) "$(DESTDIR)$(testdatadir)/$$dir"; }; \
+	    echo " $(INSTALL_DATA) $$xfiles '$(DESTDIR)$(testdatadir)/$$dir'"; \
+	    $(INSTALL_DATA) $$xfiles "$(DESTDIR)$(testdatadir)/$$dir" || exit $$?; }; \
 	done
 
-uninstall-testdataDATA:
+uninstall-nobase_testdataDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(testdata_DATA)'; test -n "$(testdatadir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	@list='$(nobase_testdata_DATA)'; test -n "$(testdatadir)" || list=; \
+	$(am__nobase_strip_setup); files=`$(am__nobase_strip)`; \
 	dir='$(DESTDIR)$(testdatadir)'; $(am__uninstall_files_from_dir)
 install-testmetaDATA: $(testmeta_DATA)
 	@$(NORMAL_INSTALL)
@@ -1142,6 +1192,27 @@ testscript.log: testscript$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+markup-parse.log: markup-parse$(EXEEXT)
+	@p='markup-parse$(EXEEXT)'; \
+	b='markup-parse'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-layout.log: test-layout$(EXEEXT)
+	@p='test-layout$(EXEEXT)'; \
+	b='test-layout'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-font.log: test-font$(EXEEXT)
+	@p='test-font$(EXEEXT)'; \
+	b='test-font'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 testiter.log: testiter$(EXEEXT)
 	@p='testiter$(EXEEXT)'; \
 	b='testiter'; \
@@ -1282,7 +1353,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-insttestPROGRAMS install-testdataDATA \
+install-data-am: install-insttestPROGRAMS install-nobase_testdataDATA \
 	install-testmetaDATA
 
 install-dvi: install-dvi-am
@@ -1329,7 +1400,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-insttestPROGRAMS uninstall-testdataDATA \
+uninstall-am: uninstall-insttestPROGRAMS uninstall-nobase_testdataDATA \
 	uninstall-testmetaDATA
 
 .MAKE: check-am install-am install-strip
@@ -1343,14 +1414,14 @@ uninstall-am: uninstall-insttestPROGRAMS uninstall-testdataDATA \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
 	install-info-am install-insttestPROGRAMS install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip install-testdataDATA install-testmetaDATA \
+	install-nobase_testdataDATA install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip install-testmetaDATA \
 	installcheck installcheck-am installcheck-insttestPROGRAMS \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am recheck tags tags-am \
 	uninstall uninstall-am uninstall-insttestPROGRAMS \
-	uninstall-testdataDATA uninstall-testmetaDATA
+	uninstall-nobase_testdataDATA uninstall-testmetaDATA
 
 
 all-unicode.txt: gen-all-unicode$(EXEEXT)

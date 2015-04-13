@@ -1,3 +1,233 @@
+commit e0a21abf52a0b7588b1aa3357818948816ed9103
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Mon Sep 22 14:29:40 2014 -0400
+
+    1.36.8
+
+ NEWS         | 4 ++++
+ configure.ac | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+commit bda622c386a0b04478a9116c6b9534c023ca2446
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Fri Sep 19 11:43:15 2014 -0400
+
+    Update expected test results
+
+    Update the expected output of the layout tests to the previous
+    change.
+
+ tests/layouts/valid-1.expected |  6 +++---
+ tests/layouts/valid-2.expected | 10 +++++-----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+commit 2a8eed93477304317ccedfdea8ea46fb9779ee69
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Fri Sep 19 11:33:14 2014 -0400
+
+    Don't compare fonts in the layout test
+
+    For some reason (that I haven't been able to track down), this
+    fails in the installed tests on build.gnome.org.
+
+ tests/test-layout.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0d1945ed2c602e295e433ce7e9e1ecbc6600c76a
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Mon Sep 8 11:55:06 2014 -0400
+
+    Add some tests for PangoFontDescription
+
+    This just a small beginning, much more is needed here.
+
+ tests/Makefile.am |  2 ++
+ tests/test-font.c | 92
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 94 insertions(+)
+
+commit 7b36ee404c22495e33c66cc4d755671a16089bdf
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Sat Sep 6 14:31:43 2014 -0400
+
+    Try to fix the test on build.gnome.org
+
+    For some reason, the test-layout test does not show the
+    font size when run on build.gnome.org. Try harder to make
+    it use the Cantarell 11 font that I want it to use.
+
+ tests/test-layout.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit f7ffec46581ee8d45c7d9480168a167c86c766d3
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Wed Sep 3 15:47:46 2014 -0400
+
+    1.36.7
+
+ NEWS         | 7 +++++++
+ configure.ac | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+commit cfe6663ed90db3edde9564f6513c0fbc9e776c68
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Wed Sep 3 15:43:00 2014 -0400
+
+    layout tests: Adapt expected output
+
+    We see the 'ellipsized' analysis flag in the output now,
+    as we should.
+
+ tests/layouts/valid-1.expected | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d984352b5edb9e0f5c7d07956f0562288865ff37
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Wed Sep 3 15:37:02 2014 -0400
+
+    test-layout: Better error reporting
+
+    Run diff over the output to give a meaningful error if the
+    comparison fails.
+
+ tests/test-layout.c | 70
+ +++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 62 insertions(+), 8 deletions(-)
+
+commit d23a0b0820ff5ea37e9dd71b3589039760e230c9
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Tue Sep 2 18:18:21 2014 -0400
+
+    PangoGlyphItem: Better treatment of ellipsized runs
+
+    When we reapply non-shape attributes, we must take care to
+    not add any attributes that start in the middle of an
+    ellipsized run, or we end up with a blue, underlined ellipsis
+    if there is a link anywhere inside the ellipsized text.
+
+    https://bugzilla.gnome.org/show_bug.cgi?id=735732
+
+ pango/pango-glyph-item.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit 95ccc8910223d7d092f4cc30c93b4a5f9dcd301a
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Sat Aug 30 14:09:19 2014 -0400
+
+    Add an analysis flag to mark the ellipsis run
+
+    Without this, it is hard to determine if you are 'inside the
+    ellipsis'. We need to know this in GTK+, e.g. to skip link
+    processing.
+
+    I decided not to turn the flags into an enum at the time to
+    avoid possible language binding problems.
+
+    https://bugzilla.gnome.org/show_bug.cgi?id=735719
+
+ pango/ellipsize.c  |  2 ++
+ pango/pango-item.h | 13 +++++++++++--
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+commit 0068b78276c4ac7df95d97fa270a5e8ca4b58348
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Sat Aug 30 20:20:00 2014 -0400
+
+    Add tests for PangoLayout
+
+    This tests works similar to the markup parser tests -
+    we populate a layout with known data, and then compare
+    a dump of its properties with expected output.
+
+ tests/Makefile.am              |  23 +-
+ tests/layouts/valid-1.expected |  35 +++
+ tests/layouts/valid-1.markup   |   2 +
+ tests/layouts/valid-2.expected |  34 +++
+ tests/layouts/valid-2.markup   |   2 +
+ tests/test-layout.c            | 487
+ +++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 580 insertions(+), 3 deletions(-)
+
+commit 92e7b73e27f54db86d58dcb5b4ddaafb32101980
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Sat Aug 30 14:11:04 2014 -0400
+
+    Revert "Fix leftover markup in docs"
+
+    This reverts commit 19a252d9a3d63e7816f9a77bab65bd161675440a.
+
+ pango/pango-attributes.c  |  2 +-
+ pango/pango-color.c       |  3 ++-
+ pango/pango-engine.h      | 59
+ ++++++++++++++++++++++++-----------------------
+ pango/pango-glyph-item.h  | 22 +++++++++---------
+ pango/pango-language.c    | 35 ++++++++++++++--------------
+ pango/pango-layout.c      | 17 +++++++-------
+ pango/pango-renderer.c    |  2 +-
+ pango/pangocairo-render.c |  2 +-
+ 8 files changed, 73 insertions(+), 69 deletions(-)
+
+commit 19a252d9a3d63e7816f9a77bab65bd161675440a
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Sat Aug 30 13:11:09 2014 -0400
+
+    Fix leftover markup in docs
+
+ pango/pango-attributes.c  |  2 +-
+ pango/pango-color.c       |  3 +--
+ pango/pango-engine.h      | 59
+ +++++++++++++++++++++++------------------------
+ pango/pango-glyph-item.h  | 22 +++++++++---------
+ pango/pango-language.c    | 35 ++++++++++++++--------------
+ pango/pango-layout.c      | 17 +++++++-------
+ pango/pango-renderer.c    |  2 +-
+ pango/pangocairo-render.c |  2 +-
+ 8 files changed, 69 insertions(+), 73 deletions(-)
+
+commit 5d319c5989d599e9e867df76795eb81472b4db7a
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Thu Aug 28 01:19:29 2014 -0400
+
+    Add tests for pango markup
+
+    This test is modeled after the GMarkup parser tests in GLib.
+    Test file with a name ending in .markup can be dumped in
+    tests/markups/, and tests/markup-parse can be used to generate
+    the expected output files which should be in the same location
+    and with the extension .markup replaced by .expected.
+
+    The test is also used as an installed test.
+
+ tests/Makefile.am              |  18 ++-
+ tests/markup-parse.c           | 249
+ +++++++++++++++++++++++++++++++++++++++++
+ tests/markups/fail-1.expected  |   1 +
+ tests/markups/fail-1.markup    |   1 +
+ tests/markups/valid-1.expected |  12 ++
+ tests/markups/valid-1.markup   |   1 +
+ tests/markups/valid-2.expected |  12 ++
+ tests/markups/valid-2.markup   |   1 +
+ tests/markups/valid-3.expected |  18 +++
+ tests/markups/valid-3.markup   |  11 ++
+ tests/markups/valid-4.expected |  38 +++++++
+ tests/markups/valid-4.markup   |   1 +
+ 12 files changed, 360 insertions(+), 3 deletions(-)
+
+commit 0c827ee95c4ff6564eefabb519d00bfcccd046fe
+Author: Chun-wei Fan <fanchunwei@src.gnome.org>
+Date:   Tue Aug 19 15:27:34 2014 +0800
+
+    MSVC Builds: Fix "Installation"
+
+    Make sure we only try to create the directory for pango.aliases
+    if that
+    file didn't exist.  This cleans things up a little, and avoids weird
+    MSBuild batch errors.
+
+ build/win32/vs10/pango-install.propsin  | 2 --
+ build/win32/vs9/pango-install.vspropsin | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
 commit a78778e54f7cc013080fda9d9349ad113ecb3e0e
 Author: Matthias Clasen <mclasen@redhat.com>
 Date:   Sat Aug 16 09:05:00 2014 -0400

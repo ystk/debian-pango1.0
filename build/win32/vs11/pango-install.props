@@ -38,7 +38,6 @@ copy ..\..\..\pango\pango-enum-types.h $(CopyDir)\include\pango-$(PangoApiVersio
 copy ..\..\..\pango\pangowin32.h $(CopyDir)\include\pango-$(PangoApiVersion)\pango
 if "$(Configuration)" == "Release" goto DO_CREATE_PANGO_ALIASES
 if "$(Configuration)" == "Debug" goto DO_CREATE_PANGO_ALIASES
-if not exist $(CopyDir)\etc\pango mkdir $(CopyDir)\etc\pango
 copy ..\..\..\pango\pangofc-decoder.h $(CopyDir)\include\pango-$(PangoApiVersion)\pango
 copy ..\..\..\pango\pangofc-font.h $(CopyDir)\include\pango-$(PangoApiVersion)\pango
 copy ..\..\..\pango\pangofc-fontmap.h $(CopyDir)\include\pango-$(PangoApiVersion)\pango
